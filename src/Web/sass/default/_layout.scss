@@ -1,0 +1,85 @@
+.login-panel {
+	min-height: ms(2);
+	@include outerRow();
+	
+	h3 {
+		@include column(2);
+		font-weight: 400;
+	}
+
+	progress {
+		margin-top: 16px;
+		@include column(2);
+	}
+
+	// todo: clean the login stuff
+	#login {
+		margin-top: 16px;
+		height: 36px;
+		
+		@include column(3);
+		@include push(3);
+		form {
+			@include innerRow();
+
+			#userName {
+				@include column(5);
+			}
+
+			#password {
+				@include column(5);
+			}
+
+			button {
+				@include column(2);
+				height: 34px;
+			}
+		}
+
+	}
+}
+
+.page-header {
+	@include outerRow();
+	@include mobileRow();
+	background-color: $mainColor;
+	min-height: ms(6);
+
+	h1 {
+		@include push(2);
+		@include column(8);
+
+		@include mobileColumn(4);
+		@include mobilePush(0);
+		
+		color: white;
+		font-size: ms(4);
+		font-weight: 300;
+	}
+}
+
+.main-view {
+	@include outerRow();
+	@include mobileRow();
+
+	.sidebar {
+		padding: 16px;
+		padding-left: 32px;
+		@include column(2);
+		@include mobileColumn(4);
+	}
+
+	.main-content {
+		@include column(8);
+		@include mobileColumn(4);
+	}
+}
+
+.admin-menu {
+	@include column(2);
+}
+
+.admin-view {
+	@include column(8);
+	padding: 16px;
+}

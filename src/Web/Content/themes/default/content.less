@@ -1,0 +1,29 @@
+﻿.articles {
+    .make-row();
+
+    .article {
+        .make-lg-column(12);
+
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+        }
+
+            pre code {
+                background: transparent;
+                padding: 0;
+            }
+    }
+
+    .comments {
+        .make-lg-column(12);
+    }
+}
+
+.admin-navbar {
+    &:extend(.navbar all, .navbar-inverse all);
+    margin-bottom: 0;
+}
+
+.admin-view {
+}

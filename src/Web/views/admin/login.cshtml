@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta name="fragment" content="!">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>@Model.Title</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="../Content/themes/default/bootstrap.css">
+    <link rel="stylesheet" href="../styles/highlight/xcode.css">
+    <link rel="stylesheet" href="../styles/blitzer/jquery-ui-1.9.2.custom.min.css">
+    <link rel="stylesheet" href="../styles/angular-ui.min.css">
+
+    <style>
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body ng-app="tankaAdmin">
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand" href="/admin">@Model.Title - Admin</a>
+        <div class="container">
+            <div class="navbar-header">
+                <p class="navbar-text">@Model.SubTitle</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form class="form-horizontal" role="form" method="post">
+            <div class="form-group">
+                <label for="userName" class="col-lg-2 control-label">Email</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="userName" name="userName" placeholder="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-lg-2 control-label">Password</label>
+                <div class="col-lg-10">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <button type="submit" class="btn btn-default">Sign in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

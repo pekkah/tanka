@@ -1,0 +1,43 @@
+﻿@using Web.Infrastructure.Configuration
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta name="fragment" content="!">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="/content/themes/default/bootstrap.css">
+    <link rel="stylesheet" href="/styles/highlight/xcode.css">
+</head>
+<body ng-app="tankaApp">
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand" href="/">@Model.Title</a>
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">@Model.SubTitle</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <script type="text/javascript">
+        var disqus_shortname = '@Config.GetValue("disqus/shortname")'; 
+    </script>
+
+    <script src="/Scripts/jquery-2.0.3.min.js"></script>
+    <script src="/Scripts/app/disqus.js"></script>
+</body>
+</html>
