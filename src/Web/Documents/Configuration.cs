@@ -1,4 +1,4 @@
-namespace Documents
+namespace Web.Documents
 {
     public class Configuration
     {

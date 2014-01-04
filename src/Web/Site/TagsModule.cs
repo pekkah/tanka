@@ -1,6 +1,6 @@
 namespace Web.Site
 {
-    using Infrastructure.RavenDb;
+    using Infrastructure;
     using Models;
     using Nancy;
     using Raven.Client;

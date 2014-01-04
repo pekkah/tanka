@@ -1,12 +1,11 @@
 namespace Api
 {
-    using Documents;
     using Nancy;
     using Nancy.ModelBinding;
     using Nancy.Security;
     using Raven.Client;
+    using Web.Documents;
     using Web.Infrastructure;
-    using Web.Infrastructure.RavenDb;
     using HttpStatusCode = System.Net.HttpStatusCode;
 
     public class ConfigurationApi : NancyModule

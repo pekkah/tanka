@@ -1,10 +1,10 @@
-﻿namespace Helpers
+﻿namespace Web.Helpers
 {
     using System.Globalization;
     using System.Text;
     using System.Text.RegularExpressions;
 
-    public class SlugMaker
+    public class Snail
     {
         public static string ToSlug(string text)
         {

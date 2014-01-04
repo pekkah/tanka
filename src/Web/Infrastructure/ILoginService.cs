@@ -1,4 +1,4 @@
-namespace Web.Infrastructure.Authentication
+namespace Web.Infrastructure
 {
     using Documents;
 

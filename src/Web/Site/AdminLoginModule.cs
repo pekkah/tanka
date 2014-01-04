@@ -1,8 +1,7 @@
 ﻿namespace Web.Site
 {
     using Documents;
-    using global::Web.Infrastructure.Authentication;
-    using Infrastructure.RavenDb;
+    using Infrastructure;
     using Nancy;
     using Nancy.Authentication.Forms;
     using Nancy.ModelBinding;

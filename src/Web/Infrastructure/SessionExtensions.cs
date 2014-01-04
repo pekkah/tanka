@@ -1,10 +1,11 @@
-﻿namespace Web.Infrastructure.RavenDb
+﻿namespace Web.Infrastructure
 {
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using Documents;
+    using Helpers;
     using Models;
     using Raven.Client;
     using Raven.Client.Linq;
@@ -37,18 +38,19 @@
             session.Store(settings, "Tanka/Settings/Site");
         }
 
-        public static IEnumerable<BlogPostDto> GetPublishedBlogPosts(this IDocumentSession session, int skip, int pageSize, out int total)
+        public static IEnumerable<BlogPostDto> GetPublishedBlogPosts(this IDocumentSession session, int skip,
+            int pageSize, out int total)
         {
             RavenQueryStatistics stats;
-            var posts = session.Query<BlogPost>()
-                               .Statistics(out stats)
-                               .Where(post => post.State == DocumentState.Published)
-                               .Where(post => post.PublishedOn <= DateTimeOffset.UtcNow)
-                               .OrderByDescending(post => post.PublishedOn)
-                               .Skip(skip)
-                               .Take(pageSize)
-                               .ToList()
-                               .Select(ToDto).ToList();
+            List<BlogPostDto> posts = session.Query<BlogPost>()
+                .Statistics(out stats)
+                .Where(post => post.State == DocumentState.Published)
+                .Where(post => post.PublishedOn <= DateTimeOffset.UtcNow)
+                .OrderByDescending(post => post.PublishedOn)
+                .Skip(skip)
+                .Take(pageSize)
+                .ToList()
+                .Select(ToDto).ToList();
 
             total = stats.TotalResults;
 
@@ -56,19 +58,19 @@
         }
 
         public static IEnumerable<BlogPostDto> GetPublishedBlogPosts(this IDocumentSession session, string tag, int skip,
-                                                                     int pageSize, out int total)
+            int pageSize, out int total)
         {
             RavenQueryStatistics stats;
-            var posts = session.Query<BlogPost>()
-                               .Statistics(out stats)
-                               .Where(post => post.State == DocumentState.Published)
-                               .Where(post => post.PublishedOn <= DateTimeOffset.UtcNow)
-                               .Where(post => post.Tags.Any(t => t == tag))
-                               .OrderByDescending(post => post.PublishedOn)
-                               .Skip(skip)
-                               .Take(pageSize)
-                               .ToList()
-                               .Select(ToDto).ToList();
+            List<BlogPostDto> posts = session.Query<BlogPost>()
+                .Statistics(out stats)
+                .Where(post => post.State == DocumentState.Published)
+                .Where(post => post.PublishedOn <= DateTimeOffset.UtcNow)
+                .Where(post => post.Tags.Any(t => t == tag))
+                .OrderByDescending(post => post.PublishedOn)
+                .Skip(skip)
+                .Take(pageSize)
+                .ToList()
+                .Select(ToDto).ToList();
 
             total = stats.TotalResults;
 
@@ -77,9 +79,9 @@
 
         public static BlogPostDto GetPublishedBlogPost(this IDocumentSession session, string slug)
         {
-            var blogPost =
+            BlogPost blogPost =
                 session.Query<BlogPost>()
-                       .SingleOrDefault(post => post.State == DocumentState.Published && post.Slug == slug);
+                    .SingleOrDefault(post => post.State == DocumentState.Published && post.Slug == slug);
 
             if (blogPost == null)
             {
@@ -93,8 +95,8 @@
         {
             var md = new MarkdownParser();
             var renderer = new HtmlRenderer();
-            var document = md.Parse(blogPost.Content);
-            var html = renderer.Render(document);
+            Document document = md.Parse(blogPost.Content);
+            string html = renderer.Render(document);
 
             return new BlogPostDto
             {

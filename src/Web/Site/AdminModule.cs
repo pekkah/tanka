@@ -1,7 +1,7 @@
 ﻿namespace Web.Site
 {
     using Documents;
-    using global::Web.Infrastructure.RavenDb;
+    using Infrastructure;
     using Nancy;
     using Nancy.Security;
     using Raven.Client;

@@ -1,4 +1,4 @@
-namespace Models
+namespace Web.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;

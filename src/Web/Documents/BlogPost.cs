@@ -1,4 +1,4 @@
-﻿namespace Documents
+﻿namespace Web.Documents
 {
     using System;
     using System.Collections.Generic;

@@ -27,7 +27,7 @@ namespace Web.Api
                     return HttpStatusCode.BadRequest;
                 }
 
-                string slug = SlugMaker.ToSlug(slugDto.Text);
+                string slug = Snail.ToSlug(slugDto.Text);
 
                 return new {Slug = slug};
             };

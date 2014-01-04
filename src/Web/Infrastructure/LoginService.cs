@@ -1,4 +1,4 @@
-﻿namespace Web.Infrastructure.Authentication
+﻿namespace Web.Infrastructure
 {
     using System;
     using System.Linq;
