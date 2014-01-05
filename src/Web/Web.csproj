@@ -105,11 +105,13 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
-    <Reference Include="Tanka.Markdown">
-      <HintPath>..\packages\Tanka.Markdown.Html.1.0.0.4993\lib\net45\Tanka.Markdown.dll</HintPath>
+    <Reference Include="Tanka.Markdown, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Tanka.Markdown.Html.1.0.0-alpha\lib\net45\Tanka.Markdown.dll</HintPath>
     </Reference>
-    <Reference Include="Tanka.Markdown.Html">
-      <HintPath>..\packages\Tanka.Markdown.Html.1.0.0.4993\lib\net45\Tanka.Markdown.Html.dll</HintPath>
+    <Reference Include="Tanka.Markdown.Html, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Tanka.Markdown.Html.1.0.0-alpha\lib\net45\Tanka.Markdown.Html.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -237,7 +239,6 @@
       <DependentUpon>variables.less</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
-    <Content Include="images\pagedown\wmd-buttons.png" />
     <Content Include="app\api.js" />
     <Content Include="app\app.js" />
     <Content Include="app\common.js" />
