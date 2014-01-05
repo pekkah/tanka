@@ -770,7 +770,7 @@
     <Content Include="views\admin\master.cshtml" />
     <Content Include="views\admin\login.cshtml" />
     <Content Include="views\blogpost.cshtml" />
-    <None Include="views\tag.cshtml" />
+    <Content Include="views\tag.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
