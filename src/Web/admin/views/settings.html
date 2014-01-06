@@ -1,31 +1,17 @@
-﻿<form>
-    <div class="row">
-        <div class="two columns">
-            <label class="right inline">Title</label>
+﻿<div class="admin-form-view">
+    <form role="form">
+        <div class="form-group">
+            <label for="titleInput">Subtitle</label>
+            <input type="text" class="form-control" id="titleInput" placeholder="slogan" ng-model="Settings.Title">
         </div>
-        <div class="ten columns">
-            <input type="text" placeholder="Title" class="six" ng-model="Settings.Title"/>
+        <div class="form-group">
+            <label for="subTitleInput">Subtitle</label>
+            <input type="text" class="form-control" id="subTitleInput" placeholder="slogan" ng-model="Settings.SubTitle">
         </div>
-    </div>
-    <div class="row">
-        <div class="two columns">
-            <label class="right inline">SubTitle</label>
+        <div class="form-group">
+            <label for="googleAccountInput">Google Analytics</label>
+            <input type="text" class="form-control" id="googleAccountInput" placeholder="UX" ng-model="Settings.GoogleAccount">
         </div>
-        <div class="ten columns">
-            <input type="text" placeholder="SubTitle" class="six"  ng-model="Settings.SubTitle"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="two columns">
-            <label class="right inline">Google Analytics Account</label>
-        </div>
-        <div class="ten columns">
-            <input type="text" placeholder="UX" class="six"  ng-model="Settings.GoogleAccount"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="push-two ten columns">
-            <button class="button" ng-click="save()">Save</button>
-        </div>
-    </div>
-</form>
+        <button class="btn btn-default" ng-click="save()">Submit</button>
+    </form>
+</div>

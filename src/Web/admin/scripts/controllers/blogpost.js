@@ -1,7 +1,18 @@
 ﻿tankaAdmin.controller("BlogPostCtrl",
-    ['$scope', 'AdminApi', '$routeParams', '$location', '$timeout', function($scope, adminApi, $routeParams, $location, $timeout) {
+    ['$scope', 'AdminApi', '$routeParams', '$location', '$timeout', 'toaster',
+        function ($scope, adminApi, $routeParams, $location, $timeout, toaster) {
 
         $scope.States = ["Draft", "Published"];
+
+        $scope.editorLoaded = function (editor) {
+            $scope.editor = editor;
+            
+            editor.setTheme("ace/theme/textmate");
+
+            var session = editor.getSession();
+            session.setMode("ace/mode/markdown");
+            session.setUseWrapMode(true);
+        };
 
         var watchSlug = function() {
             $scope.$watch('BlogPost.Title',
@@ -39,12 +50,11 @@
         }
 
         $scope.save = function () {
-            $scope.$emit("busy");
-
             $scope.BlogPost.Tags = $scope.Tags.split(',');
             adminApi.BlogPosts.Save($scope.BlogPost,
                 function (data, status, headers, config) {
-                    $scope.$emit("done");
+                    toaster.pop('success', 'blog post saved');
+                    
                     if ($scope.BlogPost.Id == undefined) {
                         $location.path('blogposts/' + data);
                     }

@@ -8,28 +8,7 @@
     };
 });
 
-tankaAdmin.directive('login', function() {
-    return {
-        restrict: 'A',
-        link: function(scope, elem, attrs) {
-            var main = $("#view");
-            var login = elem;
-
-            login.hide();
-
-            scope.$on('event:auth-loginRequired', function() {
-                login.show();
-                login.slideDown(300);
-            });
-            scope.$on('event:auth-loginConfirmed', function() {
-                login.slideUp(100);
-                login.hide();
-            });
-        }
-    };
-});
-
-tankaAdmin.directive('ace', ['$timeout', function ($timeout) {
+tankaAdmin.directive('ace-old', ['$timeout', function ($timeout) {
 
     var resizeEditor = function(editor, elem) {
         var lineHeight = editor.renderer.lineHeight;

@@ -1,4 +1,4 @@
-﻿var tankaAdmin = angular.module('tankaAdmin', ['adminServices', 'common', 'ui.bootstrap']).
+﻿var tankaAdmin = angular.module('tankaAdmin', ['ngRoute', 'adminServices', 'common', 'ui.bootstrap', 'ui.ace', 'toaster']).
     config(['$routeProvider', '$locationProvider',
         function($routeProvider, $locationProvider) {
             $locationProvider.html5Mode(false);
@@ -7,7 +7,6 @@
             $routeProvider.
                 when('/', { templateUrl: '/admin/views/index.html', controller: 'AdminHomeCtrl' }).
                 when('/settings', { templateUrl: '/admin/views/settings.html', controller: 'SettingsCtrl' }).
-                when('/configuration', { templateUrl: '/admin/views/configuration.html', controller: 'ConfigurationCtrl' }).
                 when('/blogposts/create', { templateUrl: '/admin/views/blogpost.html', controller: 'BlogPostCtrl' }).
                 when('/blogposts/:id', { templateUrl: '/admin/views/blogpost.html', controller: 'BlogPostCtrl' }).
                 when('/blogposts/:id/comments', { templateUrl: '/admin/views/blogpost-comments.html', controller: 'BlogPostCommentsCtrl' }).
