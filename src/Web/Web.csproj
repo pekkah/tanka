@@ -663,13 +663,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sass\app.scss" />
-    <Content Include="sass\default\_foundation-overrides.scss" />
-    <Content Include="sass\default\_layout.scss" />
-    <Content Include="sass\default\_nav.scss" />
-    <Content Include="sass\default\_styles.scss" />
-    <Content Include="sass\default\_theme.scss" />
-    <Content Include="sass\_settings.scss" />
     <Content Include="app\vendor\highlight\LICENSE" />
     <Content Include="app\vendor\highlight\README.md" />
     <Content Include="views\home.cshtml" />
