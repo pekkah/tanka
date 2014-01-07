@@ -107,11 +107,15 @@
     </Reference>
     <Reference Include="Tanka.Markdown, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Tanka.Markdown.Html.1.0.0-alpha\lib\net45\Tanka.Markdown.dll</HintPath>
+      <HintPath>..\packages\Tanka.Markdown.Html.1.0.0-beta\lib\net45\Tanka.Markdown.dll</HintPath>
     </Reference>
     <Reference Include="Tanka.Markdown.Html, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Tanka.Markdown.Html.1.0.0-alpha\lib\net45\Tanka.Markdown.Html.dll</HintPath>
+      <HintPath>..\packages\Tanka.Markdown.Html.1.0.0-beta\lib\net45\Tanka.Markdown.Html.dll</HintPath>
+    </Reference>
+    <Reference Include="VerbalExpressions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CSharpVerbalExpressions.0.1\lib\net40\VerbalExpressions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -671,7 +675,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
