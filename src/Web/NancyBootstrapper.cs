@@ -9,6 +9,7 @@ namespace Web
     using Nancy.Bootstrappers.Autofac;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
+    using Tanka.Nancy.Optimization;
     using FormsAuthenticationConfiguration = Nancy.Authentication.Forms.FormsAuthenticationConfiguration;
 
     public class NancyBootstrapper : AutofacNancyBootstrapper
@@ -23,6 +24,8 @@ namespace Web
                 settings.Converters.Add(new StringEnumConverter {CamelCaseText = true});
                 return settings;
             });
+
+            Bundler.Enable(true);
         }
 
         //protected override void ConfigureApplicationContainer(ILifetimeScope existingContainer)
