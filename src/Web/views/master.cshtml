@@ -24,7 +24,7 @@
     <!--[if lt IE 7]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
-    <div class="navbar navbar-inverse">
+    <div class="navbar navbar-default">
         <a class="navbar-brand" href="/">@Model.Title</a>
         <div class="container">
             <div class="navbar-header">
@@ -35,11 +35,7 @@
     <div class="container">
         @RenderBody()
     </div>
-
-    <script type="text/javascript">
-        var disqus_shortname = '@Config.GetValue("disqus/shortname")'; 
-    </script>
-
-    <script src="/Scripts/app/disqus.js"></script>
+    
+    @RenderSection("footer", false)
 </body>
 </html>

@@ -14,7 +14,7 @@
                         <h1 class="page-header"><a href="/@post.Slug">@post.Title</a></h1>
                         <h3 class="meta">
                             <small> Written by @post.Author on @post.PublishedOn.ToLocalTime().ToString("d")</small>
-                            <small><a href="/@post.Slug#disqus_thread" class="badge"></a></small>
+                            <small><a href="/@post.Slug" data-disqus-identifier="@post.Id" class="badge"></a></small>
                         </h3>
                     </hroup>
                     <div class="tags">
@@ -33,3 +33,7 @@
     <div>
     </div>
 </div>
+
+@section footer {
+    @Disqus.Render(null)
+}

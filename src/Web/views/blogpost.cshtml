@@ -2,16 +2,13 @@
     Layout = "master.cshtml";
     ViewBag.Title = @Model.SubTitle;
 }
-<script>
-    var disqus_identifier = '@Model.Post.Id';
-</script>
 <div class="main-content articles">
     <div class="article">
         <article>
             <hroup>
                 <h3 class="meta">
                     <small> Written by @Model.Post.Author on @Model.Post.PublishedOn.ToLocalTime().ToString("d")</small>
-                    <small><a href="/@Model.Post.Slug#disqus_thread" class="badge"></a></small>
+                    <small><a href="/@Model.Post.Slug" data-disqus-identifier="@Model.Post.Id" class="badge"></a></small>
                 </h3>
             </hroup>
             <div class="tags">
@@ -29,3 +26,6 @@
         <div id="disqus_thread"></div>
     </div>
 </div>
+@section footer {
+    @Disqus.Render(Model.Post.Id.ToString())
+}

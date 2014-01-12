@@ -25,7 +25,20 @@ namespace Web
                 return settings;
             });
 
+            FormsAuthentication.Enable(
+                pipelines,
+                new FormsAuthenticationConfiguration
+                {
+                    RedirectUrl = "~/admin/login",
+                    UserMapper = container.Resolve<IUserMapper>()
+                }
+                );
+
+#if DEBUG
+            Bundler.Enable(false);
+#else
             Bundler.Enable(true);
+#endif
         }
 
         //protected override void ConfigureApplicationContainer(ILifetimeScope existingContainer)
@@ -41,15 +54,6 @@ namespace Web
         protected override void RequestStartup(ILifetimeScope container, IPipelines pipelines, NancyContext context)
         {
             base.RequestStartup(container, pipelines, context);
-
-            FormsAuthentication.Enable(
-                pipelines,
-                new FormsAuthenticationConfiguration
-                {
-                    RedirectUrl = "~/admin/login",
-                    UserMapper = container.Resolve<IUserMapper>()
-                }
-                );
         }
 
         protected override ILifetimeScope GetApplicationContainer()

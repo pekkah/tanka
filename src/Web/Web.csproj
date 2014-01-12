@@ -147,6 +147,7 @@
     <Compile Include="Api\SiteSettingsApi.cs" />
     <Compile Include="Api\SlugifyAdminApi.cs" />
     <Compile Include="Bundles\CoreScriptBundle.cs" />
+    <Compile Include="Helpers\Disqus.cs" />
     <Compile Include="Helpers\Version.cs" />
     <Compile Include="Site\TagsModule.cs" />
     <Compile Include="Documents\AuthToken.cs" />
@@ -258,12 +259,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Content\themes\default\bootstrap.css">
       <DependentUpon>bootstrap.less</DependentUpon>
-    </Content>
-    <Content Include="Content\themes\default\content.css">
-      <DependentUpon>content.less</DependentUpon>
-    </Content>
-    <Content Include="Content\themes\default\variables.css">
-      <DependentUpon>variables.less</DependentUpon>
     </Content>
     <Content Include="Content\toaster.css" />
     <Content Include="favicon.ico" />
