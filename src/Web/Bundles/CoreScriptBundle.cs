@@ -11,13 +11,4 @@
             Include("/Scripts/moment-with-langs.js");
         }
     }
-
-    public class ThemeStyleBundle : StyleBundle
-    {
-        public ThemeStyleBundle() : base("/css/theme.css")
-        {
-            // todo: use theme path from 
-            Include("/Content/themes/default/bootstrap.css");
-        }
-    }
 }

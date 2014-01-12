@@ -1,6 +1,7 @@
 ﻿namespace Web.Infrastructure
 {
     using System;
+    using System.Web.Configuration;
 
     public static class Config
     {
@@ -13,11 +14,7 @@
 
         public static TValue GetValue<TValue>(string key)
         {
-            if (GetValueFunc == null)
-            {
-                throw new InvalidOperationException(
-                    "You must set ReadValue method before trying to get value from configuration.");
-            }
+            EnsureGetValueFuncSet();
 
             object value = GetValueFunc(key);
 
@@ -33,6 +30,12 @@
             }
 
             return (TValue) Convert.ChangeType(value, typeof (TValue));
+        }
+
+        private static void EnsureGetValueFuncSet()
+        {
+            if (GetValueFunc == null)
+                GetValueFunc = WebConfigurationManager.AppSettings.Get;
         }
     }
 }

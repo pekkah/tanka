@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Tanka.Nancy.Optimization
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -13,9 +14,9 @@
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width" />
 
-        <link rel="stylesheet" href="/Content/themes/default/bootstrap.css">
+        @Styles.Render("/css/theme.css")
         <link rel="stylesheet" href="/styles/highlight/xcode.css">
-        <link rel="stylesheet" href="/styles/blitzer/jquery-ui-1.9.2.custom.min.css">
+        <link rel="stylesheet" href="/Content/themes/base/jquery.ui.all.css">
         <link rel="stylesheet" href="/Content/toaster.css">
     </head>
     <body ng-app="tankaAdmin">
@@ -61,8 +62,7 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
-        @RenderBody()
-
+            @RenderBody()c
         <!--[if lt IE 9]>
             <script src="scripts/vendor/es5-shim.min.js"> </script>
             <script src="scripts/vendor/json3.min.js"> </script>

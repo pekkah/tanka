@@ -147,6 +147,7 @@
     <Compile Include="Api\SiteSettingsApi.cs" />
     <Compile Include="Api\SlugifyAdminApi.cs" />
     <Compile Include="Bundles\CoreScriptBundle.cs" />
+    <Compile Include="Bundles\ThemeStyleBundle.cs" />
     <Compile Include="Helpers\Disqus.cs" />
     <Compile Include="Helpers\Version.cs" />
     <Compile Include="Site\TagsModule.cs" />
@@ -160,7 +161,7 @@
     <Compile Include="Infrastructure\AuthenticationModule.cs" />
     <Compile Include="Infrastructure\ILoginService.cs" />
     <Compile Include="Infrastructure\LoginService.cs" />
-    <Compile Include="Infrastructure\WebConfiguration.cs" />
+    <Compile Include="Infrastructure\Config.cs" />
     <Compile Include="Infrastructure\RavenModule.cs" />
     <Compile Include="Infrastructure\SessionExtensions.cs" />
     <Compile Include="Infrastructure\SystemRoles.cs" />

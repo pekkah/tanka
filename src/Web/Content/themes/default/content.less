@@ -1,4 +1,4 @@
-﻿.admin-navbar{
+﻿.navbar {
     border-radius: 0;
 }
 
@@ -25,12 +25,27 @@
 }
 
 .admin-navbar {
-    &:extend(.navbar all, .navbar-inverse all);
+    &:extend(.navbar all, .navbar-default all);
     margin-bottom: 0;
 }
 
-.admin-view {
-    height: 100%;
+.admin-container {
+   .container-fixed();
+
+  @media (min-width: @screen-sm) {
+    width: @container-sm;
+  }
+  @media (min-width: @screen-md) {
+    width: @container-md;
+  }
+  @media (min-width: @screen-lg-min) {
+    width: 100%; // make full width
+  }
+
+  margin-left: 0;
+  margin-right:0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .ace_editor {

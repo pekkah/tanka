@@ -1,53 +1,50 @@
-﻿<div class="row">
-    <div class="col-lg-4">
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Find">
+﻿<div class="col-lg-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
+                <input type="text" class="form-control" placeholder="Find">
+            </div>
+        </div>
+        <div class="list-group">
+            <a href="" ng-click="selectBlogPost(post)" class="list-group-item" ng-repeat="post in BlogPosts">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="list-group-item-text pull-left">{{post.Author}}</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="list-group-item-text pull-right">
+                            {{post.PublishedOn | formatDateTime: 'YYYY-MM-DD'}}
+                            {{post.State}}
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="list-group">
-                <a href="" ng-click="selectBlogPost(post)" class="list-group-item" ng-repeat="post in BlogPosts">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <p class="list-group-item-text pull-left">{{post.Author}}</p>
-                        </div>
-                        <div class="col-lg-6">
-                            <p class="list-group-item-text pull-right">
-                                {{post.PublishedOn | formatDateTime: 'YYYY-MM-DD'}}
-                                {{post.State}}
-                            </p>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="list-group-item-heading">{{post.Title}}</h4>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h4 class="list-group-item-heading">{{post.Title}}</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
     </div>
-    <div class="col-lg-7">
-        <div class="row">
-            <div class="btn-group btn-group-sm col-lg-offset-11" ng-show="selectedBlogPost != null">
-                <a class="btn btn-default" ng-href="#!/blogposts/{{selectedBlogPost.Id}}">
-                    <span class="glyphicon glyphicon-edit"></span>Edit
-                </a>
-            </div>
+</div>
+<div class="col-lg-8">
+    <div class="row">
+        <div class="btn-group col-lg-offset-11" ng-show="selectedBlogPost != null">
+            <a class="btn btn-success" ng-href="#!/blogposts/{{selectedBlogPost.Id}}">
+                <span class="glyphicon glyphicon-edit"></span>Edit
+            </a>
         </div>
-        <div class="row">
-            <div class="articles">
-                <div class="article">
-                    <header>
-                        <h1>{{selectedBlogPost.Title}}</h1>
-                    </header>
-                    <div class="content" markdown="selectedBlogPost.Content">
-                    </div>
+    </div>
+    <div class="row">
+        <div class="articles">
+            <div class="article">
+                <header>
+                    <h1>{{selectedBlogPost.Title}}</h1>
+                </header>
+                <div class="content" markdown="selectedBlogPost.Content">
                 </div>
             </div>
         </div>

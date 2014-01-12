@@ -16,8 +16,6 @@ namespace Web
     {
         protected override void ApplicationStartup(ILifetimeScope container, IPipelines pipelines)
         {
-            Config.GetValueFunc = key => WebConfigurationManager.AppSettings.Get(key);
-
             JsonConvert.DefaultSettings = (() =>
             {
                 var settings = new JsonSerializerSettings();
