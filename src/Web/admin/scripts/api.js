@@ -61,31 +61,7 @@ services.service('AdminApi', ['$http', 'PublicApi', '$cacheFactory',
                     success(data);
                 }).
                 error(error);
-        };
-
-        var contentGetAll = function(success, error) {
-            return $http({ method: 'GET', url: '/api/admin/contents' }).
-                success(success).
-                error(error);
-        };
-        
-        var contentSave = function (content, success, error) {
-            return $http({ method: 'POST', url: '/api/admin/contents', data: content }).
-                success(success).
-                error(error);
-        };
-        
-        var deleteContent = function (id, success, error) {
-            return $http.delete('/api/admin/contents/' + id).
-                success(success).
-                error(error);
-        };
-
-        var deleteComment = function(blogPostId, commentId, success, error) {
-            return $http.delete('/api/admin/blogposts/{0}/comments/{1}'.format(blogPostId, commentId)).
-                success(success).
-                error(error);
-        };
+        };    
 
         return {
             BlogPosts: {
@@ -107,18 +83,6 @@ services.service('AdminApi', ['$http', 'PublicApi', '$cacheFactory',
 
             Utils: {
                 Slugify: slugify
-            },
-            
-            Cms : {
-                GetAll: contentGetAll,
-                Save: contentSave,
-                Get: publicApi.Content.Get,
-                Delete : deleteContent
-            },
-            
-            Comments: {
-                GetAll: publicApi.Comments.ForBlogPost,
-                Delete: deleteComment
             }
         };
     }]);

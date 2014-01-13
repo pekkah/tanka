@@ -76,31 +76,3 @@
                 });
         };
     }]);
-
-
-tankaAdmin.controller("BlogPostCommentsCtrl",
-    ['$scope', 'AdminApi', '$routeParams', '$location', '$timeout', function ($scope, adminApi, $routeParams, $location, $timeout) {
-
-        $scope.delete = function (commentId) {
-            $scope.$emit("busy");
-            adminApi.Comments.Delete($routeParams.id, commentId,
-                function () {
-                    $scope.$emit("done");
-                    getComments();
-                },
-                function () {
-
-                });
-        };
-
-        var getComments = function () {
-            $scope.$emit("busy");
-            
-            adminApi.Comments.GetAll($routeParams.id, function(comments) {
-                $scope.Comments = comments;
-                $scope.$emit("done");
-            });
-        };
-
-        getComments();
-    }]);

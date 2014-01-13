@@ -1,6 +1,5 @@
 namespace Web
 {
-    using System.Web.Configuration;
     using Autofac;
     using Infrastructure;
     using Nancy;
@@ -10,7 +9,6 @@ namespace Web
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Tanka.Nancy.Optimization;
-    using FormsAuthenticationConfiguration = Nancy.Authentication.Forms.FormsAuthenticationConfiguration;
 
     public class NancyBootstrapper : AutofacNancyBootstrapper
     {
@@ -37,21 +35,6 @@ namespace Web
 #else
             Bundler.Enable(true);
 #endif
-        }
-
-        //protected override void ConfigureApplicationContainer(ILifetimeScope existingContainer)
-        //{
-        //    // Perform registration that should have an application lifetime
-        //}
-
-        //protected override void ConfigureRequestContainer(ILifetimeScope container, NancyContext context)
-        //{
-        //    // Perform registrations that should have a request lifetime
-        //}
-
-        protected override void RequestStartup(ILifetimeScope container, IPipelines pipelines, NancyContext context)
-        {
-            base.RequestStartup(container, pipelines, context);
         }
 
         protected override ILifetimeScope GetApplicationContainer()

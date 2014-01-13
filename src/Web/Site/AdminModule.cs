@@ -1,5 +1,6 @@
 ﻿namespace Web.Site
 {
+    using System;
     using Documents;
     using Infrastructure;
     using Nancy;
@@ -8,14 +9,17 @@
 
     public class AdminModule : NancyModule
     {
-        public AdminModule(IDocumentSession session)
+        public AdminModule(Func<IDocumentSession> sessionFactory)
             : base("/admin")
         {
             this.RequiresAuthentication();
             Get["/"] = parameters =>
             {
-                SiteSettings site = session.GetSiteSettings();
-                return View["home", new {site.Title, site.SubTitle}];
+                using (IDocumentSession session = sessionFactory())
+                {
+                    SiteSettings site = session.GetSiteSettings();
+                    return View["home", new {site.Title, site.SubTitle}];
+                }
             };
         }
     }

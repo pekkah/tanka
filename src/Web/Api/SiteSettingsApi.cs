@@ -1,5 +1,6 @@
 namespace Api
 {
+    using System;
     using Nancy;
     using Nancy.ModelBinding;
     using Nancy.Security;
@@ -10,30 +11,35 @@ namespace Api
 
     public class SiteSettingsApi : NancyModule
     {
-        public SiteSettingsApi(IDocumentSession documentSession) : base("api/settings")
+        public SiteSettingsApi(Func<IDocumentSession> sessionFactory) : base("api/settings")
         {
             Get["/"] = parameters =>
-                       {
-                           var settings = documentSession.GetSiteSettings();
+            {
+                using (IDocumentSession session = sessionFactory())
+                {
+                    SiteSettings settings = session.GetSiteSettings();
 
-                           if (settings == null)
-                           {
-                               settings = new SiteSettings();
-                           }
+                    if (settings == null)
+                    {
+                        settings = new SiteSettings();
+                    }
 
-                           return settings;
-                       };
+                    return settings;
+                }
+            };
 
             Put["/"] = parameters =>
-                       {
-                           this.RequiresAuthentication();
-                           this.RequiresClaims(new[] { SystemRoles.Administrators });
-                           var settings = this.Bind<SiteSettings>();
-                           documentSession.StoreSiteSettings(settings);
+            {
+                using (IDocumentSession session = sessionFactory())
+                {
+                    this.RequiresAuthentication();
+                    this.RequiresClaims(new[] {SystemRoles.Administrators});
+                    var settings = this.Bind<SiteSettings>();
+                    session.StoreSiteSettings(settings);
 
-                           return HttpStatusCode.OK;
-                       };
+                    return HttpStatusCode.OK;
+                }
+            };
         }
-
     }
 }

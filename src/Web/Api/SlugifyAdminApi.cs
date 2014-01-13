@@ -2,8 +2,10 @@ namespace Web.Api
 {
     using System.ComponentModel.DataAnnotations;
     using Helpers;
+    using Infrastructure;
     using Nancy;
     using Nancy.ModelBinding;
+    using Nancy.Security;
     using HttpStatusCode = System.Net.HttpStatusCode;
 
     public class SlugDto
@@ -18,6 +20,9 @@ namespace Web.Api
         public UtilsAdminApi()
             : base("/api/admin/utils")
         {
+            this.RequiresAuthentication();
+            this.RequiresClaims(new[] {SystemRoles.Administrators});
+
             Post["/slugs"] = parameters =>
             {
                 var slugDto = this.Bind<SlugDto>();

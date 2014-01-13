@@ -11,37 +11,15 @@
                 when('/blogposts/:id', { templateUrl: '/admin/views/blogpost.html', controller: 'BlogPostCtrl' }).
                 when('/blogposts/:id/comments', { templateUrl: '/admin/views/blogpost-comments.html', controller: 'BlogPostCommentsCtrl' }).
                 when('/blogposts', { templateUrl: '/admin/views/blogposts.html', controller: 'BlogPostsCtrl' }).
-                when('/cms', { templateUrl: '/admin/views/cms.html', controller: 'CmsCtrl' }).
-                when('/cms/create', { templateUrl: '/admin/views/cms-editor.html', controller: 'CmsCreateCtrl' }).
-                when('/cms/:id', { templateUrl: '/admin/views/cms-editor.html', controller: 'CmsEditCtrl' }).
                 otherwise({ redirectTo: '/' });
         }]).
-    run(['AdminApi', function(adminApi) {
+    run([function() {
         var lang = (navigator.language || navigator.browserLanguage).slice(0, 2);
         moment.lang(lang);
-        
-        adminApi.Configuration.Get(function (configuration) {
-        });
     }]);
 
 tankaAdmin.controller('AppCtrl',
     ['$scope', 'PublicApi', '$location', '$window', 'AdminApi',
         function($scope, publicApi, $location, $window, adminApi) {
 
-            $scope.setSubTitle = function(title) {
-                $scope.subTitle = title;
-                $window.document.title = $scope.windowTitle + ' ' + title;
-            };
-            
-            adminApi.Configuration.Get(function (serverConfiguration) {
-                $scope.Configuration = serverConfiguration;
-            });
-
-            publicApi.Settings.Get(
-                function (serverSettings) {
-                    $scope.Settings = serverSettings;
-                    
-                    $scope.windowTitle = serverSettings.Title;
-                    $scope.setSubTitle(serverSettings.SubTitle);
-                });
         }]);

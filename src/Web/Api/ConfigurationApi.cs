@@ -1,5 +1,6 @@
 namespace Api
 {
+    using System;
     using Nancy;
     using Nancy.ModelBinding;
     using Nancy.Security;
@@ -10,32 +11,37 @@ namespace Api
 
     public class ConfigurationApi : NancyModule
     {
-        public ConfigurationApi(IDocumentSession documentSession)
+        public ConfigurationApi(Func<IDocumentSession> sessionFactory)
             : base("api/configuration")
         {
+            this.RequiresAuthentication();
+            this.RequiresClaims(new[] {SystemRoles.Administrators});
+
             Get["/"] = parameters =>
-                      {
-                          var configuration = documentSession.GetConfiguration();
+            {
+                using (IDocumentSession session = sessionFactory())
+                {
+                    Configuration configuration = session.GetConfiguration();
 
-                          if (configuration == null)
-                          {
-                              configuration = new Configuration();
-                          }
+                    if (configuration == null)
+                    {
+                        configuration = new Configuration();
+                    }
 
-                          return configuration;
-                      };
+                    return configuration;
+                }
+            };
 
             Put["/"] = parameters =>
-                       {
-                           this.RequiresAuthentication();
-                           this.RequiresClaims(new[] { SystemRoles.Administrators });
+            {
+                using (IDocumentSession session = sessionFactory())
+                {
+                    var configuration = this.Bind<Configuration>();
+                    session.StoreConfiguration(configuration);
 
-                           var configuration = this.Bind<Configuration>();
-                           documentSession.StoreConfiguration(configuration);
-
-                           return HttpStatusCode.OK;
-                       };
-
+                    return HttpStatusCode.OK;
+                }
+            };
         }
     }
 }

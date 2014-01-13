@@ -1,5 +1,8 @@
 namespace Web.Site
 {
+    using System;
+    using System.Collections.Generic;
+    using Documents;
     using Infrastructure;
     using Models;
     using Nancy;
@@ -7,7 +10,7 @@ namespace Web.Site
 
     public class TagsModule : NancyModule
     {
-        public TagsModule(IDocumentSession documentSession) : base("/tags")
+        public TagsModule(Func<IDocumentSession> sessionFactory) : base("/tags")
         {
             Get["/{tag}"] = parameters =>
             {
@@ -16,7 +19,7 @@ namespace Web.Site
 
                 if (Request.Query.skip.HasValue)
                 {
-                    skip = (int)Request.Query.skip;
+                    skip = (int) Request.Query.skip;
                 }
 
                 if (Request.Query.take.HasValue)
@@ -29,12 +32,16 @@ namespace Web.Site
                     return HttpStatusCode.BadRequest;
                 }
 
-                var tag = (string)parameters.tag;
-                int total;
-                var posts = documentSession.GetPublishedBlogPosts(tag, skip, take, out total);
-                var site = documentSession.GetSiteSettings();
+                var tag = (string) parameters.tag;
 
-                return View["tag", new HomeModel() {Posts = posts, SubTitle = tag, Title = site.Title}];
+                using (IDocumentSession session = sessionFactory())
+                {
+                    int total;
+                    IEnumerable<BlogPostDto> posts = session.GetPublishedBlogPosts(tag, skip, take, out total);
+                    SiteSettings site = session.GetSiteSettings();
+
+                    return View["tag", new HomeModel {Posts = posts, SubTitle = tag, Title = site.Title}];
+                }
             };
         }
     }

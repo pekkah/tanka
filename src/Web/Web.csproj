@@ -150,6 +150,8 @@
     <Compile Include="Bundles\ThemeStyleBundle.cs" />
     <Compile Include="Helpers\Disqus.cs" />
     <Compile Include="Helpers\Version.cs" />
+    <Compile Include="Infrastructure\FormsAuthenticationUserMapper.cs" />
+    <Compile Include="Infrastructure\UserIdentity.cs" />
     <Compile Include="Site\TagsModule.cs" />
     <Compile Include="Documents\AuthToken.cs" />
     <Compile Include="Documents\BlogPost.cs" />
@@ -183,7 +185,6 @@
     <Content Include="admin\scripts\app.js" />
     <Content Include="admin\scripts\controllers\blogpost.js" />
     <Content Include="admin\scripts\controllers\blogposts.js" />
-    <Content Include="admin\scripts\controllers\cms.js" />
     <Content Include="admin\scripts\controllers\index.js" />
     <Content Include="admin\scripts\controllers\login.js" />
     <Content Include="admin\scripts\controllers\settings.js" />
