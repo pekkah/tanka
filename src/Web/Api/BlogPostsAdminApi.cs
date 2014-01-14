@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using System.Threading;
     using Nancy;
     using Nancy.ModelBinding;
     using Nancy.Security;
@@ -20,6 +19,7 @@
         public BlogPostsAdminApi(Func<IDocumentSession> sessionFactory)
             : base("/api/admin/blogposts")
         {
+            this.RequiresHttps();
             this.RequiresAuthentication();
             this.RequiresClaims(new[] {SystemRoles.Administrators});
 
@@ -156,7 +156,7 @@
 
                     using (IDocumentSession session = sessionFactory())
                     {
-                        int id = (int) parameters.Id;
+                        var id = (int) parameters.Id;
                         var blogPost = session.Load<BlogPost>(id);
 
                         session.Delete(blogPost);

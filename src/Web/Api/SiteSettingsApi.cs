@@ -30,6 +30,8 @@ namespace Api
 
             Put["/"] = parameters =>
             {
+                this.RequiresHttps();
+
                 using (IDocumentSession session = sessionFactory())
                 {
                     this.RequiresAuthentication();

@@ -12,7 +12,9 @@
         public AdminModule(Func<IDocumentSession> sessionFactory)
             : base("/admin")
         {
+            this.RequiresHttps();
             this.RequiresAuthentication();
+
             Get["/"] = parameters =>
             {
                 using (IDocumentSession session = sessionFactory())

@@ -14,6 +14,7 @@ namespace Api
         public ConfigurationApi(Func<IDocumentSession> sessionFactory)
             : base("api/configuration")
         {
+            this.RequiresHttps();
             this.RequiresAuthentication();
             this.RequiresClaims(new[] {SystemRoles.Administrators});
 

@@ -11,12 +11,12 @@
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Web</RootNamespace>
-    <AssemblyName>Web</AssemblyName>
+    <RootNamespace>Tanka.Web</RootNamespace>
+    <AssemblyName>Tanka.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44301</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -77,6 +77,9 @@
     <Reference Include="Nancy.Serialization.JsonNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nancy.Serialization.JsonNet.0.21.1\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Validation.DataAnnotations">
+      <HintPath>..\packages\Nancy.Validation.DataAnnotations.0.21.1\lib\net40\Nancy.Validation.DataAnnotations.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.ViewEngines.Razor, Version=0.21.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -146,6 +149,7 @@
     <Compile Include="Api\ConfigurationApi.cs" />
     <Compile Include="Api\SiteSettingsApi.cs" />
     <Compile Include="Api\SlugifyAdminApi.cs" />
+    <Compile Include="Api\UserModule.cs" />
     <Compile Include="Bundles\CoreScriptBundle.cs" />
     <Compile Include="Bundles\ThemeStyleBundle.cs" />
     <Compile Include="Helpers\Disqus.cs" />
@@ -188,12 +192,14 @@
     <Content Include="admin\scripts\controllers\index.js" />
     <Content Include="admin\scripts\controllers\login.js" />
     <Content Include="admin\scripts\controllers\settings.js" />
+    <Content Include="admin\scripts\controllers\user-change-password.js" />
     <Content Include="admin\scripts\directives.js" />
     <Content Include="admin\views\blogpost-comments.html" />
     <Content Include="admin\views\BlogPost.html" />
     <Content Include="admin\views\BlogPosts.html" />
     <Content Include="admin\views\cms-editor.html" />
     <Content Include="admin\views\cms.html" />
+    <Content Include="admin\views\user-change-password.html" />
     <Content Include="admin\views\index.html" />
     <Content Include="admin\views\settings.html" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />

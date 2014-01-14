@@ -5,6 +5,7 @@
     using Nancy;
     using Nancy.Authentication.Forms;
     using Nancy.ModelBinding;
+    using Nancy.Security;
     using Raven.Client;
     using HttpStatusCode = System.Net.HttpStatusCode;
 
@@ -13,6 +14,8 @@
         public AdminLoginModule(ILoginService loginService, IDocumentStore store)
             : base("/admin")
         {
+            this.RequiresHttps();
+
             Get["/login"] =
                 parameters =>
                 {

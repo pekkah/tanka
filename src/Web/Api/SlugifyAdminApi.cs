@@ -20,6 +20,7 @@ namespace Web.Api
         public UtilsAdminApi()
             : base("/api/admin/utils")
         {
+            this.RequiresHttps();
             this.RequiresAuthentication();
             this.RequiresClaims(new[] {SystemRoles.Administrators});
 
