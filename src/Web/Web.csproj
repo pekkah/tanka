@@ -277,7 +277,7 @@
     <Content Include="app\vendor\jquery.textarea-expander.js" />
     <Content Include="Content\themes\default\bootstrap.less" />
     <Content Include="Content\themes\default\variables.less" />
-    <Content Include="Content\themes\default\bootswatch.less" />
+    <Content Include="Content\themes\default\overrides.less" />
     <Content Include="Content\themes\default\content.less" />
     <Content Include="LICENSE.txt" />
     <Content Include="Scripts\angular-animate.js" />

@@ -6026,6 +6026,10 @@ td.visible-print {
     display: none !important;
   }
 }
+.navbar,
+.admin-navbar {
+  border-radius: 0;
+}
 .btn {
   border-radius: 0;
 }
@@ -6101,10 +6105,6 @@ td.visible-print {
   height: 8px;
   -webkit-box-shadow: none;
   box-shadow: none;
-}
-.navbar,
-.admin-navbar {
-  border-radius: 0;
 }
 .articles {
   margin-left: -15px;
