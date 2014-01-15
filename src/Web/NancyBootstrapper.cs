@@ -2,7 +2,6 @@ namespace Web
 {
     using Autofac;
     using Infrastructure;
-    using Nancy;
     using Nancy.Authentication.Forms;
     using Nancy.Bootstrapper;
     using Nancy.Bootstrappers.Autofac;
@@ -30,11 +29,7 @@ namespace Web
                 }
                 );
 
-#if DEBUG
             Bundler.Enable(false);
-#else
-            Bundler.Enable(true);
-#endif
         }
 
         protected override ILifetimeScope GetApplicationContainer()
