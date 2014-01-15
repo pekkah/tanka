@@ -19,9 +19,9 @@
                 Response response = null;
                 Request request = ctx.Request;
 
-                string scheme = request.Headers["X-Forwarded-Proto"].SingleOrDefault();
+                
 
-                if (!IsSecure(scheme, request.Url))
+                if (!IsSecure(request))
                 {
                     if (redirect && request.Method.Equals("GET", StringComparison.OrdinalIgnoreCase))
                     {
@@ -40,12 +40,17 @@
             };
         }
 
-        private static bool IsSecure(string scheme, Url url)
+        private static bool IsSecure(Request request)
         {
-            if (scheme == "https")
-                return true;
+            if (request.Headers.Keys.Contains("X-Forwarded-Proto"))
+            {
+                var scheme = request.Headers["X-Forwarded-Proto"].FirstOrDefault();
+                
+                if (!string.IsNullOrWhiteSpace(scheme) && scheme == "https")
+                    return true;
+            }
 
-            return url.IsSecure;
+            return request.Url.IsSecure;
         }
     }
 }
