@@ -16,7 +16,7 @@
                 builder.AppendLine("<script type=\"text/javascript\">");
                 builder.AppendLine(string.Format("var disqus_shortname = '{0}'; ", shortname));
                 builder.AppendLine("</script>");
-                builder.AppendLine(string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/count.js\" />", shortname));
+                builder.AppendLine(string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/count.js\"></script>", shortname));
             }
             else
             {
@@ -24,8 +24,8 @@
                 builder.AppendLine(string.Format("var disqus_shortname = '{0}'; ", shortname));
                 builder.AppendLine(string.Format("var disqus_identifier = '{0}';", identifier));
                 builder.AppendLine("</script>");
-                builder.AppendLine(string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/embed.js\" />", shortname));
-                builder.AppendLine(string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/count.js\" />", shortname));
+                builder.AppendLine(string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/embed.js\"></script>", shortname));
+                builder.AppendLine(string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/count.js\"></script>", shortname));
             }
 
             string script = builder.ToString();
