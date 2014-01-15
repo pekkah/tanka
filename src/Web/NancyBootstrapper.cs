@@ -2,6 +2,7 @@ namespace Web
 {
     using Autofac;
     using Infrastructure;
+    using Nancy;
     using Nancy.Authentication.Forms;
     using Nancy.Bootstrapper;
     using Nancy.Bootstrappers.Autofac;
@@ -11,6 +12,11 @@ namespace Web
 
     public class NancyBootstrapper : AutofacNancyBootstrapper
     {
+        public NancyBootstrapper()
+        {
+            StaticConfiguration.DisableErrorTraces = false;
+        }
+
         protected override void ApplicationStartup(ILifetimeScope container, IPipelines pipelines)
         {
             JsonConvert.DefaultSettings = (() =>
