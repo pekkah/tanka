@@ -5,6 +5,7 @@ namespace Api
     using Nancy.ModelBinding;
     using Nancy.Security;
     using Raven.Client;
+    using Tanka.Web.Infrastructure;
     using Web.Documents;
     using Web.Infrastructure;
     using HttpStatusCode = System.Net.HttpStatusCode;
@@ -30,7 +31,7 @@ namespace Api
 
             Put["/"] = parameters =>
             {
-                this.RequiresHttps();
+                this.RequiresHttpsOrXProto();
 
                 using (IDocumentSession session = sessionFactory())
                 {

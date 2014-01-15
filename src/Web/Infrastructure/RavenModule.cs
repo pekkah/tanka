@@ -21,11 +21,13 @@
         {
             var store = new DocumentStore
             {
-                ConnectionStringName = "RavenDb"
+                ConnectionStringName = "RavenDb",
+                Conventions =
+                {
+                    FindClrTypeName = type => type.FullName,
+                    FindClrType = (s, o, metadata) => metadata.Value<string>("Raven-Clr-Type")
+                }
             };
-
-            store.Conventions.FindClrTypeName = type => type.FullName;
-            store.Conventions.FindClrType = (s, o, metadata) => metadata.Value<string>("Raven-Clr-Type");
 
             store.Initialize();
 

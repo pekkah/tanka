@@ -6,13 +6,14 @@
     using Nancy;
     using Nancy.Security;
     using Raven.Client;
+    using Tanka.Web.Infrastructure;
 
     public class AdminModule : NancyModule
     {
         public AdminModule(Func<IDocumentSession> sessionFactory)
             : base("/admin")
         {
-            this.RequiresHttps();
+            this.RequiresHttpsOrXProto();
             this.RequiresAuthentication();
 
             Get["/"] = parameters =>

@@ -8,6 +8,7 @@
     using global::Nancy.ModelBinding;
     using global::Nancy.Security;
     using global::Web.Documents;
+    using Infrastructure;
     using Raven.Client;
 
     public class ChangePasswordRequest
@@ -21,7 +22,7 @@
         public UserModule(Func<IDocumentSession> sessionFactory)
             : base("/api/users/current")
         {
-            this.RequiresHttps();
+            this.RequiresHttpsOrXProto();
             this.RequiresAuthentication();
 
             Post["/password"] = r =>

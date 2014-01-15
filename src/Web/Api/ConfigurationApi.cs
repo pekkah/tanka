@@ -5,6 +5,7 @@ namespace Api
     using Nancy.ModelBinding;
     using Nancy.Security;
     using Raven.Client;
+    using Tanka.Web.Infrastructure;
     using Web.Documents;
     using Web.Infrastructure;
     using HttpStatusCode = System.Net.HttpStatusCode;
@@ -14,7 +15,7 @@ namespace Api
         public ConfigurationApi(Func<IDocumentSession> sessionFactory)
             : base("api/configuration")
         {
-            this.RequiresHttps();
+            this.RequiresHttpsOrXProto();
             this.RequiresAuthentication();
             this.RequiresClaims(new[] {SystemRoles.Administrators});
 

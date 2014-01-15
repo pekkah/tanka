@@ -9,6 +9,7 @@
     using Nancy.Security;
     using Raven.Client;
     using Raven.Client.Linq;
+    using Tanka.Web.Infrastructure;
     using Web.Documents;
     using Web.Helpers;
     using Web.Infrastructure;
@@ -19,7 +20,7 @@
         public BlogPostsAdminApi(Func<IDocumentSession> sessionFactory)
             : base("/api/admin/blogposts")
         {
-            this.RequiresHttps();
+            this.RequiresHttpsOrXProto();
             this.RequiresAuthentication();
             this.RequiresClaims(new[] {SystemRoles.Administrators});
 

@@ -6,6 +6,7 @@ namespace Web.Api
     using Nancy;
     using Nancy.ModelBinding;
     using Nancy.Security;
+    using Tanka.Web.Infrastructure;
     using HttpStatusCode = System.Net.HttpStatusCode;
 
     public class SlugDto
@@ -20,7 +21,7 @@ namespace Web.Api
         public UtilsAdminApi()
             : base("/api/admin/utils")
         {
-            this.RequiresHttps();
+            this.RequiresHttpsOrXProto();
             this.RequiresAuthentication();
             this.RequiresClaims(new[] {SystemRoles.Administrators});
 

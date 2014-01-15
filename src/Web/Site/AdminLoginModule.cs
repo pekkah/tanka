@@ -7,6 +7,7 @@
     using Nancy.ModelBinding;
     using Nancy.Security;
     using Raven.Client;
+    using Tanka.Web.Infrastructure;
     using HttpStatusCode = System.Net.HttpStatusCode;
 
     public class AdminLoginModule : NancyModule
@@ -14,7 +15,7 @@
         public AdminLoginModule(ILoginService loginService, IDocumentStore store)
             : base("/admin")
         {
-            this.RequiresHttps();
+            this.RequiresHttpsOrXProto();
 
             Get["/login"] =
                 parameters =>

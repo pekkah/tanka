@@ -154,6 +154,7 @@
     <Compile Include="Bundles\ThemeStyleBundle.cs" />
     <Compile Include="Helpers\Disqus.cs" />
     <Compile Include="Helpers\Version.cs" />
+    <Compile Include="Infrastructure\AppHarborCompatibilityExtensions.cs" />
     <Compile Include="Infrastructure\FormsAuthenticationUserMapper.cs" />
     <Compile Include="Infrastructure\UserIdentity.cs" />
     <Compile Include="Site\TagsModule.cs" />
