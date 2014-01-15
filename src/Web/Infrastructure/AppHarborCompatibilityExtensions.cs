@@ -27,6 +27,7 @@
                     {
                         Url redirectUrl = request.Url.Clone();
                         redirectUrl.Scheme = "https";
+                        redirectUrl.Port = 443;
                         response = new RedirectResponse(redirectUrl.ToString());
                     }
                     else
