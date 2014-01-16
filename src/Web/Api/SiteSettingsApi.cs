@@ -14,6 +14,10 @@ namespace Api
     {
         public SiteSettingsApi(Func<IDocumentSession> sessionFactory) : base("api/settings")
         {
+            this.RequiresHttpsOrXProto();
+            this.RequiresAuthentication();
+            this.RequiresClaims(new [] { SystemRoles.Administrators });
+
             Get["/"] = parameters =>
             {
                 using (IDocumentSession session = sessionFactory())
@@ -31,14 +35,13 @@ namespace Api
 
             Put["/"] = parameters =>
             {
-                this.RequiresHttpsOrXProto();
-
                 using (IDocumentSession session = sessionFactory())
                 {
                     this.RequiresAuthentication();
                     this.RequiresClaims(new[] {SystemRoles.Administrators});
                     var settings = this.Bind<SiteSettings>();
                     session.StoreSiteSettings(settings);
+                    session.SaveChanges();
 
                     return HttpStatusCode.OK;
                 }

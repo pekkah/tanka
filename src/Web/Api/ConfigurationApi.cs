@@ -40,6 +40,7 @@ namespace Api
                 {
                     var configuration = this.Bind<Configuration>();
                     session.StoreConfiguration(configuration);
+                    session.SaveChanges();
 
                     return HttpStatusCode.OK;
                 }

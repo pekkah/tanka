@@ -1,4 +1,4 @@
-﻿tankaAdmin.controller('SettingsCtrl', ['$scope', 'AdminApi', function ($scope, adminApi) {
+﻿tankaAdmin.controller('SettingsCtrl', ['$scope', 'AdminApi', 'toaster', function ($scope, adminApi, toaster) {
     $scope.$emit("busy");
     adminApi.Settings.Get(
         function (data, status, headers, config) {
@@ -14,10 +14,10 @@
         
         adminApi.Settings.Save($scope.Settings,
         function (data, status, headers, config) {
-            $scope.$emit("done");
+            toaster.pop('success', "Settings saved");
         },
         function (data, status, headers, config) {
-            
+            toaster.pop('error', 'Failed to save settings');
         });
     };
 }]);
