@@ -35,7 +35,11 @@ namespace Web
                 }
                 );
 
+#if DEBUG
             Bundler.Enable(false);
+#else
+            Bundler.Enable(true);
+#endif
         }
 
         protected override ILifetimeScope GetApplicationContainer()

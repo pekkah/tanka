@@ -133,11 +133,11 @@
     </Reference>
     <Reference Include="Tanka.Nancy.Optimization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Tanka.Nancy.Optimization.0.1.3-beta\lib\net45\Tanka.Nancy.Optimization.dll</HintPath>
+      <HintPath>..\packages\Tanka.Nancy.Optimization.0.2.0-beta\lib\net45\Tanka.Nancy.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="Tanka.Nancy.Optimization.AjaxMin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Tanka.Nancy.Optimization.AjaxMin.0.1.3-beta\lib\net45\Tanka.Nancy.Optimization.AjaxMin.dll</HintPath>
+      <HintPath>..\packages\Tanka.Nancy.Optimization.AjaxMin.0.2.0-beta\lib\net45\Tanka.Nancy.Optimization.AjaxMin.dll</HintPath>
     </Reference>
     <Reference Include="VerbalExpressions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
