@@ -56,18 +56,16 @@
                         <ul class="dropdown-menu">
                             <li><a ng-href="#!/user/current/password">Change Password</a></li>
                         </ul>
-                    </li> 
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
-            @RenderBody()
+        @RenderBody()
         <!--[if lt IE 9]>
             <script src="scripts/vendor/es5-shim.min.js"> </script>
             <script src="scripts/vendor/json3.min.js"> </script>
         <![endif]-->
-        
-        
         @Scripts.Render("/js/base.js")
 
         <!-- build:js scripts/vendor.js -->
@@ -87,7 +85,6 @@
         <script src="/Scripts/vendor/ace-min-noconflict/theme-terminal.js"> </script>
         <script src="/Scripts/vendor/toaster.js"> </script>
         <!-- endbuild -->
-
         <!-- build:js scripts/application.js -->
         <script src="/admin/scripts/app.js"> </script>
         <script src="/admin/scripts/api.js"> </script>
@@ -101,7 +98,6 @@
         <script src="/admin/scripts/controllers/user-change-password.js"> </script>
 
         <!-- endbuild -->
-
         <!-- build:js scripts/services.js -->
         <script src="/admin/scripts/api.js"> </script>
         <!-- endbuild -->
