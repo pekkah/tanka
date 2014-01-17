@@ -31,9 +31,9 @@ namespace Web
                 new FormsAuthenticationConfiguration
                 {
                     RedirectUrl = "~/admin/login",
-                    UserMapper = container.Resolve<IUserMapper>()
-                }
-                );
+                    UserMapper = container.Resolve<IUserMapper>(),
+                    RequiresSSL = true
+                });
 
 #if DEBUG
             Bundler.Enable(false);

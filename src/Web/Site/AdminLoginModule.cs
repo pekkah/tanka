@@ -1,5 +1,6 @@
 ﻿namespace Web.Site
 {
+    using System;
     using Documents;
     using Infrastructure;
     using Nancy;
@@ -52,7 +53,10 @@
                                      return HttpStatusCode.Unauthorized;
                                  }
 
-                                 return this.LoginAndRedirect(user.Identifier, fallbackRedirectUrl: "/admin");
+                                 return this.LoginAndRedirect(
+                                     user.Identifier, 
+                                     fallbackRedirectUrl: "/admin", 
+                                     cookieExpiry: DateTime.Now.AddHours(1));
                              };
         }
 
