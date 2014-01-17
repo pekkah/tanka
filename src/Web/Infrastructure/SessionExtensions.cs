@@ -93,10 +93,16 @@
 
         private static BlogPostDto ToDto(BlogPost blogPost)
         {
-            var md = new MarkdownParser();
-            var renderer = new HtmlRenderer();
-            Document document = md.Parse(blogPost.Content);
-            string html = renderer.Render(document);
+            string html = string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(blogPost.Content))
+            {
+                var md = new MarkdownParser();
+                var renderer = new HtmlRenderer();
+                Document document = md.Parse(blogPost.Content);
+                
+                html = renderer.Render(document);
+            }
 
             return new BlogPostDto
             {
@@ -110,6 +116,18 @@
                 CommentCount = blogPost.CommentIds.Count(),
                 Tags = blogPost.Tags ?? new Collection<string>()
             };
+        }
+
+        public static BlogPostDto GetRenderedBlogPost(this IDocumentSession session, int id)
+        {
+            BlogPost blogPost = session.Load<BlogPost>(id);
+
+            if (blogPost == null)
+            {
+                return null;
+            }
+
+            return ToDto(blogPost);
         }
     }
 }

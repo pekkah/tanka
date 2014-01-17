@@ -4,10 +4,9 @@
             UserName: $scope.UserName,
             Password: $scope.Password
         };
-        $scope.$emit("busy");
+
         $http.post("/api/auth", request).success(function () {
             authService.loginConfirmed();
-            $scope.$emit("done");
         });
     };
 }]);

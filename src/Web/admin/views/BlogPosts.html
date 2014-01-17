@@ -44,7 +44,7 @@
                 <header>
                     <h1>{{selectedBlogPost.Title}}</h1>
                 </header>
-                <div class="content" markdown="selectedBlogPost.Content">
+                <div class="content" data-ng-bind-html="selectedBlogPost.Content">
                 </div>
             </div>
         </div>

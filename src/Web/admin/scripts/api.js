@@ -1,88 +1,73 @@
-﻿var services = angular.module('adminServices', ['services']);
+﻿var services = angular.module('adminServices',[]);
 
-services.service('AdminApi', ['$http', 'PublicApi', '$cacheFactory',
-    function($http, publicApi, $cacheFactory) {
-        var requestCache = $cacheFactory('requestCache');
-
-        var blogPosts = function(success, error) {
-            return $http({ method: 'GET', url: '/api/admin/blogposts' }).
-                success(success).
-                error(error);
+services.service('AdminApi', ['$http', '$cacheFactory',
+    function($http) {
+        var blogPosts = function() {
+            return $http({ method: 'GET', url: '/api/admin/blogposts' });
         };
 
-        var blogPostBySlug = function(id, success, error) {
-            return $http({ method: 'GET', url: '/api/admin/blogposts/' + id }).
-                success(success).
-                error(error);
+        var blogPostBySlug = function(id) {
+            return $http({ method: 'GET', url: '/api/admin/blogposts/' + id });
         };
 
-        var saveBlogPost = function(blogPost, success, error) {
-            return $http.post('/api/admin/blogposts', blogPost).
-                success(success).
-                error(error);
+        var renderedBlogPostById = function(id) {
+            return $http.get('/api/admin/blogposts/' + id + '/html');
         };
 
-        var deleteBlogPost = function(id, success, error) {
-            return $http.delete('/api/admin/blogposts/' + id).
-                success(success).
-                error(error);
+        var saveBlogPost = function(blogPost) {
+            return $http.post('/api/admin/blogposts', blogPost);
         };
 
-        var saveSettings = function(settings, success, error) {
-            return $http.put('/api/settings', settings).
-                success(success).
-                error(error);
+        var deleteBlogPost = function(id) {
+            return $http.delete('/api/admin/blogposts/' + id);
         };
 
-        var slugify = function(text, success, error) {
-            return $http({ method: 'POST', url: '/api/admin/utils/slugs', data: { text: text } }).
-                success(success).
-                error(error);
+        var saveSettings = function(settings) {
+            return $http.put('/api/settings', settings);
+        };
+        
+        var getSettings = function () {
+            return $http({ method: 'GET', url: '/api/settings' });
         };
 
-        var getConfiguration = function (success, error) {
-            var configuration = requestCache.get('configuration');
-
-            if (configuration != undefined)
-                success(configuration);
-
-            return $http({ method: 'GET', url: '/api/configuration/' }).
-                success(function(loadedConfiguration) {
-                    requestCache.put('configuration', loadedConfiguration);
-                    success(loadedConfiguration);
-                }).
-                error(error);
+        var slugify = function(text) {
+            return $http({ method: 'POST', url: '/api/admin/utils/slugs', data: { text: text } });
         };
 
-        var saveConfiguration = function(configuration, success, error) {
-            return $http.put('/api/configuration', configuration).
-                success(function(data) {
-                    requestCache.remove('configuration');
-                    success(data);
-                }).
-                error(error);
-        };    
+        var previewMarkdown = function(markdown) {
+            return $http.post('/api/admin/utils/markdown/render', markdown);
+        };
+
+        var getConfiguration = function () {
+            return $http({ method: 'GET', url: '/api/configuration/' });
+        };
+
+        var saveConfiguration = function(configuration) {
+            return $http.put('/api/configuration', configuration);
+        };
+        
 
         return {
             BlogPosts: {
                 All: blogPosts,
                 Single: blogPostBySlug,
                 Save: saveBlogPost,
-                Delete: deleteBlogPost
-            },
-
-            Settings: {
-                Save: saveSettings,
-                Get: publicApi.Settings.Get
+                Delete: deleteBlogPost,
+                Render: renderedBlogPostById
             },
 
             Configuration: {
                 Save: saveConfiguration,
                 Get: getConfiguration
             },
+            Settings: {
+                Get: getSettings,
+                Save: saveSettings
+            }, 
 
             Utils: {
-                Slugify: slugify
+                Slugify: slugify,
+                PreviewMarkdown: previewMarkdown
             }
         };
     }]);

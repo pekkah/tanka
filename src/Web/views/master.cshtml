@@ -18,7 +18,7 @@
     @Styles.Render("/css/theme.css")
     <link rel="stylesheet" href="/styles/highlight/xcode.css" />
 
-    @Scripts.Render("/js/core.js")
+    @Scripts.Render("/js/head.js")
 </head>
 <body ng-app="tankaApp">
     <!--[if lt IE 7]>
@@ -35,7 +35,13 @@
     <div class="container">
         @RenderBody()
     </div>
+
+    @Scripts.Render("/js/base.js")
     
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+
     @RenderSection("footer", false)
 </body>
 </html>

@@ -148,9 +148,12 @@
     <Compile Include="Api\BlogPostsAdminApi.cs" />
     <Compile Include="Api\ConfigurationApi.cs" />
     <Compile Include="Api\SiteSettingsApi.cs" />
-    <Compile Include="Api\SlugifyAdminApi.cs" />
+    <Compile Include="Infrastructure\RequestExtensions.cs" />
+    <Compile Include="Models\SlugDto.cs" />
+    <Compile Include="Api\UtilsAdminApi.cs" />
     <Compile Include="Api\UserModule.cs" />
-    <Compile Include="Bundles\CoreScriptBundle.cs" />
+    <Compile Include="Bundles\BaseScriptsBundle.cs" />
+    <Compile Include="Bundles\HeadScriptsBundle.cs" />
     <Compile Include="Bundles\ThemeStyleBundle.cs" />
     <Compile Include="Helpers\Disqus.cs" />
     <Compile Include="Helpers\Version.cs" />
@@ -204,6 +207,53 @@
     <Content Include="admin\views\index.html" />
     <Content Include="admin\views\settings.html" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\highlight\arta.css" />
+    <Content Include="Content\highlight\ascetic.css" />
+    <Content Include="Content\highlight\atelier-dune.dark.css" />
+    <Content Include="Content\highlight\atelier-dune.light.css" />
+    <Content Include="Content\highlight\atelier-forest.dark.css" />
+    <Content Include="Content\highlight\atelier-forest.light.css" />
+    <Content Include="Content\highlight\atelier-heath.dark.css" />
+    <Content Include="Content\highlight\atelier-heath.light.css" />
+    <Content Include="Content\highlight\atelier-lakeside.dark.css" />
+    <Content Include="Content\highlight\atelier-lakeside.light.css" />
+    <Content Include="Content\highlight\atelier-seaside.dark.css" />
+    <Content Include="Content\highlight\atelier-seaside.light.css" />
+    <Content Include="Content\highlight\brown_paper.css" />
+    <Content Include="Content\highlight\brown_papersq.png" />
+    <Content Include="Content\highlight\dark.css" />
+    <Content Include="Content\highlight\default.css" />
+    <Content Include="Content\highlight\docco.css" />
+    <Content Include="Content\highlight\far.css" />
+    <Content Include="Content\highlight\foundation.css" />
+    <Content Include="Content\highlight\github.css" />
+    <Content Include="Content\highlight\googlecode.css" />
+    <Content Include="Content\highlight\idea.css" />
+    <Content Include="Content\highlight\ir_black.css" />
+    <Content Include="Content\highlight\magula.css" />
+    <Content Include="Content\highlight\mono-blue.css" />
+    <Content Include="Content\highlight\monokai.css" />
+    <Content Include="Content\highlight\monokai_sublime.css" />
+    <Content Include="Content\highlight\obsidian.css" />
+    <Content Include="Content\highlight\paraiso.dark.css" />
+    <Content Include="Content\highlight\paraiso.light.css" />
+    <Content Include="Content\highlight\pojoaque.css" />
+    <Content Include="Content\highlight\pojoaque.jpg" />
+    <Content Include="Content\highlight\railscasts.css" />
+    <Content Include="Content\highlight\rainbow.css" />
+    <Content Include="Content\highlight\school_book.css" />
+    <Content Include="Content\highlight\school_book.png" />
+    <Content Include="Content\highlight\solarized_dark.css" />
+    <Content Include="Content\highlight\solarized_light.css" />
+    <Content Include="Content\highlight\sunburst.css" />
+    <Content Include="Content\highlight\tomorrow-night-blue.css" />
+    <Content Include="Content\highlight\tomorrow-night-bright.css" />
+    <Content Include="Content\highlight\tomorrow-night-eighties.css" />
+    <Content Include="Content\highlight\tomorrow-night.css" />
+    <Content Include="Content\highlight\tomorrow.css" />
+    <Content Include="Content\highlight\vs.css" />
+    <Content Include="Content\highlight\xcode.css" />
+    <Content Include="Content\highlight\zenburn.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -271,17 +321,6 @@
     </Content>
     <Content Include="Content\toaster.css" />
     <Content Include="favicon.ico" />
-    <Content Include="app\api.js" />
-    <Content Include="app\app.js" />
-    <Content Include="app\common.js" />
-    <Content Include="app\controllers\blogpost.js" />
-    <Content Include="app\controllers\main.js" />
-    <Content Include="app\controllers\tag.js" />
-    <Content Include="app\utils.js" />
-    <Content Include="app\vendor\angular-http-auth.js" />
-    <Content Include="app\vendor\highlight\classref.txt" />
-    <Content Include="app\vendor\highlight\highlight.pack.js" />
-    <Content Include="app\vendor\jquery.textarea-expander.js" />
     <Content Include="Content\themes\default\bootstrap.less" />
     <Content Include="Content\themes\default\variables.less" />
     <Content Include="Content\themes\default\overrides.less" />
@@ -636,6 +675,7 @@
     <Content Include="Scripts\vendor\ace-min-noconflict\worker-lua.js" />
     <Content Include="Scripts\vendor\ace-min-noconflict\worker-php.js" />
     <Content Include="Scripts\vendor\ace-min-noconflict\worker-xquery.js" />
+    <Content Include="Scripts\vendor\highlight.pack.js" />
     <Content Include="Scripts\vendor\marked.js" />
     <Content Include="Scripts\vendor\toaster.js" />
     <Content Include="Scripts\vendor\ui-ace.js" />
@@ -698,8 +738,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\vendor\highlight\LICENSE" />
-    <Content Include="app\vendor\highlight\README.md" />
     <Content Include="views\home.cshtml" />
     <Content Include="views\master.cshtml" />
   </ItemGroup>

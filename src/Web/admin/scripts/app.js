@@ -1,5 +1,5 @@
 ﻿var tankaAdmin = angular.module('tankaAdmin',
-    ['ngRoute', 'adminServices', 'common', 'ui.bootstrap', 'ui.ace', 'toaster', 'user']).
+    ['ngRoute', 'ngSanitize', 'adminServices', 'ui.bootstrap', 'ui.ace', 'toaster', 'user']).
     config(['$routeProvider', '$locationProvider',
         function($routeProvider, $locationProvider) {
             $locationProvider.html5Mode(false);
@@ -19,8 +19,31 @@
         moment.lang(lang);
     }]);
 
-tankaAdmin.controller('AppCtrl',
-    ['$scope', 'PublicApi', '$location', '$window', 'AdminApi',
-        function($scope, publicApi, $location, $window, adminApi) {
+tankaAdmin.filter("formatDateTime", function () {
+    return function (text, format) {
+        if (text == null)
+            return '';
 
-        }]);
+        return moment(text).format(format);
+    };
+});
+
+tankaAdmin.filter("fromNow", function () {
+    return function (text) {
+        if (text == null)
+            return '';
+
+        return moment(text).fromNow();
+    };
+});
+
+// utility functions
+String.prototype.format = function () {
+    var args = arguments;
+    return this.replace(/{(\d+)}/g, function (match, number) {
+        return typeof args[number] != 'undefined'
+          ? args[number]
+          : match
+        ;
+    });
+};

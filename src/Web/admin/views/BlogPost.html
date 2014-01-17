@@ -10,7 +10,7 @@
 </div>
 <tabset>
     <tab heading="Meta">
-        <div>
+        <div class="col-lg-6">
             <form role="form">
                 <div class="form-group">
                     <label for="title">Title</label>
@@ -21,16 +21,19 @@
                     <input type="text" class="form-control" id="slug" placeholder="slug" ng-model="BlogPost.Slug">
                 </div>
                 <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <input type="text" class="form-control" id="tags" placeholder="tag1,tag2,tag3" ng-model="BlogPost.TagsAsString">
+                </div>
+                <div class="form-group">
                     <label for="state">State</label>
                     <select id="state" class="form-control" ng-model="BlogPost.State" ng-options="state for state in States " />
                 </div>
                 <div class="form-group">
-                    <label for="published-on">Published On</label>
-                    <datepicker id="published-on" placeholder="Date" ng-model="BlogPost.PublishedOn"></datepicker>
-                </div>
-                <div class="form-group">
-                    <label for="tags">Tags</label>
-                    <input type="text" class="form-control" id="tags" placeholder="tag1,tag2,tag3" ng-model="Tags">
+                    <label for="publishedOn">Published On</label>
+                    <div class="input-group">
+                        <input id="publishedOn" type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="BlogPost.PublishedOn" is-open="showPublishedOnSelector" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" close-text="Close" />
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
                 </div>
             </form>
         </div>
@@ -40,15 +43,14 @@
                          onLoad: editorLoaded
                         }" ng-model="BlogPost.Content"></div>
     </tab>
-    <tab heading="Preview">
-        <div>
+    <tab heading="Preview" select="preview()">
+        <div class="col-lg-8 col-lg-push-2 col-lg-pull-2">
             <div class="articles">
                 <div class="article">
                     <header>
                         <h1>{{BlogPost.Title}}</h1>
                     </header>
-                    <div class="content">
-                        {{PreviewContent}}
+                    <div data-ng-bind-html="previewContent">
                     </div>
                 </div>
             </div>

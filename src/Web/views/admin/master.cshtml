@@ -15,8 +15,7 @@
         <meta name="viewport" content="width=device-width" />
 
         @Styles.Render("/css/theme.css")
-        <link rel="stylesheet" href="/styles/highlight/xcode.css">
-        <link rel="stylesheet" href="/Content/themes/base/jquery.ui.all.css">
+        @Scripts.Render("/js/head.js")
         <link rel="stylesheet" href="/Content/toaster.css">
     </head>
     <body ng-app="tankaAdmin">
@@ -67,20 +66,21 @@
             <script src="scripts/vendor/es5-shim.min.js"> </script>
             <script src="scripts/vendor/json3.min.js"> </script>
         <![endif]-->
+        
+        
+        @Scripts.Render("/js/base.js")
 
         <!-- build:js scripts/vendor.js -->
-        <script src="/scripts/jquery-2.0.3.min.js"> </script> 
         <script src="/scripts/angular.min.js"> </script>
         <script src="/scripts/angular-route.min.js"> </script>
         <script src="/scripts/angular-cookies.min.js"> </script>
         <script src="/scripts/angular-animate.min.js"> </script>
+        <script src="/scripts/angular-sanitize.min.js"> </script>
         <script src="/scripts/bootstrap.min.js"> </script>
         <script src="/scripts/ui-bootstrap-tpls-0.9.0.min.js"> </script>
         <script src="/scripts/jquery-ui-1.10.3.min.js"> </script>
-        <script src="/app/vendor/jquery.textarea-expander.js"> </script>
         <script src="/Scripts/moment-with-langs.min.js"> </script>
         <script src="/Scripts/vendor/marked.js"> </script>
-        <script src="/app/vendor/highlight/highlight.pack.js"> </script>
         <script src="/Scripts/vendor/ace-min-noconflict/ace.js"> </script>
         <script src="/Scripts/vendor/ui-ace.js"> </script>
         <script src="/Scripts/vendor/ace-min-noconflict/mode-markdown.js"> </script>
@@ -102,13 +102,7 @@
 
         <!-- endbuild -->
 
-        <!-- build:js scripts/framework.js -->
-        <script src="/app/utils.js"> </script>
-        <script src="/app/common.js"> </script>
-        <!-- endbuild -->
-
         <!-- build:js scripts/services.js -->
-        <script src="/app/api.js"> </script>
         <script src="/admin/scripts/api.js"> </script>
         <!-- endbuild -->
     </body>

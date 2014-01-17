@@ -8,7 +8,10 @@
         public ThemeStyleBundle() : base("/css/theme.css")
         {
             var theme = Config.GetValue("tanka/theme");
+            var hljsTheme = Config.GetValue("tanka/hljs-theme");
+            
             Include(theme);
+            Include(hljsTheme);
         }
     }
 }

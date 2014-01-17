@@ -69,13 +69,12 @@
 
                     int blogPostId = Id.WithoutCollection(blogPost.Id);
 
-                    string location = "todo"; //Url.Link("admin-blogpost", new {id = blogPostId});
-                    string publishedLocation = "todo"; //Url.Link("blogpost", new {id = blogPostId});
+                    string location = string.Format("/api/admin/blogposts/{0}", blogPostId);
 
                     return Negotiate
                         .WithStatusCode(HttpStatusCode.Created)
                         .WithHeader("Location", location)
-                        .WithHeader("Location-Published", publishedLocation);
+                        .WithModel(blogPostId);
                 }
             };
 
@@ -145,6 +144,17 @@
                                 Slug = blogPost.Slug,
                                 Tags = blogPost.Tags ?? new Collection<string>()
                             });
+                }
+            };
+
+            Get["/{id}/html"] = parameters =>
+            {
+                if (!parameters.id.HasValue)
+                    return HttpStatusCode.BadRequest;
+
+                using (IDocumentSession session = sessionFactory())
+                {
+                    return session.GetRenderedBlogPost((int)parameters.id);
                 }
             };
 
