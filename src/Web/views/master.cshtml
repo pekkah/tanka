@@ -36,12 +36,15 @@
         @RenderBody()
     </div>
 
-    @Scripts.Render("/js/base.js")
     
+    <div class="container">
+        <p>Tanka - @Tanka.Version</p>
+    </div>
+    
+    @Scripts.Render("/js/base.js")
+    @RenderSection("footer", false)
     <script>
         hljs.initHighlightingOnLoad();
-    </script>
-
-    @RenderSection("footer", false)
+    </script> 
 </body>
 </html>
