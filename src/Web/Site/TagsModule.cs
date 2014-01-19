@@ -1,11 +1,11 @@
-namespace Web.Site
+namespace Tanka.Web.Site
 {
     using System;
     using System.Collections.Generic;
     using Documents;
+    using global::Nancy;
     using Infrastructure;
     using Models;
-    using Nancy;
     using Raven.Client;
 
     public class TagsModule : NancyModule

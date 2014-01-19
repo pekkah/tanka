@@ -1,10 +1,10 @@
-namespace Web
+namespace Tanka.Web
 {
     using Autofac;
+    using global::Nancy.Authentication.Forms;
+    using global::Nancy.Bootstrapper;
+    using global::Nancy.Bootstrappers.Autofac;
     using Infrastructure;
-    using Nancy.Authentication.Forms;
-    using Nancy.Bootstrapper;
-    using Nancy.Bootstrappers.Autofac;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Tanka.Nancy.Optimization;

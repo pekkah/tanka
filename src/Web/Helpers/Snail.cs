@@ -1,4 +1,4 @@
-﻿namespace Web.Helpers
+﻿namespace Tanka.Web.Helpers
 {
     using System.Globalization;
     using System.Text;
@@ -8,9 +8,9 @@
     {
         public static string ToSlug(string text)
         {
-            var normalized = Normalize(text.ToLower().Trim());
+            string normalized = Normalize(text.ToLower().Trim());
 
-            var slugified = Slugify(normalized);
+            string slugified = Slugify(normalized);
 
             return slugified;
         }
@@ -35,13 +35,13 @@
         }
 
         /// <summary>
-        /// Source : http://blogs.msdn.com/b/michkap/archive/2007/05/14/2629747.aspx
+        ///     Source : http://blogs.msdn.com/b/michkap/archive/2007/05/14/2629747.aspx
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
         private static string Normalize(string text)
         {
-            var stFormD = text.Normalize(NormalizationForm.FormD);
+            string stFormD = text.Normalize(NormalizationForm.FormD);
             var sb = new StringBuilder();
 
             for (int ich = 0; ich < stFormD.Length; ich++)

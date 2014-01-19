@@ -1,4 +1,4 @@
-namespace Web.Models
+namespace Tanka.Web.Models
 {
     using System.Collections.Generic;
 

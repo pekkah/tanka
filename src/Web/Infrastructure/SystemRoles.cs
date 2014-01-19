@@ -1,4 +1,4 @@
-namespace Web.Infrastructure
+namespace Tanka.Web.Infrastructure
 {
     public static class SystemRoles
     {

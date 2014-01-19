@@ -1,6 +1,6 @@
-﻿namespace Web.Bundles
+﻿namespace Tanka.Web.Bundles
 {
-    using Tanka.Nancy.Optimization;
+    using Nancy.Optimization;
 
     public class BaseScriptsBundle : ScriptBundle
     {

@@ -1,14 +1,12 @@
-namespace Api
+namespace Tanka.Web.Api
 {
     using System;
-    using Nancy;
-    using Nancy.ModelBinding;
-    using Nancy.Security;
+    using Documents;
+    using global::Nancy;
+    using global::Nancy.ModelBinding;
+    using global::Nancy.Security;
+    using Infrastructure;
     using Raven.Client;
-    using Tanka.Web.Infrastructure;
-    using Web.Documents;
-    using Web.Infrastructure;
-    using HttpStatusCode = System.Net.HttpStatusCode;
 
     public class ConfigurationApi : NancyModule
     {
@@ -42,7 +40,7 @@ namespace Api
                     session.StoreConfiguration(configuration);
                     session.SaveChanges();
 
-                    return HttpStatusCode.OK;
+                    return global::System.Net.HttpStatusCode.OK;
                 }
             };
         }

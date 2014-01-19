@@ -1,4 +1,4 @@
-namespace Web.Documents
+namespace Tanka.Web.Documents
 {
     public class Configuration
     {

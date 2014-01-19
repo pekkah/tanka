@@ -1,4 +1,4 @@
-﻿namespace Web.Infrastructure
+﻿namespace Tanka.Web.Infrastructure
 {
     using System;
     using System.Collections.Generic;
@@ -6,11 +6,11 @@
     using System.Linq;
     using Documents;
     using Helpers;
+    using Markdown;
+    using Markdown.Html;
     using Models;
     using Raven.Client;
     using Raven.Client.Linq;
-    using Tanka.Markdown;
-    using Tanka.Markdown.Html;
 
     public static class SessionExtensions
     {
@@ -100,7 +100,7 @@
                 var md = new MarkdownParser();
                 var renderer = new HtmlRenderer();
                 Document document = md.Parse(blogPost.Content);
-                
+
                 html = renderer.Render(document);
             }
 
@@ -113,14 +113,13 @@
                 Title = blogPost.Title,
                 Slug = blogPost.Slug,
                 Id = Id.WithoutCollection(blogPost.Id),
-                CommentCount = blogPost.CommentIds.Count(),
                 Tags = blogPost.Tags ?? new Collection<string>()
             };
         }
 
         public static BlogPostDto GetRenderedBlogPost(this IDocumentSession session, int id)
         {
-            BlogPost blogPost = session.Load<BlogPost>(id);
+            var blogPost = session.Load<BlogPost>(id);
 
             if (blogPost == null)
             {

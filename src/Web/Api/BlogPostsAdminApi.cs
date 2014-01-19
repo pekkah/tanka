@@ -1,19 +1,18 @@
-﻿namespace Api
+﻿namespace Tanka.Web.Api
 {
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using Nancy;
-    using Nancy.ModelBinding;
-    using Nancy.Security;
+    using Documents;
+    using global::Nancy;
+    using global::Nancy.ModelBinding;
+    using global::Nancy.Security;
+    using Helpers;
+    using Infrastructure;
+    using Models;
     using Raven.Client;
     using Raven.Client.Linq;
-    using Tanka.Web.Infrastructure;
-    using Web.Documents;
-    using Web.Helpers;
-    using Web.Infrastructure;
-    using Web.Models;
 
     public class BlogPostsAdminApi : NancyModule
     {
@@ -109,7 +108,6 @@
                                     Title = post.Title,
                                     State = post.State,
                                     Slug = post.Slug,
-                                    CommentCount = post.CommentIds.Count(),
                                     Tags = post.Tags ?? new Collection<string>()
                                 }));
                 }
@@ -154,7 +152,7 @@
 
                 using (IDocumentSession session = sessionFactory())
                 {
-                    return session.GetRenderedBlogPost((int)parameters.id);
+                    return session.GetRenderedBlogPost((int) parameters.id);
                 }
             };
 

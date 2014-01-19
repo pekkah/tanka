@@ -1,4 +1,4 @@
-﻿namespace Web.Infrastructure
+﻿namespace Tanka.Web.Infrastructure
 {
     using System;
     using System.Linq;

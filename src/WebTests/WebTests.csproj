@@ -7,8 +7,8 @@
     <ProjectGuid>{CCF9956B-546A-4C55-BD8A-D11CB692671E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebTests</RootNamespace>
-    <AssemblyName>WebTests</AssemblyName>
+    <RootNamespace>Tanka.WebTests</RootNamespace>
+    <AssemblyName>Tanka.WebTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

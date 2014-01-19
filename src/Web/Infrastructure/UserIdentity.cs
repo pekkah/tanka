@@ -1,7 +1,7 @@
-﻿namespace Web.Infrastructure
+﻿namespace Tanka.Web.Infrastructure
 {
     using System.Collections.Generic;
-    using Nancy.Security;
+    using global::Nancy.Security;
 
     public class UserIdentity : IUserIdentity
     {

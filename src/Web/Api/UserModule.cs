@@ -4,10 +4,10 @@
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using BCrypt.Net;
+    using Documents;
     using global::Nancy;
     using global::Nancy.ModelBinding;
     using global::Nancy.Security;
-    using global::Web.Documents;
     using Infrastructure;
     using Raven.Client;
 

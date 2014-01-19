@@ -19,7 +19,6 @@
                 Response response = null;
                 Request request = ctx.Request;
 
-                
 
                 if (!IsSecure(request))
                 {
@@ -44,8 +43,8 @@
         {
             if (request.Headers.Keys.Contains("X-Forwarded-Proto"))
             {
-                var scheme = request.Headers["X-Forwarded-Proto"].FirstOrDefault();
-                
+                string scheme = request.Headers["X-Forwarded-Proto"].FirstOrDefault();
+
                 if (!string.IsNullOrWhiteSpace(scheme) && scheme == "https")
                     return true;
             }

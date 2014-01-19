@@ -1,8 +1,10 @@
-﻿namespace Web.Site
+﻿namespace Tanka.Web.Site
 {
+    using System.Collections.Generic;
+    using Documents;
+    using global::Nancy;
     using Infrastructure;
     using Models;
-    using Nancy;
     using Raven.Client;
 
     public class BlogModule : NancyModule
@@ -10,52 +12,52 @@
         public BlogModule(IDocumentStore documentStore)
         {
             Get["/"] = parameters =>
-                       {
-                           var model = new HomeModel();
+            {
+                var model = new HomeModel();
 
-                           using (var session = documentStore.OpenSession())
-                           {
-                               var total = 0;
-                               int skip = 0;
-                               int take = 10;
+                using (IDocumentSession session = documentStore.OpenSession())
+                {
+                    int total = 0;
+                    int skip = 0;
+                    int take = 10;
 
-                               if (parameters.skip.HasValue)
-                               {
-                                   skip = (int) parameters.skip;
-                               }
+                    if (parameters.skip.HasValue)
+                    {
+                        skip = (int) parameters.skip;
+                    }
 
-                               if (parameters.take.HasValue)
-                               {
-                                   take = parameters.take;
-                               }
+                    if (parameters.take.HasValue)
+                    {
+                        take = parameters.take;
+                    }
 
-                               var posts = session.GetPublishedBlogPosts(skip, take, out total);
-                               var site = session.GetSiteSettings();
+                    IEnumerable<BlogPostDto> posts = session.GetPublishedBlogPosts(skip, take, out total);
+                    SiteSettings site = session.GetSiteSettings();
 
-                               model.Title = site.Title;
-                               model.SubTitle = site.SubTitle;
-                               model.Posts = posts;
-                               model.TotalResults = total;
-                           }
+                    model.Title = site.Title;
+                    model.SubTitle = site.SubTitle;
+                    model.Posts = posts;
+                    model.TotalResults = total;
+                }
 
-                           return View[model];
-                       };
+                return View[model];
+            };
 
             Get["/{slug}"] = parameters =>
-                             {
-                                 var slug = (string) parameters.slug;
+            {
+                var slug = (string) parameters.slug;
 
-                                 using (var session = documentStore.OpenSession())
-                                 {
-                                     var post = session.GetPublishedBlogPost(slug);
+                using (IDocumentSession session = documentStore.OpenSession())
+                {
+                    BlogPostDto post = session.GetPublishedBlogPost(slug);
 
-                                     if (post == null)
-                                         return 404;
+                    if (post == null)
+                        return 404;
 
-                                     var site = session.GetSiteSettings();
-                                     return View["blogpost", new {Post = post, Title = site.Title, SubTitle = post.Title}];
-                                 }
-                             };
+                    SiteSettings site = session.GetSiteSettings();
+                    return View["blogpost", new {Post = post, site.Title, SubTitle = post.Title}];
+                }
+            };
         }
     }
 }

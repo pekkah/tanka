@@ -1,14 +1,17 @@
-﻿namespace Web.Helpers
+﻿namespace Tanka.Web.Helpers
 {
     using System.Reflection;
 
-    public static class Tanka
+    public static class TankaVersion
     {
         public static readonly string Version;
 
-        static Tanka()
+        static TankaVersion()
         {
-            Version = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion;
+            Version =
+                Assembly.GetExecutingAssembly()
+                    .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+                    .InformationalVersion;
         }
     }
 }

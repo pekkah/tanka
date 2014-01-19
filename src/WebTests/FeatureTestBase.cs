@@ -1,4 +1,4 @@
-﻿namespace WebTests
+﻿namespace Tanka.WebTests
 {
     using System;
     using Nancy;

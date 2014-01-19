@@ -1,4 +1,4 @@
-namespace Web.Documents
+namespace Tanka.Web.Documents
 {
     using System;
 

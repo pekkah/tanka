@@ -1,10 +1,10 @@
-namespace Web.Models
+namespace Tanka.Web.Models
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Runtime.Serialization;
-    using Web.Documents;
+    using Documents;
 
     public class BlogPostDto
     {
@@ -31,8 +31,6 @@ namespace Web.Models
         public DateTimeOffset? Created { get; set; }
 
         public string Author { get; set; }
-
-        public int CommentCount { get; set; }
 
         public DateTimeOffset ModifiedOn { get; set; }
 

@@ -1,4 +1,4 @@
-namespace Web.Helpers
+namespace Tanka.Web.Helpers
 {
     using System;
 
@@ -6,7 +6,7 @@ namespace Web.Helpers
     {
         public static int WithoutCollection(string idWithCollection)
         {
-            var idString = idWithCollection.Substring(idWithCollection.LastIndexOf('/') + 1);
+            string idString = idWithCollection.Substring(idWithCollection.LastIndexOf('/') + 1);
 
             return Convert.ToInt32(idString);
         }

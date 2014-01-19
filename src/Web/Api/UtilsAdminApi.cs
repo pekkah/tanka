@@ -1,15 +1,13 @@
-namespace Web.Api
+namespace Tanka.Web.Api
 {
+    using global::Nancy;
+    using global::Nancy.ModelBinding;
+    using global::Nancy.Security;
     using Helpers;
     using Infrastructure;
-    using Nancy;
-    using Nancy.ModelBinding;
-    using Nancy.Security;
-    using Tanka.Markdown;
-    using Tanka.Markdown.Html;
-    using Tanka.Web.Infrastructure;
-    using Tanka.Web.Models;
-    using HttpStatusCode = System.Net.HttpStatusCode;
+    using Markdown;
+    using Markdown.Html;
+    using Models;
 
     public class UtilsAdminApi : NancyModule
     {
@@ -26,7 +24,7 @@ namespace Web.Api
 
                 if (string.IsNullOrWhiteSpace(slugDto.Text))
                 {
-                    return HttpStatusCode.BadRequest;
+                    return global::System.Net.HttpStatusCode.BadRequest;
                 }
 
                 string slug = Snail.ToSlug(slugDto.Text);
@@ -39,7 +37,7 @@ namespace Web.Api
                 string content = Request.Body.ReadAsString();
 
                 if (string.IsNullOrEmpty(content))
-                    return HttpStatusCode.BadRequest;
+                    return global::System.Net.HttpStatusCode.BadRequest;
 
                 var parser = new MarkdownParser();
                 var htmlRenderer = new HtmlRenderer();

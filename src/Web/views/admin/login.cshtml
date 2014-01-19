@@ -1,4 +1,5 @@
 ﻿@using Tanka.Nancy.Optimization
+@using Tanka.Web.Helpers
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -23,7 +24,7 @@
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
     <div class="admin-navbar">
-        <a class="navbar-brand" href="/admin">@Model.Title - Admin (@Tanka.Version)</a>
+        <a class="navbar-brand" href="/admin">@Model.Title - Admin (@TankaVersion.Version)</a>
         <div class="container">
             <div class="navbar-header">
                 <p class="navbar-text">@Model.SubTitle</p>

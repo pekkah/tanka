@@ -1,11 +1,11 @@
-﻿namespace Web.Infrastructure
+﻿namespace Tanka.Web.Infrastructure
 {
     using System;
     using System.Linq;
     using Documents;
-    using Nancy;
-    using Nancy.Authentication.Forms;
-    using Nancy.Security;
+    using global::Nancy;
+    using global::Nancy.Authentication.Forms;
+    using global::Nancy.Security;
     using Raven.Client;
 
     public class FormsAuthenticationUserMapper : IUserMapper
@@ -19,7 +19,7 @@
 
         public IUserIdentity GetUserFromIdentifier(Guid identifier, NancyContext context)
         {
-            using (var session = _sessionFactory())
+            using (IDocumentSession session = _sessionFactory())
             {
                 User user = session.Query<User>().SingleOrDefault(u => u.Identifier == identifier);
 

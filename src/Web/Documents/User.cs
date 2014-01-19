@@ -1,14 +1,10 @@
-namespace Web.Documents
+namespace Tanka.Web.Documents
 {
     using System;
     using System.Collections.Generic;
 
     public class User
     {
-        public User()
-        {
-        }
-
         public string Id { get; set; }
 
         public string UserName { get; set; }

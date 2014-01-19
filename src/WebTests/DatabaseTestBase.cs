@@ -1,4 +1,4 @@
-﻿namespace WebTests
+﻿namespace Tanka.WebTests
 {
     using Raven.Client;
     using Raven.Client.Document;

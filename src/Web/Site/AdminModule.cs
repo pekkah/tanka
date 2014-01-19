@@ -1,12 +1,11 @@
-﻿namespace Web.Site
+﻿namespace Tanka.Web.Site
 {
     using System;
     using Documents;
+    using global::Nancy;
+    using global::Nancy.Security;
     using Infrastructure;
-    using Nancy;
-    using Nancy.Security;
     using Raven.Client;
-    using Tanka.Web.Infrastructure;
 
     public class AdminModule : NancyModule
     {
