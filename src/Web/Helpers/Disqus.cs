@@ -17,7 +17,7 @@
                 builder.AppendLine(string.Format("var disqus_shortname = '{0}'; ", shortname));
                 builder.AppendLine("</script>");
                 builder.AppendLine(
-                    string.Format("<script async type=\"text/javascript\" src=\"//{0}.disqus.com/count.js\"></script>",
+                    string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/count.js\"></script>",
                         shortname));
             }
             else
@@ -27,10 +27,10 @@
                 builder.AppendLine(string.Format("var disqus_identifier = '{0}';", identifier));
                 builder.AppendLine("</script>");
                 builder.AppendLine(
-                    string.Format("<script async type=\"text/javascript\" src=\"//{0}.disqus.com/embed.js\"></script>",
+                    string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/embed.js\"></script>",
                         shortname));
                 builder.AppendLine(
-                    string.Format("<script async type=\"text/javascript\" src=\"//{0}.disqus.com/count.js\"></script>",
+                    string.Format("<script type=\"text/javascript\" src=\"//{0}.disqus.com/count.js\"></script>",
                         shortname));
             }
 
