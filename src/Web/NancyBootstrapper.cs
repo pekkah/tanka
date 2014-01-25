@@ -40,7 +40,7 @@ namespace Tanka.Web
                 var key = Config.GetValue("tanka/installer/key");
 
                 // if installer key present redirect to installer
-                if (!string.IsNullOrWhiteSpace(key))
+                if (!string.IsNullOrWhiteSpace(key) && key != "null")
                     return new RedirectResponse("/installer");
 
                 return null;

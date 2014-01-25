@@ -19,7 +19,7 @@
             {
                 var key = Config.GetValue("tanka/installer/key");
 
-                if (string.IsNullOrWhiteSpace(key))
+                if (string.IsNullOrWhiteSpace(key) || key == "null")
                     return Response.AsText("Installer key not set in configuration");
 
                 return null;
