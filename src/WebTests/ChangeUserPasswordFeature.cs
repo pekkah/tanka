@@ -1,8 +1,8 @@
 ﻿namespace Tanka.WebTests
 {
     using FluentAssertions;
-    using Nancy;
-    using Nancy.Testing;
+    using global::Nancy;
+    using global::Nancy.Testing;
     using Web.Api;
     using Web.Documents;
     using Web.Infrastructure;

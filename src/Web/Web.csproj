@@ -149,6 +149,7 @@
     <Compile Include="Api\ConfigurationApi.cs" />
     <Compile Include="Api\SiteSettingsApi.cs" />
     <Compile Include="Infrastructure\RequestExtensions.cs" />
+    <Compile Include="Installer\InstallerModule.cs" />
     <Compile Include="Models\SlugDto.cs" />
     <Compile Include="Api\UtilsAdminApi.cs" />
     <Compile Include="Api\UserModule.cs" />
@@ -679,11 +680,21 @@
     <Content Include="Scripts\vendor\toaster.js" />
     <Content Include="Scripts\vendor\ui-ace.js" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
-    <Content Include="views\admin\home.cshtml" />
-    <Content Include="views\admin\master.cshtml" />
-    <Content Include="views\admin\login.cshtml" />
-    <Content Include="views\blogpost.cshtml" />
-    <Content Include="views\tag.cshtml" />
+    <Content Include="views\admin\home.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="views\admin\master.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="views\admin\login.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="views\blogpost.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="views\tag.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -691,10 +702,23 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="views\installer\master.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="views\installer\home.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="views\installer\admins.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="views\home.cshtml" />
-    <Content Include="views\master.cshtml" />
+    <Content Include="views\home.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="views\master.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

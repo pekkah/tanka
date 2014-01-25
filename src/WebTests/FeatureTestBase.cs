@@ -1,9 +1,10 @@
 ﻿namespace Tanka.WebTests
 {
     using System;
-    using Nancy;
-    using Nancy.Authentication.Forms;
-    using Nancy.Testing;
+    using global::Nancy;
+    using global::Nancy.Authentication.Forms;
+    using global::Nancy.Testing;
+    using Nancy.Optimization;
     using Raven.Client;
     using Web.Documents;
     using Web.Infrastructure;
@@ -19,6 +20,9 @@
                 RedirectUrl = "~/admin/login",
                 UserMapper = new FormsAuthenticationUserMapper(Store.OpenSession)
             };
+
+            Bundler.Enable(false);
+            BundleTable.Bundles.Clear();
         }
 
         protected FormsAuthenticationConfiguration FormsConfig { get; set; }
@@ -48,8 +52,6 @@
 
         protected Browser BrowseModule<T>() where T : NancyModule
         {
-            FormsAuthenticationConfiguration formsConfig;
-
             return new Browser(with =>
             {
                 with.Module<T>();
