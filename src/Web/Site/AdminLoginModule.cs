@@ -13,6 +13,7 @@
         public AdminLoginModule(ILoginService loginService, IDocumentStore store)
             : base("/admin")
         {
+            this.RequiresInstallerDisabled(false);
             this.RequiresHttpsOrXProto();
 
             Get["/login"] =
@@ -21,6 +22,16 @@
                     using (IDocumentSession session = store.OpenSession())
                     {
                         SiteSettings site = session.GetSiteSettings();
+
+                        if (site == null)
+                        {
+                            site = new SiteSettings()
+                            {
+                                Title = "Admin",
+                                SubTitle = "Go to Site -> Settings"
+                            };
+                        }
+
                         return View["admin/login", new
                         {
                             site.Title,

@@ -32,20 +32,6 @@ namespace Tanka.Web
                     RequiresSSL = true
                 });
 
-            pipelines.BeforeRequest.AddItemToStartOfPipeline(context =>
-            {
-                if (context.Request.Url.Path == "/installer")
-                    return null;
-
-                var key = Config.GetValue("tanka/installer/key");
-
-                // if installer key present redirect to installer
-                if (!string.IsNullOrWhiteSpace(key) && key != "null")
-                    return new RedirectResponse("/installer");
-
-                return null;
-            });
-
 #if DEBUG
             Bundler.Enable(false);
 #else

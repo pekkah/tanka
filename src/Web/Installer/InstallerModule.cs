@@ -34,11 +34,19 @@
                 if (!ModelValidationResult.IsValid)
                     return View["home", ModelValidationResult.Errors];
 
+                var key = Config.GetValue("tanka/installer/key");
+
+                if (key != model.Key)
+                {
+                    return View["home", ModelValidationResult.Errors];
+                }
+
                 using (IDocumentSession session = sessionFactory())
                 {
                     var user = new User
                     {
                         UserName = model.Username,
+                        Identifier = Guid.NewGuid(),
                         Password = BCrypt.HashPassword(model.Password),
                         Roles = new []
                         {

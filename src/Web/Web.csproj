@@ -148,6 +148,7 @@
     <Compile Include="Api\BlogPostsAdminApi.cs" />
     <Compile Include="Api\ConfigurationApi.cs" />
     <Compile Include="Api\SiteSettingsApi.cs" />
+    <Compile Include="Infrastructure\InstallerExtensions.cs" />
     <Compile Include="Infrastructure\RequestExtensions.cs" />
     <Compile Include="Installer\InstallerModule.cs" />
     <Compile Include="Models\SlugDto.cs" />
@@ -706,9 +707,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="views\installer\home.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="views\installer\admins.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

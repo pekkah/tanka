@@ -12,6 +12,8 @@ namespace Tanka.Web.Site
     {
         public TagsModule(Func<IDocumentSession> sessionFactory) : base("/tags")
         {
+            this.RequiresInstallerDisabled();
+
             Get["/{tag}"] = parameters =>
             {
                 int skip = 0;

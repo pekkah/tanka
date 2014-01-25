@@ -11,6 +11,8 @@
     {
         public BlogModule(IDocumentStore documentStore)
         {
+            this.RequiresInstallerDisabled();
+
             Get["/"] = parameters =>
             {
                 var model = new HomeModel();
@@ -33,6 +35,9 @@
 
                     IEnumerable<BlogPostDto> posts = session.GetPublishedBlogPosts(skip, take, out total);
                     SiteSettings site = session.GetSiteSettings();
+
+                    if (site == null)
+                        return Response.AsText("<h1>Temporarily offline</h1>", "text/html");
 
                     model.Title = site.Title;
                     model.SubTitle = site.SubTitle;
