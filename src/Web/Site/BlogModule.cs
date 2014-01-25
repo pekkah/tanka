@@ -1,5 +1,6 @@
 ﻿namespace Tanka.Web.Site
 {
+    using System;
     using System.Collections.Generic;
     using Documents;
     using global::Nancy;
@@ -9,15 +10,15 @@
 
     public class BlogModule : NancyModule
     {
-        public BlogModule(IDocumentStore documentStore)
+        public BlogModule(Func<IDocumentSession> sessionFactory)
         {
-            this.RequiresInstallerDisabled();
+            this.RequiresInstallerDisabled(sessionFactory);
 
             Get["/"] = parameters =>
             {
                 var model = new HomeModel();
 
-                using (IDocumentSession session = documentStore.OpenSession())
+                using (IDocumentSession session = sessionFactory())
                 {
                     int total = 0;
                     int skip = 0;
@@ -52,7 +53,7 @@
             {
                 var slug = (string) parameters.slug;
 
-                using (IDocumentSession session = documentStore.OpenSession())
+                using (IDocumentSession session = sessionFactory())
                 {
                     BlogPostDto post = session.GetPublishedBlogPost(slug);
 

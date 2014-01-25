@@ -13,7 +13,7 @@
         public AdminLoginModule(ILoginService loginService, IDocumentStore store)
             : base("/admin")
         {
-            this.RequiresInstallerDisabled(false);
+            this.RequiresInstallerDisabled(() => store.OpenSession());
             this.RequiresHttpsOrXProto();
 
             Get["/login"] =

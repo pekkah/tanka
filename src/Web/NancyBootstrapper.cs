@@ -1,16 +1,13 @@
 namespace Tanka.Web
 {
-    using System.Web.UI.WebControls;
     using Autofac;
-    using global::Nancy;
     using global::Nancy.Authentication.Forms;
     using global::Nancy.Bootstrapper;
     using global::Nancy.Bootstrappers.Autofac;
-    using global::Nancy.Responses;
     using Infrastructure;
+    using Nancy.Optimization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
-    using Tanka.Nancy.Optimization;
 
     public class NancyBootstrapper : AutofacNancyBootstrapper
     {

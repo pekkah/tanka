@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using Autofac;
     using BCrypt.Net;
     using Documents;
     using global::Nancy;
@@ -17,6 +18,14 @@
 
             Before.AddItemToStartOfPipeline(context =>
             {
+                using (var session = sessionFactory())
+                {
+                    var settings = session.GetSiteSettings();
+
+                    if (!settings.IsInstallerEnabled)
+                        return this.Response.AsRedirect("/admin");
+                }
+
                 var key = Config.GetValue("tanka/installer/key");
 
                 if (string.IsNullOrWhiteSpace(key) || key == "null")
@@ -55,6 +64,11 @@
                     };
 
                     session.Store(user);
+
+                    var settings = session.GetSiteSettings();
+                    settings.IsInstallerEnabled = false;
+                    session.StoreSiteSettings(settings);
+
                     session.SaveChanges();
                 }
 

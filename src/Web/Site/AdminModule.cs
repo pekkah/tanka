@@ -12,7 +12,7 @@
         public AdminModule(Func<IDocumentSession> sessionFactory)
             : base("/admin")
         {
-            this.RequiresInstallerDisabled(false);
+            this.RequiresInstallerDisabled(sessionFactory);
             this.RequiresHttpsOrXProto();
             this.RequiresAuthentication();
 

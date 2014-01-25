@@ -1,24 +1,32 @@
 ﻿namespace Tanka.Web.Infrastructure
 {
+    using System;
+    using Documents;
     using global::Nancy;
+    using Raven.Client;
 
     public static class InstallerExtensions
     {
-        public static void RequiresInstallerDisabled(this INancyModule module, bool redirect = false)
+        public static void RequiresInstallerDisabled(this INancyModule module, Func<IDocumentSession> sessionFactory)
         {
             module.Before.AddItemToStartOfPipeline(context =>
             {
+                using (IDocumentSession session = sessionFactory())
+                {
+                    SiteSettings settings = session.GetSiteSettings();
+
+                    if (!settings.IsInstallerEnabled)
+                    {
+                        return null;
+                    }
+                }
+
                 string key = Config.GetValue("tanka/installer/key");
 
                 // if installer key present redirect to installer
                 if (IsInstallerKeySet(key))
                 {
-                    if (redirect)
-                        return module.Response.AsRedirect("/installer");
-
-                    return module.Response.AsText(
-                        "<h1>Temporarily offline. Installer enabled. Please set key to 'null'</h1>",
-                        "text/html");
+                    return module.Response.AsRedirect("/installer");
                 }
 
                 return null;

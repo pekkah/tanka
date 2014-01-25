@@ -146,7 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\BlogPostsAdminApi.cs" />
-    <Compile Include="Api\ConfigurationApi.cs" />
     <Compile Include="Api\SiteSettingsApi.cs" />
     <Compile Include="Infrastructure\InstallerExtensions.cs" />
     <Compile Include="Infrastructure\RequestExtensions.cs" />
@@ -165,7 +164,6 @@
     <Compile Include="Site\TagsModule.cs" />
     <Compile Include="Documents\AuthToken.cs" />
     <Compile Include="Documents\BlogPost.cs" />
-    <Compile Include="Documents\Configuration.cs" />
     <Compile Include="Helpers\Id.cs" />
     <Compile Include="Documents\SiteSettings.cs" />
     <Compile Include="Documents\User.cs" />

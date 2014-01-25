@@ -14,23 +14,21 @@
 
     public static class SessionExtensions
     {
-        public static Configuration GetConfiguration(this IDocumentSession session)
-        {
-            var configuration = session.Load<Configuration>("Tanka/System/Configuration");
-
-            return configuration;
-        }
-
-        public static void StoreConfiguration(this IDocumentSession session, Configuration configuration)
-        {
-            session.Store(configuration, "Tanka/System/Configuration");
-        }
-
         public static SiteSettings GetSiteSettings(this IDocumentSession session)
         {
-            var configuration = session.Load<SiteSettings>("Tanka/Settings/Site");
+            var settings = session.Load<SiteSettings>("Tanka/Settings/Site");
 
-            return configuration;
+            if (settings == null)
+            {
+                settings = new SiteSettings()
+                {
+                    IsInstallerEnabled = true,
+                    Title = "Tanka",
+                    SubTitle = "Please finish the installation"
+                };
+            }
+
+            return settings;
         }
 
         public static void StoreSiteSettings(this IDocumentSession session, SiteSettings settings)
