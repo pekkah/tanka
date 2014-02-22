@@ -4,20 +4,18 @@
     ViewBag.Title = @Model.Title;
 }
 <div class="articles">
-    
-    @if (Model.Posts != null)
     @foreach (var post in Model.Posts)
     {
         <text>
             <div class="article">
                 <article>
-                    <hroup>
+                    <hgroup>
                         <h1 class="page-header"><a href="/@post.Slug">@post.Title</a></h1>
                         <h3 class="meta">
                             <small> Written by @post.Author on @post.PublishedOn.ToLocalTime().ToString("d")</small>
                             <small><a href="/@post.Slug#disqus_thread" data-disqus-identifier="@post.Id" class="badge"></a></small>
                         </h3>
-                    </hroup>
+                    </hgroup>
                     <div class="tags">
                         @foreach (var tag in post.Tags)
                         {

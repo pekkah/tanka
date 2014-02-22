@@ -1,31 +1,26 @@
 ﻿namespace Tanka.WebTests
 {
+    using System.Collections.Generic;
     using FluentAssertions;
     using global::Nancy;
-    using global::Nancy.Testing;
     using Web.Api;
-    using Web.Documents;
-    using Web.Infrastructure;
     using Xunit;
 
     public class ChangeUserPasswordFeature : FeatureTestBase
     {
+        protected override IEnumerable<INancyModule> Modules()
+        {
+            yield return new UserModule(Store.OpenSession);
+        }
+
         [Fact]
         public void ChangePasswordToValidPassword()
         {
-            /* arrange */
-            User currentUser = NewUser("tester", SystemRoles.Administrators);
-            Browser browser = BrowseModule<UserModule>();
+            /* given */
+            /* when */
+            var response = Post("api/users/current/password", new {password = "fdsfd123543gfdg#ABF"});
 
-            /* act */
-            BrowserResponse response = browser.Post("/api/users/current/password", with =>
-            {
-                with.HttpsRequest();
-                with.FormsAuth(currentUser.Identifier, FormsConfig);
-                with.JsonBody(new {password = "fdsfd123543gfdg#ABF"});
-            });
-
-            /* assert */
+            /* then */
             response.StatusCode.ShouldBeEquivalentTo(HttpStatusCode.OK);
         }
     }

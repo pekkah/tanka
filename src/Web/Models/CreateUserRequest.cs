@@ -1,6 +1,7 @@
 namespace Tanka.Web.Models
 {
     using System.Collections.Generic;
+    using FluentValidation;
 
     public class CreateUserRequest
     {
@@ -9,5 +10,14 @@ namespace Tanka.Web.Models
         public string Password { get; set; }
 
         public IEnumerable<string> Roles { get; set; }
+    }
+
+    public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>
+    {
+        public CreateUserRequestValidator()
+        {
+            RuleFor(p => p.UserName).Length(3, 100);
+            RuleFor(p => p.Password).Length(6, 200);
+        }
     }
 }

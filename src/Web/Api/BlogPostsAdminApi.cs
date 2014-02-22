@@ -25,10 +25,12 @@
 
             Post["/"] = _ =>
             {
+                HttpStatusCode statusCode = HttpStatusCode.OK;
+
                 using (IDocumentSession session = sessionFactory())
                 {
                     BlogPost blogPost = null;
-                    var blogPostDto = this.Bind<BlogPostDto>();
+                    var blogPostDto = this.BindAndValidate<BlogPostDto>();
 
                     if (blogPostDto.Id != null)
                     {
@@ -43,6 +45,7 @@
                         };
 
                         session.Store(blogPost);
+                        statusCode = HttpStatusCode.Created;
                     }
 
                     if (blogPostDto.State == DocumentState.Published &&
@@ -71,7 +74,7 @@
                     string location = string.Format("/api/admin/blogposts/{0}", blogPostId);
 
                     return Negotiate
-                        .WithStatusCode(HttpStatusCode.Created)
+                        .WithStatusCode(statusCode)
                         .WithHeader("Location", location)
                         .WithModel(blogPostId);
                 }
@@ -115,7 +118,7 @@
 
             Get["/{id}"] = parameters =>
             {
-                if (!parameters.Id.HasValue)
+                 if (!parameters.Id.HasValue)
                     return HttpStatusCode.BadRequest;
 
                 using (IDocumentSession session = sessionFactory())
@@ -140,7 +143,8 @@
                                 Title = blogPost.Title,
                                 State = blogPost.State,
                                 Slug = blogPost.Slug,
-                                Tags = blogPost.Tags ?? new Collection<string>()
+                                Tags = blogPost.Tags ?? new Collection<string>(),
+                                ModifiedOn = blogPost.ModifiedOn
                             });
                 }
             };

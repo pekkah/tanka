@@ -1,71 +1,41 @@
 ﻿namespace Tanka.WebTests
 {
+    using System.Collections.Generic;
     using System.Linq;
     using FluentAssertions;
     using global::Nancy;
-    using global::Nancy.Testing;
     using Web.Documents;
     using Web.Infrastructure;
-    using Web.Installer;
     using Xunit;
 
     public class InstallerFeature : FeatureTestBase
     {
-        public InstallerFeature()
+        protected override IEnumerable<INancyModule> Modules()
         {
-            Config.GetValueFunc = key =>
-            {
-                if (key == "tanka/installer/key")
-                    return InstallerKey;
-
-                return null;
-            };
-        }
-
-        public string InstallerKey
-        {
-            get { return "InstallKey"; }
+            /*******************************************************
+             * Installer module is added by FeatureTestBase
+             * 
+             * yield return new InstallerModule(Store.OpenSession);
+             * *****************************************************/
+            yield break;
         }
 
         [Fact]
-        public void ShowView()
+        public void CheckStatus()
         {
             /* arrange */
-            Browser browser = BrowseModule<InstallerModule>();
-
             /* act */
-            BrowserResponse response = browser.Get("/installer",
-                with => with.HttpsRequest());
+            // done in test base
 
             /* assert */
-            response.StatusCode.ShouldBeEquivalentTo(HttpStatusCode.OK);
-        }
-
-        [Fact]
-        public void PostForm()
-        {
-            /* arrange */
-            Browser browser = BrowseModule<InstallerModule>();
-
-            /* act */
-            BrowserResponse response = browser.Post("/installer",
-                with =>
-                {
-                    with.HttpsRequest();
-                    with.FormValue("key", InstallerKey);
-                    with.FormValue("username", "tester");
-                    with.FormValue("password", "123123");
-                });
-
-            /* assert */
-            response.ShouldHaveRedirectedTo("/admin");
-
             using (var session = Store.OpenSession())
             {
-                var user = session.Query<User>().Single(u => u.UserName == "tester");
+                // installer is disabled
+                var settings = session.GetSiteSettings();
+                settings.IsInstallerEnabled.ShouldBeEquivalentTo(false);
 
-                user.UserName.ShouldBeEquivalentTo("tester");
-                user.Password.Should().NotBe("123123");
+                // admin is administrators
+                var user = session.Query<User>().Single(u => u.UserName == Admin.UserName);
                 user.Roles.Should().Contain(SystemRoles.Administrators);
             }
         }

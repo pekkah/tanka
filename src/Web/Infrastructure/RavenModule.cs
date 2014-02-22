@@ -1,27 +1,19 @@
 ﻿namespace Tanka.Web.Infrastructure
 {
+    using System;
     using Autofac;
     using Raven.Client;
     using Raven.Client.Document;
 
     public class RavenModule : Module
     {
-        protected override void Load(ContainerBuilder builder)
-        {
-            builder.Register(GetDocumentStore)
-                .As<IDocumentStore>()
-                .SingleInstance();
+        private static readonly Lazy<IDocumentStore> DocumentStoreLazy = new Lazy<IDocumentStore>(GetDocumentStore);
 
-            builder.Register(context => context.Resolve<IDocumentStore>().OpenSession())
-                .As<IDocumentSession>()
-                .InstancePerDependency();
-        }
-
-        public static IDocumentStore GetDocumentStore(IComponentContext context)
+        public static Func<IDocumentStore> CreateDocumentStore = () =>
         {
             var store = new DocumentStore
             {
-                ConnectionStringName = "RavenDb",
+                ConnectionStringName = "RavenDB",
                 Conventions =
                 {
                     FindClrTypeName = type => type.FullName,
@@ -32,6 +24,22 @@
             store.Initialize();
 
             return store;
+        };
+
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder.RegisterInstance(DocumentStoreLazy.Value)
+                .As<IDocumentStore>()
+                .SingleInstance();
+
+            builder.Register(context => context.Resolve<IDocumentStore>().OpenSession())
+                .As<IDocumentSession>()
+                .InstancePerDependency();
+        }
+
+        private static IDocumentStore GetDocumentStore()
+        {
+            return CreateDocumentStore();
         }
     }
 }

@@ -2,28 +2,19 @@ namespace Tanka.Web.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Runtime.Serialization;
     using Documents;
+    using FluentValidation;
 
     public class BlogPostDto
     {
         public int? Id { get; set; }
 
-        [Required]
-        [MinLength(3)]
-        [MaxLength(250)]
         public string Title { get; set; }
 
-        [Required]
         public string Content { get; set; }
 
-        [Required]
-        [DataMember(IsRequired = true)]
         public DocumentState State { get; set; }
 
-        [Required]
-        [MinLength(3)]
         public string Slug { get; set; }
 
         public DateTimeOffset? PublishedOn { get; set; }
@@ -32,8 +23,18 @@ namespace Tanka.Web.Models
 
         public string Author { get; set; }
 
-        public DateTimeOffset ModifiedOn { get; set; }
+        public DateTimeOffset? ModifiedOn { get; set; }
 
         public ICollection<string> Tags { get; set; }
+    }
+
+    public class BlogPostValidator : AbstractValidator<BlogPostDto>
+    {
+        public BlogPostValidator()
+        {
+            RuleFor(p => p.Title).NotEmpty().Length(3, 200);
+            RuleFor(p => p.Slug).NotEmpty().Length(3, 255);
+            RuleFor(p => p.Author).NotNull();
+        }
     }
 }

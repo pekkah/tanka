@@ -1,8 +1,6 @@
 ﻿namespace Tanka.Web.Installer
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
-    using Autofac;
     using BCrypt.Net;
     using Documents;
     using global::Nancy;
@@ -23,7 +21,7 @@
                     var settings = session.GetSiteSettings();
 
                     if (!settings.IsInstallerEnabled)
-                        return this.Response.AsRedirect("/admin");
+                        return Response.AsRedirect("/admin");
                 }
 
                 var key = Config.GetValue("tanka/installer/key");
@@ -57,7 +55,7 @@
                         UserName = model.Username,
                         Identifier = Guid.NewGuid(),
                         Password = BCrypt.HashPassword(model.Password),
-                        Roles = new []
+                        Roles = new[]
                         {
                             SystemRoles.Administrators
                         }
@@ -75,18 +73,5 @@
                 return Response.AsRedirect("/admin");
             };
         }
-    }
-
-    public class AdminDetailsModel
-    {
-        [Required]
-        public string Key { get; set; }
-
-        [Required]
-        public string Username { get; set; }
-
-        [Required]
-        [MinLength(6)]
-        public string Password { get; set; }
     }
 }

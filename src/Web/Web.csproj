@@ -41,53 +41,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxMin, Version=5.7.5124.21494, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="AjaxMin">
       <HintPath>..\packages\AjaxMin.5.7.5124.21499\lib\net40\AjaxMin.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac, Version=3.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.3.0\lib\net40\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="BCrypt.Net, Version=0.1.5073.29922, Culture=neutral, PublicKeyToken=6bcd409ee6bc9292, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.5.0.0.1\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlTags, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\HtmlTags.2.0.0.181\lib\4.0\HtmlTags.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Nancy, Version=0.21.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Nancy, Version=0.22.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.0.21.1\lib\net40\Nancy.dll</HintPath>
+      <HintPath>..\packages\Nancy.0.22.1-Pre890\lib\net40\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Authentication.Forms, Version=0.21.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Nancy.Authentication.Forms, Version=0.22.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.Authentication.Forms.0.21.1\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
+      <HintPath>..\packages\Nancy.Authentication.Forms.0.22.1-Pre890\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Bootstrappers.Autofac, Version=0.21.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Nancy.Bootstrappers.Autofac">
+      <HintPath>..\packages\Nancy.Bootstrappers.Autofac.0.22.0\lib\net40\Nancy.Bootstrappers.Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Hosting.Aspnet, Version=0.22.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.Bootstrappers.Autofac.0.21.1\lib\net40\Nancy.Bootstrappers.Autofac.dll</HintPath>
+      <HintPath>..\packages\Nancy.Hosting.Aspnet.0.22.1-Pre890\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Hosting.Aspnet, Version=0.21.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Nancy.Serialization.JsonNet">
+      <HintPath>..\packages\Nancy.Serialization.JsonNet.0.22.0\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Validation.FluentValidation, Version=0.22.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.Hosting.Aspnet.0.21.1\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
+      <HintPath>..\packages\Nancy.Validation.FluentValidation.0.22.1-Pre890\lib\net40\Nancy.Validation.FluentValidation.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Serialization.JsonNet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Nancy.ViewEngines.Razor, Version=0.22.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.Serialization.JsonNet.0.21.1\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
+      <HintPath>..\packages\Nancy.Viewengines.Razor.0.22.1-Pre890\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Validation.DataAnnotations">
-      <HintPath>..\packages\Nancy.Validation.DataAnnotations.0.21.1\lib\net40\Nancy.Validation.DataAnnotations.dll</HintPath>
-    </Reference>
-    <Reference Include="Nancy.ViewEngines.Razor, Version=0.21.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.Viewengines.Razor.0.21.1\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Abstractions, Version=2.5.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -106,11 +106,9 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Razor.Unofficial, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="System.Web.Razor.Unofficial">
       <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
@@ -131,12 +129,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Tanka.Markdown.Html.1.1.1-alpha\lib\net45\Tanka.Markdown.Html.dll</HintPath>
     </Reference>
-    <Reference Include="Tanka.Nancy.Optimization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Tanka.Nancy.Optimization">
       <HintPath>..\packages\Tanka.Nancy.Optimization.0.2.0-beta\lib\net45\Tanka.Nancy.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="Tanka.Nancy.Optimization.AjaxMin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Tanka.Nancy.Optimization.AjaxMin">
       <HintPath>..\packages\Tanka.Nancy.Optimization.AjaxMin.0.2.0-beta\lib\net45\Tanka.Nancy.Optimization.AjaxMin.dll</HintPath>
     </Reference>
     <Reference Include="VerbalExpressions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -146,6 +142,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\BlogPostsAdminApi.cs" />
+    <Compile Include="Installer\AdminDetailsModel.cs" />
+    <Compile Include="Models\ChangePasswordRequest.cs" />
     <Compile Include="Api\SiteSettingsApi.cs" />
     <Compile Include="Infrastructure\InstallerExtensions.cs" />
     <Compile Include="Infrastructure\RequestExtensions.cs" />
@@ -387,6 +385,10 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="Content\themes\default\bootstrap.css.map">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Default.config" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\app\disqus.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -751,8 +753,8 @@
   <PropertyGroup>
     <PostBuildEvent>
 if $(ConfigurationName) == Debug (
-xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.21.1\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
-xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.21.1\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.22.1-Pre890\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.22.1-Pre890\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
 )</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

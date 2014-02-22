@@ -1,7 +1,6 @@
 ﻿namespace Tanka.Web.Api
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using BCrypt.Net;
     using Documents;
@@ -9,23 +8,18 @@
     using global::Nancy.ModelBinding;
     using global::Nancy.Security;
     using Infrastructure;
+    using Models;
     using Raven.Client;
-
-    public class ChangePasswordRequest
-    {
-        [Required]
-        public string Password { get; set; }
-    }
 
     public class UserModule : NancyModule
     {
         public UserModule(Func<IDocumentSession> sessionFactory)
-            : base("/api/users/current")
+            : base("api/users/current")
         {
             this.RequiresHttpsOrXProto();
             this.RequiresAuthentication();
 
-            Post["/password"] = r =>
+            Post["password"] = r =>
             {
                 var request = this.BindAndValidate<ChangePasswordRequest>();
 

@@ -37,7 +37,8 @@ namespace Tanka.Web.Api
                 {
                     this.RequiresAuthentication();
                     this.RequiresClaims(new[] {SystemRoles.Administrators});
-                    var settings = this.Bind<SiteSettings>();
+
+                    var settings = this.BindAndValidate<SiteSettings>();
                     session.StoreSiteSettings(settings);
                     session.SaveChanges();
 
