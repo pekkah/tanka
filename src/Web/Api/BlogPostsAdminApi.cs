@@ -118,7 +118,7 @@
 
             Get["/{id}"] = parameters =>
             {
-                 if (!parameters.Id.HasValue)
+                if (!parameters.Id.HasValue)
                     return HttpStatusCode.BadRequest;
 
                 using (IDocumentSession session = sessionFactory())

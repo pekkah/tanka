@@ -322,7 +322,6 @@
     <Content Include="Content\themes\default\variables.less" />
     <Content Include="Content\themes\default\overrides.less" />
     <Content Include="Content\themes\default\content.less" />
-    <Content Include="LICENSE.txt" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-cookies.js" />

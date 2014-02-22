@@ -23,7 +23,7 @@
                     SiteSettings site = session.GetSiteSettings();
 
                     if (site == null)
-                        site = new SiteSettings()
+                        site = new SiteSettings
                         {
                             SubTitle = "Go to site -> settings"
                         };

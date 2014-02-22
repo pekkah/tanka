@@ -25,7 +25,7 @@
 
                         if (site == null)
                         {
-                            site = new SiteSettings()
+                            site = new SiteSettings
                             {
                                 Title = "Admin",
                                 SubTitle = "Go to Site -> Settings"

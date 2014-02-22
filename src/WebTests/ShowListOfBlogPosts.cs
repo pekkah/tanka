@@ -24,7 +24,7 @@ namespace Tanka.WebTests
         {
             post.State = DocumentState.Published;
             post.PublishedOn = DateTimeOffset.Now;
-            
+
             var result = Post("api/admin/blogposts", post);
             result.StatusCode.ShouldBeEquivalentTo(HttpStatusCode.OK);
         }

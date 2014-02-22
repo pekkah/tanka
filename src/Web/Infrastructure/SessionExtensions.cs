@@ -20,7 +20,7 @@
 
             if (settings == null)
             {
-                settings = new SiteSettings()
+                settings = new SiteSettings
                 {
                     IsInstallerEnabled = true,
                     Title = "Tanka",
