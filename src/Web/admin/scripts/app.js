@@ -1,5 +1,5 @@
 ﻿var tankaAdmin = angular.module('tankaAdmin',
-    ['ngRoute', 'ngSanitize', 'adminServices', 'ui.bootstrap', 'ui.ace', 'toaster', 'user']).
+    ['ngRoute', 'ngSanitize', 'adminServices', 'ui.bootstrap', 'ui.ace', 'toaster', 'user', 'users']).
     config(['$routeProvider', '$locationProvider',
         function($routeProvider, $locationProvider) {
             $locationProvider.html5Mode(false);

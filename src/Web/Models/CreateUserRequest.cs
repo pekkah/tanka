@@ -16,8 +16,8 @@ namespace Tanka.Web.Models
     {
         public CreateUserRequestValidator()
         {
-            RuleFor(p => p.UserName).Length(3, 100);
-            RuleFor(p => p.Password).Length(6, 200);
+            RuleFor(p => p.UserName).NotNull().Length(3, 100);
+            RuleFor(p => p.Password).NotNull().Length(6, 200);
         }
     }
 }

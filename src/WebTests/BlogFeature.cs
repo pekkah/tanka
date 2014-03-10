@@ -12,7 +12,7 @@ namespace Tanka.WebTests
     using Web.Site;
     using Xunit;
 
-    public class ShowListOfBlogPosts : FeatureTestBase
+    public class BlogFeature : FeatureTestBase
     {
         protected override IEnumerable<INancyModule> Modules()
         {
@@ -50,7 +50,7 @@ namespace Tanka.WebTests
         }
 
         [Fact]
-        public void ShowList()
+        public void ShotPostsOnHome()
         {
             /* given */
             var blogPost1 = WriteBlogPost("Blog Post 1", "Content of the blog post");

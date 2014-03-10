@@ -1,0 +1,27 @@
+﻿<div class="admin-form-view">
+    <div class="row">
+        <div class="btn-toolbar">
+            <div class="btn-group btn-group">
+                <button type="button" class="btn btn-success btn-lg" ng-click="addUser()">
+                    <span class="glyphicon glyphicon-save"></span> Add
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>UserName</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="user in users">
+                <td>{{user.Id}}</td>
+                <td>{{user.UserName}}</td>
+                <td><button data-ng-click="delete(user)" class="btn btn-danger btn-xs">Delete</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -82,6 +82,18 @@
             });
         }
 
+        protected BrowserResponse Delete(string url)
+        {
+            return _browser.Delete(url, with =>
+            {
+                with.HttpsRequest();
+                with.Accept("application/json");
+
+                if (Admin != null)
+                    with.FormsAuth(Admin.Identifier, FormsConfig);
+            });
+        }
+
         protected BrowserResponse Post(string url, Dictionary<string, string> form, string accept = "application/json")
         {
             return _browser.Post(url, with =>

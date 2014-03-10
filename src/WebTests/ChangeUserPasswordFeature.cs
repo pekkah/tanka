@@ -10,7 +10,7 @@
     {
         protected override IEnumerable<INancyModule> Modules()
         {
-            yield return new UserModule(Store.OpenSession);
+            yield return new UsersModule(Store.OpenSession);
         }
 
         [Fact]
