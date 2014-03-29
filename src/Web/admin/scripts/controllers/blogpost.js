@@ -60,8 +60,10 @@
                 $scope.BlogPost = { State: "Draft", PublishedOn: new Date(), Tags: ''};
             }
 
-            $scope.save = function() {
-                $scope.BlogPost.Tags = $scope.BlogPost.TagsAsString.split(',');
+            $scope.save = function () {
+                if ($scope.BlogPost.TagsAsString !== undefined && $scope.BlogPost.TagsAsString != '')
+                    $scope.BlogPost.Tags = $scope.BlogPost.TagsAsString.split(',');
+                
                 adminApi.BlogPosts.Save($scope.BlogPost)
                     .success(
                         function(data, status, headers, config) {
