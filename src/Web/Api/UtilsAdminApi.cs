@@ -1,5 +1,6 @@
 namespace Tanka.Web.Api
 {
+    using System;
     using global::Nancy;
     using global::Nancy.ModelBinding;
     using global::Nancy.Security;
@@ -40,12 +41,32 @@ namespace Tanka.Web.Api
                     return global::System.Net.HttpStatusCode.BadRequest;
 
                 var parser = new MarkdownParser();
-                var htmlRenderer = new HtmlRenderer();
+                var htmlRenderer = new MarkdownHtmlRenderer();
 
-                Document document = parser.Parse(content);
-                string html = htmlRenderer.Render(document);
+                string html = string.Empty;
+
+                try
+                {
+                    Document document = parser.Parse(content);
+                    html = htmlRenderer.Render(document);
+                }
+                catch (ParsingException x)
+                {
+                    html = string.Format(
+                        "Markdown parsing error at {0} as block type {1}",
+                        x.Position,
+                        x.BuilderType);
+                }
+                catch (RenderingException renderingException)
+                {
+                    html = string.Format(
+                        "Markdown rendering error with block {0} using {1} renderer",
+                        renderingException.Block,
+                        renderingException.Renderer);
+                }
 
                 return Response.AsText(html, "text/html");
+               
             };
         }
     }

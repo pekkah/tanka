@@ -96,10 +96,27 @@
             if (!string.IsNullOrWhiteSpace(blogPost.Content))
             {
                 var md = new MarkdownParser();
-                var renderer = new HtmlRenderer();
-                Document document = md.Parse(blogPost.Content);
+                var renderer = new MarkdownHtmlRenderer();
 
-                html = renderer.Render(document);
+                try
+                {
+                    Document document = md.Parse(blogPost.Content);
+                    html = renderer.Render(document);
+                }
+                catch (ParsingException x)
+                {
+                    html = string.Format(
+                        "Markdown parsing error at {0} as block type {1}",
+                        x.Position,
+                        x.BuilderType);
+                }
+                catch (RenderingException renderingException)
+                {
+                    html = string.Format(
+                        "Markdown rendering error with block {0} using {1} renderer",
+                        renderingException.Block,
+                        renderingException.Renderer);
+                }
             }
 
             return new BlogPostDto

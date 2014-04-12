@@ -128,11 +128,10 @@
     </Reference>
     <Reference Include="Tanka.Markdown, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Tanka.Markdown.Html.1.1.4-beta\lib\net45\Tanka.Markdown.dll</HintPath>
+      <HintPath>..\packages\Tanka.Markdown.Html.1.1.5-beta\lib\net45\Tanka.Markdown.dll</HintPath>
     </Reference>
-    <Reference Include="Tanka.Markdown.Html, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Tanka.Markdown.Html.1.1.4-beta\lib\net45\Tanka.Markdown.Html.dll</HintPath>
+    <Reference Include="Tanka.Markdown.Html">
+      <HintPath>..\packages\Tanka.Markdown.Html.1.1.5-beta\lib\net45\Tanka.Markdown.Html.dll</HintPath>
     </Reference>
     <Reference Include="Tanka.Nancy.Optimization">
       <HintPath>..\packages\Tanka.Nancy.Optimization.0.2.0-beta\lib\net45\Tanka.Nancy.Optimization.dll</HintPath>
