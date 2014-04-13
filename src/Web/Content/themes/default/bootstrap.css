@@ -228,7 +228,6 @@ th {
     background: #fff !important;
   }
   .navbar,
-  .admin-navbar,
   .admin-navbar {
     display: none;
   }
@@ -728,7 +727,6 @@ pre code {
   overflow-y: scroll;
 }
 .container,
-.admin-form-view,
 .admin-form-view {
   margin-right: auto;
   margin-left: auto;
@@ -737,21 +735,18 @@ pre code {
 }
 @media (min-width: 768px) {
   .container,
-  .admin-form-view,
   .admin-form-view {
     width: 750px;
   }
 }
 @media (min-width: 992px) {
   .container,
-  .admin-form-view,
   .admin-form-view {
     width: 970px;
   }
 }
 @media (min-width: 1200px) {
   .container,
-  .admin-form-view,
   .admin-form-view {
     width: 1170px;
   }
@@ -2377,8 +2372,8 @@ input[type="button"].btn-block {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('/Content/fonts/glyphicons-halflings-regular.eot');
+  src: url('/Content/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/Content/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/Content/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/Content/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -3640,7 +3635,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top-left-radius: 0;
 }
 .navbar,
-.admin-navbar,
 .admin-navbar {
   position: relative;
   min-height: 50px;
@@ -3649,7 +3643,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar,
-  .admin-navbar,
   .admin-navbar {
     border-radius: 4px;
   }
@@ -3698,8 +3691,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .container > .navbar-collapse,
 .container-fluid > .navbar-collapse,
 .admin-form-view > .navbar-header,
-.admin-form-view > .navbar-collapse,
-.admin-form-view > .navbar-header,
 .admin-form-view > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px;
@@ -3709,8 +3700,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .container-fluid > .navbar-header,
   .container > .navbar-collapse,
   .container-fluid > .navbar-collapse,
-  .admin-form-view > .navbar-header,
-  .admin-form-view > .navbar-collapse,
   .admin-form-view > .navbar-header,
   .admin-form-view > .navbar-collapse {
     margin-right: 0;
@@ -3762,9 +3751,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand,
-  .admin-navbar > .container .navbar-brand,
-  .admin-navbar > .container-fluid .navbar-brand,
-  .navbar > .admin-form-view .navbar-brand,
   .admin-navbar > .container .navbar-brand,
   .admin-navbar > .container-fluid .navbar-brand,
   .navbar > .admin-form-view .navbar-brand {
@@ -3956,39 +3942,31 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default,
-.admin-navbar,
 .admin-navbar {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand,
-.admin-navbar .navbar-brand,
 .admin-navbar .navbar-brand {
   color: #777777;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus,
 .admin-navbar .navbar-brand:hover,
-.admin-navbar .navbar-brand:focus,
-.admin-navbar .navbar-brand:hover,
 .admin-navbar .navbar-brand:focus {
   color: #5e5e5e;
   background-color: transparent;
 }
 .navbar-default .navbar-text,
-.admin-navbar .navbar-text,
 .admin-navbar .navbar-text {
   color: #777777;
 }
 .navbar-default .navbar-nav > li > a,
-.admin-navbar .navbar-nav > li > a,
 .admin-navbar .navbar-nav > li > a {
   color: #777777;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus,
-.admin-navbar .navbar-nav > li > a:hover,
-.admin-navbar .navbar-nav > li > a:focus,
 .admin-navbar .navbar-nav > li > a:hover,
 .admin-navbar .navbar-nav > li > a:focus {
   color: #333333;
@@ -3997,9 +3975,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus,
-.admin-navbar .navbar-nav > .active > a,
-.admin-navbar .navbar-nav > .active > a:hover,
-.admin-navbar .navbar-nav > .active > a:focus,
 .admin-navbar .navbar-nav > .active > a,
 .admin-navbar .navbar-nav > .active > a:hover,
 .admin-navbar .navbar-nav > .active > a:focus {
@@ -4011,35 +3986,26 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .disabled > a:focus,
 .admin-navbar .navbar-nav > .disabled > a,
 .admin-navbar .navbar-nav > .disabled > a:hover,
-.admin-navbar .navbar-nav > .disabled > a:focus,
-.admin-navbar .navbar-nav > .disabled > a,
-.admin-navbar .navbar-nav > .disabled > a:hover,
 .admin-navbar .navbar-nav > .disabled > a:focus {
   color: #cccccc;
   background-color: transparent;
 }
 .navbar-default .navbar-toggle,
-.admin-navbar .navbar-toggle,
 .admin-navbar .navbar-toggle {
   border-color: #dddddd;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus,
 .admin-navbar .navbar-toggle:hover,
-.admin-navbar .navbar-toggle:focus,
-.admin-navbar .navbar-toggle:hover,
 .admin-navbar .navbar-toggle:focus {
   background-color: #dddddd;
 }
 .navbar-default .navbar-toggle .icon-bar,
-.admin-navbar .navbar-toggle .icon-bar,
 .admin-navbar .navbar-toggle .icon-bar {
   background-color: #888888;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form,
-.admin-navbar .navbar-collapse,
-.admin-navbar .navbar-form,
 .admin-navbar .navbar-collapse,
 .admin-navbar .navbar-form {
   border-color: #e7e7e7;
@@ -4049,23 +4015,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a:focus,
 .admin-navbar .navbar-nav > .open > a,
 .admin-navbar .navbar-nav > .open > a:hover,
-.admin-navbar .navbar-nav > .open > a:focus,
-.admin-navbar .navbar-nav > .open > a,
-.admin-navbar .navbar-nav > .open > a:hover,
 .admin-navbar .navbar-nav > .open > a:focus {
   background-color: #e7e7e7;
   color: #555555;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a,
-  .admin-navbar .navbar-nav .open .dropdown-menu > li > a,
   .admin-navbar .navbar-nav .open .dropdown-menu > li > a {
     color: #777777;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus,
-  .admin-navbar .navbar-nav .open .dropdown-menu > li > a:hover,
-  .admin-navbar .navbar-nav .open .dropdown-menu > li > a:focus,
   .admin-navbar .navbar-nav .open .dropdown-menu > li > a:hover,
   .admin-navbar .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #333333;
@@ -4074,9 +4034,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus,
-  .admin-navbar .navbar-nav .open .dropdown-menu > .active > a,
-  .admin-navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
-  .admin-navbar .navbar-nav .open .dropdown-menu > .active > a:focus,
   .admin-navbar .navbar-nav .open .dropdown-menu > .active > a,
   .admin-navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
   .admin-navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
@@ -4088,21 +4045,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus,
   .admin-navbar .navbar-nav .open .dropdown-menu > .disabled > a,
   .admin-navbar .navbar-nav .open .dropdown-menu > .disabled > a:hover,
-  .admin-navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus,
-  .admin-navbar .navbar-nav .open .dropdown-menu > .disabled > a,
-  .admin-navbar .navbar-nav .open .dropdown-menu > .disabled > a:hover,
   .admin-navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus {
     color: #cccccc;
     background-color: transparent;
   }
 }
 .navbar-default .navbar-link,
-.admin-navbar .navbar-link,
 .admin-navbar .navbar-link {
   color: #777777;
 }
 .navbar-default .navbar-link:hover,
-.admin-navbar .navbar-link:hover,
 .admin-navbar .navbar-link:hover {
   color: #333333;
 }
@@ -4466,12 +4418,10 @@ a.list-group-item.active > .badge,
   font-weight: 200;
 }
 .container .jumbotron,
-.admin-form-view .jumbotron,
 .admin-form-view .jumbotron {
   border-radius: 6px;
 }
 .jumbotron .container,
-.jumbotron .admin-form-view,
 .jumbotron .admin-form-view {
   max-width: 100%;
 }
@@ -4481,7 +4431,6 @@ a.list-group-item.active > .badge,
     padding-bottom: 48px;
   }
   .container .jumbotron,
-  .admin-form-view .jumbotron,
   .admin-form-view .jumbotron {
     padding-left: 60px;
     padding-right: 60px;
@@ -5711,12 +5660,6 @@ button.close {
 .modal-footer:after,
 .articles:before,
 .articles:after,
-.articles:before,
-.articles:after,
-.admin-navbar:before,
-.admin-navbar:after,
-.admin-form-view:before,
-.admin-form-view:after,
 .admin-navbar:before,
 .admin-navbar:after,
 .admin-form-view:before,
@@ -5739,9 +5682,6 @@ button.close {
 .panel-body:after,
 .modal-footer:after,
 .articles:after,
-.articles:after,
-.admin-navbar:after,
-.admin-form-view:after,
 .admin-navbar:after,
 .admin-form-view:after {
   clear: both;
@@ -5954,65 +5894,6 @@ button.close {
     width: 50%;
   }
 }
-.articles {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.articles .article {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 1200px) {
-  .articles .article {
-    float: left;
-    width: 100%;
-  }
-}
-.articles .article pre {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-}
-.articles .article pre code {
-  background: transparent;
-  padding: 0;
-}
-.articles .comments {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 1200px) {
-  .articles .comments {
-    float: left;
-    width: 100%;
-  }
-}
-.admin-navbar {
-  margin-bottom: 0;
-}
-.admin-container {
-  padding: 0 15px;
-  width: 100%;
-}
-.ace_editor {
-  font-size: 16px !important;
-  height: 82vh;
-}
-.admin-form-view {
-  margin-top: 16px;
-}
-.admin-form-view form {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-@media (min-width: 1200px) {
-  .admin-form-view form {
-    float: left;
-    width: 50%;
-  }
+.btn {
+  border-radius: 0;
 }
