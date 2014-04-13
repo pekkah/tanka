@@ -1,0 +1,45 @@
+﻿.articles {
+    .make-row();
+
+    .article {
+        .make-lg-column(12);
+
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+        }
+
+            pre code {
+                background: transparent;
+                padding: 0;
+            }
+    }
+
+    .comments {
+        .make-lg-column(12);
+    }
+}
+
+.admin-navbar {
+    &:extend(.navbar all, .navbar-default all);
+    margin-bottom: 0;
+}
+
+.admin-container {
+  padding: 0 15px;
+  width:100%;
+}
+
+.ace_editor {
+    font-size: 16px !important;
+    height: 82vh;
+}
+
+.admin-form-view {
+    margin-top: 16px;
+   &:extend(.container all);
+
+   form {
+       .make-lg-column(6);
+   }
+}
