@@ -1,5 +1,9 @@
 # Tanka
 
+[![Build status]
+(https://ci.appveyor.com/api/projects/status/28080adn5nb7yxcc)]
+(https://ci.appveyor.com/project/pekkah/tanka)
+
 Prototype blogging engine with few twists
 
 
