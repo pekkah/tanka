@@ -1,0 +1,18 @@
+{
+  "Data": {
+    "RavenDb": "Url=http://localhost:8080;database=tanka"
+  },
+  "Security": {
+    "InstallerKey": "MyCuteLittleBlog",
+    "ClientId": "7ad4a1dd-1d6b-48c4-81c1-d7b3dc77f49a",
+    "Authority": "https://login.microsoftonline.com/1c55807c-5528-4e2c-9b5b-0bedb66fd738",
+    "RedirectUri": "https://localhost:44300/"
+  },
+  "UI": {
+    "Theme": "~/Content/themes/default/bootstrap.css",
+    "HljsTheme": "~/Content/highlight/xcode.css"
+  },
+  "Integrations": {
+    "DisqusShortname": "tanka-blog"
+  }
+}
