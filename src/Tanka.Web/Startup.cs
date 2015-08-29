@@ -74,7 +74,6 @@
             services.Configure<CookieAuthenticationOptions>(options =>
             {
                 options.AutomaticAuthentication = true;
-                options.LoginPath = "/admin/login";
                 options.LogoutPath = "/admin/logout";
             });
 
@@ -84,6 +83,7 @@
                 options.ClientId = Configuration.Get("Security:ClientId");
                 options.Authority = Configuration.Get("Security:Authority");
                 options.RedirectUri = Configuration.Get("Security:RedirectUri");
+                options.DefaultToCurrentUriOnRedirect = true;
             });
         }
 

@@ -5,6 +5,7 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Net;
+    using System.Security.Claims;
     using Documents;
     using Helpers;
     using Infrastructure;
@@ -61,7 +62,7 @@
                 }
 
                 blogPost.Content = blogPostDto.Content;
-                blogPost.Author = User.Identity.Name;
+                blogPost.Author = @User.FindFirst(ClaimTypes.GivenName).Value;
                 blogPost.Slug = blogPostDto.Slug;
                 blogPost.Title = blogPostDto.Title;
                 blogPost.ModifiedOn = DateTime.UtcNow;
