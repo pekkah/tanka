@@ -19,10 +19,12 @@
     [Authorize]
     public class BlogPostsAdminController : Controller
     {
+        private readonly IMarkdownRenderer _markdownRenderer;
         private readonly Func<IDocumentSession> _sessionFactory;
 
-        public BlogPostsAdminController(IDocumentStore documentStore)
+        public BlogPostsAdminController(IDocumentStore documentStore, IMarkdownRenderer markdownRenderer)
         {
+            _markdownRenderer = markdownRenderer;
             _sessionFactory = documentStore.OpenSession;
         }
 
@@ -147,7 +149,7 @@
         {
             using (var session = _sessionFactory())
             {
-                return new ObjectResult(session.GetRenderedBlogPost(id));
+                return new ObjectResult(session.GetRenderedBlogPost(id, _markdownRenderer));
             }
         }
 

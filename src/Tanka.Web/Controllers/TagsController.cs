@@ -9,10 +9,12 @@ namespace Tanka.Web.Controllers
     [Route("tags")]
     public class TagsController : Controller
     {
+        private readonly IMarkdownRenderer _markdownRenderer;
         private readonly Func<IDocumentSession> _sessionFactory;
 
-        public TagsController(IDocumentStore sessionFactory)
+        public TagsController(IDocumentStore sessionFactory, IMarkdownRenderer markdownRenderer)
         {
+            _markdownRenderer = markdownRenderer;
             _sessionFactory = sessionFactory.OpenSession;
             //this.RequiresInstallerDisabled(sessionFactory);
         }
@@ -23,7 +25,7 @@ namespace Tanka.Web.Controllers
             using (IDocumentSession session = _sessionFactory())
             {
                 int total;
-                var posts = session.GetPublishedBlogPosts(tag, skip, take, out total);
+                var posts = session.GetPublishedBlogPosts(tag, skip, take, out total, _markdownRenderer);
                 var site = session.GetSiteSettings();
                 ViewBag.SubTitle = tag;
                 ViewBag.Title = site.Title;

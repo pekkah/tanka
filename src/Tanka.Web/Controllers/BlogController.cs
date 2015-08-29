@@ -10,10 +10,12 @@
     [Route("")]
     public class BlogController : Controller
     {
+        private readonly IMarkdownRenderer _markdownRenderer;
         private readonly Func<IDocumentSession> _sessionFactory;
 
-        public BlogController(IDocumentStore sessionFactory)
+        public BlogController(IDocumentStore sessionFactory, IMarkdownRenderer markdownRenderer)
         {
+            _markdownRenderer = markdownRenderer;
             _sessionFactory = sessionFactory.OpenSession;
             //this.RequiresInstallerDisabled(sessionFactory);
         }
@@ -27,7 +29,7 @@
             {
                 var total = 0;
 
-                var posts = session.GetPublishedBlogPosts(skip, take, out total);
+                var posts = session.GetPublishedBlogPosts(skip, take, out total, _markdownRenderer);
                 var site = session.GetSiteSettings();
 
                 // todo: refactor into attribute
@@ -48,7 +50,7 @@
         {
             using (IDocumentSession session = _sessionFactory())
             {
-                var post = session.GetPublishedBlogPost(slug);
+                var post = session.GetPublishedBlogPost(slug, _markdownRenderer);
 
                 if (post == null)
                     return HttpNotFound();

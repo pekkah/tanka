@@ -85,6 +85,8 @@
                 options.RedirectUri = Configuration.Get("Security:RedirectUri");
                 options.DefaultToCurrentUriOnRedirect = true;
             });
+
+            services.AddSingleton<IMarkdownRenderer>(provider => new TankaMarkdownRenderer());
         }
 
         // Configure is called after ConfigureServices is called.

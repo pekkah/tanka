@@ -37,7 +37,7 @@
         }
 
         public static IEnumerable<BlogPostDto> GetPublishedBlogPosts(this IDocumentSession session, int skip,
-            int pageSize, out int total)
+            int pageSize, out int total, IMarkdownRenderer renderer)
         {
             RavenQueryStatistics stats;
             List<BlogPostDto> posts = session.Query<BlogPost>()
@@ -48,7 +48,7 @@
                 .Skip(skip)
                 .Take(pageSize)
                 .ToList()
-                .Select(ToDto).ToList();
+                .Select(post => ToDto(post, renderer)).ToList();
 
             total = stats.TotalResults;
 
@@ -56,7 +56,7 @@
         }
 
         public static IEnumerable<BlogPostDto> GetPublishedBlogPosts(this IDocumentSession session, string tag, int skip,
-            int pageSize, out int total)
+            int pageSize, out int total, IMarkdownRenderer markdownRenderer)
         {
             RavenQueryStatistics stats;
             List<BlogPostDto> posts = session.Query<BlogPost>()
@@ -68,14 +68,14 @@
                 .Skip(skip)
                 .Take(pageSize)
                 .ToList()
-                .Select(ToDto).ToList();
+                .Select(blogPost => ToDto(blogPost, markdownRenderer)).ToList();
 
             total = stats.TotalResults;
 
             return posts;
         }
 
-        public static BlogPostDto GetPublishedBlogPost(this IDocumentSession session, string slug)
+        public static BlogPostDto GetPublishedBlogPost(this IDocumentSession session, string slug, IMarkdownRenderer markdownRenderer)
         {
             BlogPost blogPost =
                 session.Query<BlogPost>()
@@ -86,36 +86,27 @@
                 return null;
             }
 
-            return ToDto(blogPost);
+            return ToDto(blogPost, markdownRenderer);
         }
 
-        private static BlogPostDto ToDto(BlogPost blogPost)
+        private static BlogPostDto ToDto(BlogPost blogPost, IMarkdownRenderer markdownRenderer)
         {
             string html = string.Empty;
 
             if (!string.IsNullOrWhiteSpace(blogPost.Content))
             {
-                var md = new MarkdownParser();
-                var renderer = new MarkdownHtmlRenderer();
-
                 try
                 {
-                    Document document = md.Parse(blogPost.Content);
-                    html = renderer.Render(document);
+                    html = markdownRenderer.Render(blogPost.Content);
                 }
                 catch (ParsingException x)
                 {
-                    html = string.Format(
-                        "Markdown parsing error at {0} as block type {1}",
-                        x.Position,
-                        x.BuilderType);
+                    html = $"Markdown parsing error at {x.Position} as block type {x.BuilderType}";
                 }
                 catch (RenderingException renderingException)
                 {
-                    html = string.Format(
-                        "Markdown rendering error with block {0} using {1} renderer",
-                        renderingException.Block,
-                        renderingException.Renderer);
+                    html =
+                        $"Markdown rendering error with block {renderingException.Block} using {renderingException.Renderer} renderer";
                 }
             }
 
@@ -132,7 +123,7 @@
             };
         }
 
-        public static BlogPostDto GetRenderedBlogPost(this IDocumentSession session, int id)
+        public static BlogPostDto GetRenderedBlogPost(this IDocumentSession session, int id, IMarkdownRenderer markdownRenderer)
         {
             var blogPost = session.Load<BlogPost>(id);
 
@@ -141,7 +132,7 @@
                 return null;
             }
 
-            return ToDto(blogPost);
+            return ToDto(blogPost, markdownRenderer);
         }
     }
 }
