@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tanka.Web", "Tanka.Web\Tanka.Web.xproj", "{1C78DD4D-4C28-47B4-BA66-9C31A2823DEC}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Tanka.Web", "src\Tanka.Web\Tanka.Web.xproj", "{1C78DD4D-4C28-47B4-BA66-9C31A2823DEC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8113C91D-E1D7-4DCA-B1C3-00616A4F2FA3}"
 	ProjectSection(SolutionItems) = preProject
