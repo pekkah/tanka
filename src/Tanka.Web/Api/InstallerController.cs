@@ -78,7 +78,7 @@
                 session.SaveChanges();
             }
 
-            return new EmptyResult();
+            return RedirectToAction("Home", "Admin");
         }
     }
 }

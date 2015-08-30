@@ -4,12 +4,14 @@
     using BCrypt.Net;
     using Documents;
     using Infrastructure;
+    using Microsoft.AspNet.Authorization;
     using Models;
     using Raven.Client;
     using Microsoft.AspNet.Mvc;
 
     [RequireHttps]
-    [Route("_installer")]
+    [Route("installer")]
+    [Authorize]
     public class InstallerController : Controller
     {
         private readonly Func<IDocumentSession> _sessionFactory;
@@ -27,12 +29,12 @@
 
                 if (!settings.IsInstallerEnabled)
                 {
-                    filterContext.Result = RedirectToAction("Index", "Admin");
+                    filterContext.Result = RedirectToAction("Home", "Admin");
                     return;
                 }
             }
 
-            var key = Config.GetValue("tanka/installer/key");
+            var key = Config.GetValue("Security:InstallerKey");
 
             if (string.IsNullOrWhiteSpace(key) || key == "null")
             {
@@ -43,20 +45,20 @@
             base.OnActionExecuting(filterContext);
         }
 
-        [Route("")]
+        [Route("install")]
         public ActionResult Install()
         {
             return View();
         }
 
-        [Route("")]
+        [Route("install")]
         [HttpPost]
         public ActionResult Install(AdminDetailsModel model)
         {
             if (!ModelState.IsValid)
                 return View();
 
-            var key = Config.GetValue("tanka/installer/key");
+            var key = Config.GetValue("Security:InstallerKey");
 
             if (key != model.Key)
             {
@@ -65,19 +67,6 @@
 
             using (var session = _sessionFactory())
             {
-                var user = new User
-                {
-                    UserName = model.Username,
-                    Identifier = Guid.NewGuid(),
-                    Password = BCrypt.HashPassword(model.Password),
-                    Roles = new[]
-                    {
-                        SystemRoles.Administrators
-                    }
-                };
-
-                session.Store(user);
-
                 var settings = session.GetSiteSettings();
                 settings.IsInstallerEnabled = false;
                 session.StoreSiteSettings(settings);
@@ -85,7 +74,7 @@
                 session.SaveChanges();
             }
 
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Home", "Admin");
         }
     }
 }

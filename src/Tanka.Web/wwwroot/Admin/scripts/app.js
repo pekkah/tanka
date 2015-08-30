@@ -16,7 +16,7 @@
         }]).
     run([function() {
         var lang = (navigator.language || navigator.browserLanguage).slice(0, 2);
-        moment.lang(lang);
+        moment.locale(lang);
     }]);
 
 tankaAdmin.filter("formatDateTime", function () {

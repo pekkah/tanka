@@ -215,3 +215,5 @@ pip-log.txt
 node_modules/
 .vs/
 src/.vs/config/applicationhost.config
+
+!lib/**/dist/
