@@ -17,12 +17,12 @@
 
     [Route("api/blog-posts")]
     [Authorize]
-    public class BlogPostsAdminController : Controller
+    public class BlogPostsController : Controller
     {
         private readonly IMarkdownRenderer _markdownRenderer;
         private readonly Func<IDocumentSession> _sessionFactory;
 
-        public BlogPostsAdminController(IDocumentStore documentStore, IMarkdownRenderer markdownRenderer)
+        public BlogPostsController(IDocumentStore documentStore, IMarkdownRenderer markdownRenderer)
         {
             _markdownRenderer = markdownRenderer;
             _sessionFactory = documentStore.OpenSession;

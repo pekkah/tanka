@@ -9,11 +9,11 @@ namespace Tanka.Web.Api
     [Route("api/utils")]
 
     [Authorize]
-    public class UtilsAdminController : Controller
+    public class UtilsController : Controller
     {
         private readonly IMarkdownRenderer _markdownRenderer;
 
-        public UtilsAdminController(IMarkdownRenderer markdownRenderer)
+        public UtilsController(IMarkdownRenderer markdownRenderer)
         {
             _markdownRenderer = markdownRenderer;
         }
