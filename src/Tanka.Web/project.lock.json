@@ -11,12 +11,12 @@
           "lib/BCrypt.Net.dll": {}
         }
       },
-      "CSharpVerbalExpressions/0.1": {
+      "CommonMark.NET/0.9.1": {
         "compile": {
-          "lib/net40/VerbalExpressions.dll": {}
+          "lib/net45/CommonMark.dll": {}
         },
         "runtime": {
-          "lib/net40/VerbalExpressions.dll": {}
+          "lib/net45/CommonMark.dll": {}
         }
       },
       "FluentValidation/5.6.2.0": {
@@ -69,14 +69,6 @@
           "lib/Net45/tr/FluentValidation.resources.dll": {
             "locale": "tr"
           }
-        }
-      },
-      "HtmlTags/2.0.0.181": {
-        "compile": {
-          "lib/4.0/HtmlTags.dll": {}
-        },
-        "runtime": {
-          "lib/4.0/HtmlTags.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-beta6": {
@@ -1549,20 +1541,6 @@
         "runtime": {
           "lib/portable-net45+win8/System.Reflection.Metadata.dll": {}
         }
-      },
-      "Tanka.Markdown.Html/1.1.5": {
-        "dependencies": {
-          "CSharpVerbalExpressions": "0.1",
-          "HtmlTags": "2.0.0.181"
-        },
-        "compile": {
-          "lib/net45/Tanka.Markdown.dll": {},
-          "lib/net45/Tanka.Markdown.Html.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Tanka.Markdown.dll": {},
-          "lib/net45/Tanka.Markdown.Html.dll": {}
-        }
       }
     }
   },
@@ -1579,14 +1557,33 @@
         "lib/BCrypt.Net.XML"
       ]
     },
-    "CSharpVerbalExpressions/0.1": {
-      "sha512": "RfqeZ2tlVQWqz6w9/2DuNlOfOrRFPa7gvWsm57jkcXq1Jv3QlFT08jqetq7eTqcEDGsNksXsQFQd0HbeqRGZ8g==",
+    "CommonMark.NET/0.9.1": {
+      "sha512": "NYs7ud2odEH0rPWg5uE6B2JXCw5JKhkEouJeCf2d+kQFacyo2H+GNbKiT4Dyb53eLtZ/auI40oKcBFjjYR6wNw==",
       "files": [
-        "CSharpVerbalExpressions.0.1.0.nupkg",
-        "CSharpVerbalExpressions.0.1.0.nupkg.sha512",
-        "CSharpVerbalExpressions.nuspec",
-        "lib/net40/VerbalExpressions.dll",
-        "lib/net40/VerbalExpressions.pdb"
+        "CommonMark.NET.0.9.1.nupkg",
+        "CommonMark.NET.0.9.1.nupkg.sha512",
+        "CommonMark.NET.nuspec",
+        "lib/aspnetcore50/CommonMark.dll",
+        "lib/aspnetcore50/CommonMark.pdb",
+        "lib/aspnetcore50/CommonMark.xml",
+        "lib/net20/CommonMark.dll",
+        "lib/net20/CommonMark.pdb",
+        "lib/net20/CommonMark.xml",
+        "lib/net35-client/CommonMark.dll",
+        "lib/net35-client/CommonMark.pdb",
+        "lib/net35-client/CommonMark.xml",
+        "lib/net40-client/CommonMark.dll",
+        "lib/net40-client/CommonMark.pdb",
+        "lib/net40-client/CommonMark.xml",
+        "lib/net45/CommonMark.dll",
+        "lib/net45/CommonMark.pdb",
+        "lib/net45/CommonMark.xml",
+        "lib/portable-net40+sl50+wp80+win+wpa81+MonoAndroid10+MonoTouch10/CommonMark.dll",
+        "lib/portable-net40+sl50+wp80+win+wpa81+MonoAndroid10+MonoTouch10/CommonMark.pdb",
+        "lib/portable-net40+sl50+wp80+win+wpa81+MonoAndroid10+MonoTouch10/CommonMark.xml",
+        "LICENSE.md",
+        "tools/cmark.exe",
+        "tools/cmark.exe.config"
       ]
     },
     "FluentValidation/5.6.2.0": {
@@ -1639,15 +1636,6 @@
         "lib/portable-net45+wp80+win8+wpa81/pt/FluentValidation.resources.dll",
         "lib/portable-net45+wp80+win8+wpa81/ru/FluentValidation.resources.dll",
         "lib/portable-net45+wp80+win8+wpa81/sv/FluentValidation.resources.dll"
-      ]
-    },
-    "HtmlTags/2.0.0.181": {
-      "sha512": "ZIGaynOqurzWtTMcom2wYpYH1+N6mAkm4iIpdx7VHp3wLVW/dyKIcFk8FPvq8Bqni/bMUB1nXNdbYdaYGbE2AQ==",
-      "files": [
-        "HtmlTags.2.0.0.181.nupkg",
-        "HtmlTags.2.0.0.181.nupkg.sha512",
-        "HtmlTags.nuspec",
-        "lib/4.0/HtmlTags.dll"
       ]
     },
     "Microsoft.AspNet.Antiforgery/1.0.0-beta6": {
@@ -2884,16 +2872,6 @@
         "System.Reflection.Metadata.1.0.21.nupkg.sha512",
         "System.Reflection.Metadata.nuspec"
       ]
-    },
-    "Tanka.Markdown.Html/1.1.5": {
-      "sha512": "1oOoJgYLpur924/jTN6zrHQ4ZE3aR87/BJmNBuGQexGT1P4GzhPvf8d7xVo8Ka5vSqUwV4/wCWmyi7cwv65NEA==",
-      "files": [
-        "lib/net45/Tanka.Markdown.dll",
-        "lib/net45/Tanka.Markdown.Html.dll",
-        "Tanka.Markdown.Html.1.1.5.nupkg",
-        "Tanka.Markdown.Html.1.1.5.nupkg.sha512",
-        "Tanka.Markdown.Html.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -2912,10 +2890,10 @@
       "Microsoft.Framework.Configuration.UserSecrets >= 1.0.0-beta6",
       "Microsoft.Framework.Logging >= 1.0.0-beta6",
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta6",
-      "Tanka.Markdown.Html >= 1.1.5",
       "RavenDB.Client >= 3.0.3690",
       "BCrypt-Official >= 0.1.109",
-      "FluentValidation >= 5.6.2"
+      "FluentValidation >= 5.6.2",
+      "CommonMark.NET >= 0.9.1"
     ],
     "DNX,Version=v4.5.1": []
   }

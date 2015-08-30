@@ -6,8 +6,6 @@
     using System.Linq;
     using Documents;
     using Helpers;
-    using Markdown;
-    using Markdown.Html;
     using Models;
     using Raven.Client;
     using Raven.Client.Linq;
@@ -99,14 +97,9 @@
                 {
                     html = markdownRenderer.Render(blogPost.Content);
                 }
-                catch (ParsingException x)
+                catch (Exception x)
                 {
-                    html = $"Markdown parsing error at {x.Position} as block type {x.BuilderType}";
-                }
-                catch (RenderingException renderingException)
-                {
-                    html =
-                        $"Markdown rendering error with block {renderingException.Block} using {renderingException.Renderer} renderer";
+                    html = "Markdown error";
                 }
             }
 
