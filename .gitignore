@@ -216,4 +216,6 @@ node_modules/
 .vs/
 src/.vs/config/applicationhost.config
 
-!lib/**/dist/
+node_modules/
+bower_components/
+wwwroot/lib/
