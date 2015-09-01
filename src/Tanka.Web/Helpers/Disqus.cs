@@ -1,7 +1,6 @@
 ﻿namespace Tanka.Web.Helpers
 {
     using System.Text;
-    using System.Web;
     using Infrastructure;
     using Microsoft.AspNet.Mvc.Rendering;
 
@@ -9,7 +8,7 @@
     {
         public static HtmlString Render(string identifier)
         {
-            string shortname = Config.GetValue("disqus/shortname");
+            string shortname = Config.GetValue("Integrations:DisqusShortname");
             var builder = new StringBuilder();
 
             if (string.IsNullOrWhiteSpace(identifier))
