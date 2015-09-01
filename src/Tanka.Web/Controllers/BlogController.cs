@@ -2,7 +2,6 @@
 {
     using System;
     using Infrastructure;
-    using Microsoft.AspNet.Authorization;
     using Models;
     using Raven.Client;
     using Microsoft.AspNet.Mvc;
@@ -21,7 +20,7 @@
         }
 
         [Route("", Order=1000)]
-        public ActionResult Home(int skip = 0, int take = 10)
+        public ActionResult Home(int skip = 0, int take = 100)
         {
             var model = new HomeModel();
 

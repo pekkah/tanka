@@ -1403,7 +1403,7 @@
           "lib/dnx451/Microsoft.Framework.WebEncoders.Core.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/1.0.0-beta6-207211625": {
+      "Microsoft.IdentityModel.Logging/1.0.0-beta6-207061559": {
         "frameworkAssemblies": [
           "Microsoft.CSharp",
           "mscorlib",
@@ -1417,11 +1417,11 @@
           "lib/dnx451/Microsoft.IdentityModel.Logging.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Protocol.Extensions/2.0.0-beta6-207211625": {
+      "Microsoft.IdentityModel.Protocol.Extensions/2.0.0-beta6-207061559": {
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "1.0.0-beta6-207211625",
+          "Microsoft.IdentityModel.Logging": "1.0.0-beta6-207061559",
           "Newtonsoft.Json": "6.0.6",
-          "System.IdentityModel.Tokens": "5.0.0-beta6-207211625"
+          "System.IdentityModel.Tokens": "5.0.0-beta6-207061559"
         },
         "frameworkAssemblies": [
           "Microsoft.CSharp",
@@ -1513,9 +1513,9 @@
           "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll": {}
         }
       },
-      "System.IdentityModel.Tokens/5.0.0-beta6-207211625": {
+      "System.IdentityModel.Tokens/5.0.0-beta6-207061559": {
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "1.0.0-beta6-207211625",
+          "Microsoft.IdentityModel.Logging": "1.0.0-beta6-207061559",
           "Newtonsoft.Json": "6.0.6"
         },
         "frameworkAssemblies": [
@@ -2727,29 +2727,29 @@
         "repo.json"
       ]
     },
-    "Microsoft.IdentityModel.Logging/1.0.0-beta6-207211625": {
+    "Microsoft.IdentityModel.Logging/1.0.0-beta6-207061559": {
       "serviceable": true,
-      "sha512": "2kKNiD6+MKWI0m3Gt0ClI8qbjTolmBGBUAN55LiB3mkGdHijC7Paz8odw+Is35YlfQEuQSVtm4z7JJiSKqSzPg==",
+      "sha512": "2jZkW0sVN/pK4WR/CGXzTsDrd8iMlUxctbECxjGMt2ZmIaMgnhYGCYCU88hyOXYqc0vvUzS9CDlZ8EYPyIDWxg==",
       "files": [
         "lib/dnx451/Microsoft.IdentityModel.Logging.dll",
         "lib/dnx451/Microsoft.IdentityModel.Logging.xml",
         "lib/dnxcore50/Microsoft.IdentityModel.Logging.dll",
         "lib/dnxcore50/Microsoft.IdentityModel.Logging.xml",
-        "Microsoft.IdentityModel.Logging.1.0.0-beta6-207211625.nupkg",
-        "Microsoft.IdentityModel.Logging.1.0.0-beta6-207211625.nupkg.sha512",
+        "Microsoft.IdentityModel.Logging.1.0.0-beta6-207061559.nupkg",
+        "Microsoft.IdentityModel.Logging.1.0.0-beta6-207061559.nupkg.sha512",
         "Microsoft.IdentityModel.Logging.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Protocol.Extensions/2.0.0-beta6-207211625": {
+    "Microsoft.IdentityModel.Protocol.Extensions/2.0.0-beta6-207061559": {
       "serviceable": true,
-      "sha512": "fNCf7NJlDy3xK/ON0rxvtkwFdTw0QSHU8nm4+nlFwWrtBYSCPfWSTB0uv/p+zGnOlhmPBDFgM94U1up9pcwBsA==",
+      "sha512": "FvI2zzUwB6+Y05ygms4GCM3Kcv75G6P0fvpoW89EuOQugtoiDxB4+MKp2nvMf05kHRqC6tdm5dDkFvd36nMWDg==",
       "files": [
         "lib/dnx451/Microsoft.IdentityModel.Protocol.Extensions.dll",
         "lib/dnx451/Microsoft.IdentityModel.Protocol.Extensions.xml",
         "lib/dnxcore50/Microsoft.IdentityModel.Protocol.Extensions.dll",
         "lib/dnxcore50/Microsoft.IdentityModel.Protocol.Extensions.xml",
-        "Microsoft.IdentityModel.Protocol.Extensions.2.0.0-beta6-207211625.nupkg",
-        "Microsoft.IdentityModel.Protocol.Extensions.2.0.0-beta6-207211625.nupkg.sha512",
+        "Microsoft.IdentityModel.Protocol.Extensions.2.0.0-beta6-207061559.nupkg",
+        "Microsoft.IdentityModel.Protocol.Extensions.2.0.0-beta6-207061559.nupkg.sha512",
         "Microsoft.IdentityModel.Protocol.Extensions.nuspec"
       ]
     },
@@ -2848,16 +2848,16 @@
         "System.Collections.Immutable.nuspec"
       ]
     },
-    "System.IdentityModel.Tokens/5.0.0-beta6-207211625": {
+    "System.IdentityModel.Tokens/5.0.0-beta6-207061559": {
       "serviceable": true,
-      "sha512": "cvF4qkNNc/musHLdKcGABwmFoua63n2e9QQ22GOx6AsI79puJrdv+U9u5xX4301m0eOFbDUKW3VFomXHWrIzEg==",
+      "sha512": "EWitzBkOheFhzEow5g7xfvCFP0Kr930mY+k3awhj8o5PGiq1N08bFvNetey9FfCSjVVRoED9I8/GiqzO0Y9uIA==",
       "files": [
         "lib/dnx451/System.IdentityModel.Tokens.dll",
         "lib/dnx451/System.IdentityModel.Tokens.xml",
         "lib/dnxcore50/System.IdentityModel.Tokens.dll",
         "lib/dnxcore50/System.IdentityModel.Tokens.xml",
-        "System.IdentityModel.Tokens.5.0.0-beta6-207211625.nupkg",
-        "System.IdentityModel.Tokens.5.0.0-beta6-207211625.nupkg.sha512",
+        "System.IdentityModel.Tokens.5.0.0-beta6-207061559.nupkg",
+        "System.IdentityModel.Tokens.5.0.0-beta6-207061559.nupkg.sha512",
         "System.IdentityModel.Tokens.nuspec"
       ]
     },

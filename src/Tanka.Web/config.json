@@ -1,6 +1,6 @@
 {
   "Data": {
-    "RavenDb": "Url=http://localhost:8080;database=tanka-installer1"
+    "RavenDb": "Url=http://localhost:8080;database=tanka"
   },
   "Security": {
     "InstallerKey": "MyCuteLittleBlog",
