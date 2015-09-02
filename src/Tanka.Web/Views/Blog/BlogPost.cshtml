@@ -1,26 +1,28 @@
 @model BlogPostModel
-<div class="main-content articles">
-    <div class="article">
-        <article>
-            <hroup>
-                <h3 class="meta">
-                    <small> Written by @Model.Post.Author on @Model.Post.PublishedOn.Value.ToLocalTime().ToString("d")</small>
-                    <small><a href="/@Model.Post.Slug#disqus_thread" data-disqus-identifier="@Model.Post.Id" class="badge"></a></small>
-                </h3>
-            </hroup>
-            <div class="tags">
-                @foreach (dynamic tag in @Model.Post.Tags)
-                {
+<div class="row">
+    <div class="main-content articles">
+        <div class="article">
+            <article>
+                <hroup>
+                    <h3 class="meta">
+                        <small> Written by @Model.Post.Author on @Model.Post.PublishedOn.Value.ToLocalTime().ToString("d")</small>
+                        <small><a href="/@Model.Post.Slug#disqus_thread" data-disqus-identifier="@Model.Post.Id" class="badge"></a></small>
+                    </h3>
+                </hroup>
+                <div class="tags">
+                    @foreach (dynamic tag in @Model.Post.Tags)
+                    {
                     <text>
                         <span><a href="/tags/@tag">@tag.ToUpperInvariant()</a></span>
                     </text>
-                }
-            </div>
-            <div class="content">
-                @Html.Raw(@Model.Post.Content)
-            </div>
-        </article>
-        <div id="disqus_thread"></div>
+                    }
+                </div>
+                <div class="content">
+                    @Html.Raw(@Model.Post.Content)
+                </div>
+                <div id="disqus_thread"></div>
+            </article>
+        </div>
     </div>
 </div>
 @section footer {

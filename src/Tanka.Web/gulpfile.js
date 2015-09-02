@@ -13,7 +13,7 @@ var paths = {
     webroot: "./" + project.webroot + "/"
 };
 
-paths.uiLess = paths.webroot + "UI/default/bootstrap.less";
+paths.uiLess = "./UI/default/bootstrap.less";
 paths.uiCss = paths.webroot + "css";
 
 gulp.task("build:css", function () {
