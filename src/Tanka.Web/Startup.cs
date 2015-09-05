@@ -10,7 +10,7 @@
     using Microsoft.Framework.Configuration;
     using Microsoft.Framework.DependencyInjection;
     using Microsoft.Framework.Logging;
-    using Microsoft.Framework.Runtime;
+    using Microsoft.Dnx.Runtime;
     using Newtonsoft.Json.Converters;
 
     public class Startup
@@ -32,7 +32,7 @@
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
-            Config.GetValueFunc = Configuration.Get;
+            Config.GetValueFunc = key => Configuration[key];
         }
 
         public IConfiguration Configuration { get; set; }
@@ -58,15 +58,14 @@
 
             // Add MVC services to the services container
             services.AddRaven(Configuration["Data:RavenDb"]);
-            services.AddMvc().Configure<MvcOptions>(options =>
-            {
-                var json = options.OutputFormatters.OfType<JsonOutputFormatter>().First();
 
+            services.AddMvc().AddJsonOptions(json =>
+            {
                 json.SerializerSettings.Converters.Add(new StringEnumConverter());
             });
 
             services.AddAuthentication();
-            services.Configure<ExternalAuthenticationOptions>(options =>
+            services.Configure<SharedAuthenticationOptions>(options =>
             {
                 options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             });
@@ -80,9 +79,9 @@
             services.ConfigureOpenIdConnectAuthentication(options =>
             {
                 options.AutomaticAuthentication = true;
-                options.ClientId = Configuration.Get("Security:ClientId");
-                options.Authority = Configuration.Get("Security:Authority");
-                options.RedirectUri = Configuration.Get("Security:RedirectUri");
+                options.ClientId = Configuration["Security:ClientId"];
+                options.Authority = Configuration["Security:Authority"];
+                options.RedirectUri = Configuration["Security:RedirectUri"];
                 options.DefaultToCurrentUriOnRedirect = true;
             });
 
