@@ -1,9 +1,11 @@
 ﻿namespace Tanka.Web.Infrastructure
 {
     using System;
+    using Documents.Indexes;
     using Raven.Client;
     using Raven.Client.Document;
     using Microsoft.Framework.DependencyInjection;
+    using Raven.Client.Indexes;
 
     public static class RavenModule
     {
@@ -20,7 +22,7 @@
 
             store.ParseConnectionString(connectionString);
             store.Initialize();
-
+            IndexCreation.CreateIndexes(typeof(BlogPosts_Published_Monthly).Assembly, store);
             return store;
         };
 

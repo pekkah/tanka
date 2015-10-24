@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Tanka.Web.Core.PostsOnMonth>
+
+<div class="row">
+    <div class="col-md-12">
+        <h5>Posts</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var year in @Model.GroupBy(m => m.Year))
+        {
+            <h6>@year.Key</h6>
+            foreach (var month in year)
+            {
+                <h6>@Html.ActionLink($"{month.Year} / {month.Month} ({month.Count})", "OfMonth", "History", new { year = month.Year, month = month.Month })</h6>
+            }
+        }
+    </div>
+</div>

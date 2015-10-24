@@ -1,7 +1,17 @@
-﻿.articles {
-    .make-sm-column(12);
-    .make-md-column(8);
-    .make-md-column-push(2);
+﻿body {
+    width: 100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+.container-fluid {
+    width: 98%;
+}
+
+.articles {
+    .make-md-column(7);
+    .make-md-column-offset(2);
 
     .article {
         .make-row();
@@ -26,7 +36,7 @@
         }
 
         img {
-            width: 100%;
+            width: 98%;
             height: auto;
         }
     }
@@ -34,6 +44,10 @@
     .comments {
         .make-sm-column(12);
     }
+}
+
+.right-side {
+    .make-md-column(2);
 }
 
 @media (max-width: @screen-sm) {

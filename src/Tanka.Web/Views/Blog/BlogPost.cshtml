@@ -16,9 +16,9 @@
                 <div class="tags">
                     @foreach (dynamic tag in @Model.Post.Tags)
                     {
-                    <text>
-                        <span><a href="/tags/@tag">@tag.ToUpperInvariant()</a></span>
-                    </text>
+                        <text>
+                            <span><a href="/tags/@tag">@tag.ToUpperInvariant()</a></span>
+                        </text>
                     }
                 </div>
                 <div class="content">
@@ -27,6 +27,9 @@
                 <div id="disqus_thread"></div>
             </article>
         </div>
+    </div>
+    <div class="right-side">
+        @await Component.InvokeAsync("History")
     </div>
 </div>
 @section footer {

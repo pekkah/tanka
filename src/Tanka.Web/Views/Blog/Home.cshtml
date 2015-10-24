@@ -31,6 +31,9 @@
             </div>
         }
     </div>
+    <div class="right-side">
+        @await Component.InvokeAsync("History")
+    </div>
 </div>
 @section footer {
     @Disqus.Render(null)
