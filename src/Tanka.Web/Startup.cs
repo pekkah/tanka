@@ -1,12 +1,10 @@
 ﻿namespace Tanka.Web
 {
-    using System.Linq;
     using Infrastructure;
     using Microsoft.AspNet.Authentication;
     using Microsoft.AspNet.Authentication.Cookies;
     using Microsoft.AspNet.Builder;
     using Microsoft.AspNet.Hosting;
-    using Microsoft.AspNet.Mvc;
     using Microsoft.Framework.Configuration;
     using Microsoft.Framework.DependencyInjection;
     using Microsoft.Framework.Logging;
@@ -19,7 +17,8 @@
         {
             // Setup configuration sources.
 
-            var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath)
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(appEnv.ApplicationBasePath)
                 .AddJsonFile("config.json")
                 .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
 
@@ -70,21 +69,6 @@
                 options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             });
 
-            services.Configure<CookieAuthenticationOptions>(options =>
-            {
-                options.AutomaticAuthentication = true;
-                options.LogoutPath = "/admin/logout";
-            });
-
-            services.ConfigureOpenIdConnectAuthentication(options =>
-            {
-                options.AutomaticAuthentication = true;
-                options.ClientId = Configuration["Security:ClientId"];
-                options.Authority = Configuration["Security:Authority"];
-                options.RedirectUri = Configuration["Security:RedirectUri"];
-                options.DefaultToCurrentUriOnRedirect = true;
-            });
-
             services.AddSingleton<IMarkdownRenderer>(provider => new TankaMarkdownRenderer());
         }
 
@@ -99,30 +83,36 @@
             // Add the following to the request pipeline only in development environment.
             if (env.IsDevelopment())
             {
-                app.UseErrorPage();
+                app.UseDeveloperExceptionPage();
             }
             else
             {
                 // Add Error handling middleware which catches all application specific errors and
                 // sends the request to the following path or controller action.
-                app.UseErrorHandler("/error");
+                app.UseExceptionHandler("/error");
             }
+
+            // Add the platform handler to the request pipeline.
+            app.UseIISPlatformHandler();
 
             // Add static files to the request pipeline.
             app.UseStaticFiles();
 
-            // Add cookie-based authentication to the request pipeline.
-            // app.UseIdentity();
+            
+            app.UseCookieAuthentication(options =>
+            {
+                options.AutomaticAuthentication = true;
+                options.LogoutPath = "/admin/logout";
+            });
 
-            // Add authentication middleware to the request pipeline. You can configure options such as Id and Secret in the ConfigureServices method.
-            // For more information see http://go.microsoft.com/fwlink/?LinkID=532715
-            // app.UseFacebookAuthentication();
-            // app.UseGoogleAuthentication();
-            // app.UseMicrosoftAccountAuthentication();
-            // app.UseTwitterAuthentication();
-
-            app.UseCookieAuthentication();
-            app.UseOpenIdConnectAuthentication();
+            app.UseOpenIdConnectAuthentication(options =>
+            {
+                options.AutomaticAuthentication = true;
+                options.ClientId = Configuration["Security:ClientId"];
+                options.Authority = Configuration["Security:Authority"];
+                options.RedirectUri = Configuration["Security:RedirectUri"];
+                options.DefaultToCurrentUriOnRedirect = true;
+            });
 
             // Add MVC to the request pipeline.
             app.UseMvc(routes =>

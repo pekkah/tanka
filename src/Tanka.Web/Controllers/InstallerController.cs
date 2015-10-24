@@ -1,13 +1,12 @@
 ﻿namespace Tanka.Web.Controllers
 {
     using System;
-    using BCrypt.Net;
-    using Documents;
     using Infrastructure;
     using Microsoft.AspNet.Authorization;
     using Models;
     using Raven.Client;
     using Microsoft.AspNet.Mvc;
+    using Microsoft.AspNet.Mvc.Filters;
 
     [RequireHttps]
     [Route("installer")]
@@ -21,7 +20,7 @@
             _sessionFactory = sessionFactory.OpenSession;
         }
 
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext context)
         {
             using (var session = _sessionFactory())
             {
@@ -29,7 +28,7 @@
 
                 if (!settings.IsInstallerEnabled)
                 {
-                    filterContext.Result = RedirectToAction("Home", "Admin");
+                    context.Result = RedirectToAction("Home", "Admin");
                     return;
                 }
             }
@@ -38,11 +37,11 @@
 
             if (string.IsNullOrWhiteSpace(key) || key == "null")
             {
-                filterContext.Result = RedirectToAction("ConfigNoInstallerKey", "Errors");
+                context.Result = RedirectToAction("ConfigNoInstallerKey", "Errors");
                 return;
             }
 
-            base.OnActionExecuting(filterContext);
+            base.OnActionExecuting(context);
         }
 
         [Route("install")]
