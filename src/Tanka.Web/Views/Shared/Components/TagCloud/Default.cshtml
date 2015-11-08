@@ -1,0 +1,18 @@
+﻿@model IEnumerable<KeyValuePair<string,int>>
+
+<div class="row">
+    <div class="col-md-12">
+        <h5>Tags</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            @foreach (var tag in @Model)
+            {
+                <a href="/tags/@tag.Key"><span class="tag tag-count-@tag.Value">@tag.Key</span></a>
+            }
+        </p>
+
+    </div>
+</div>
