@@ -6047,6 +6047,42 @@ body {
     width: 50%;
   }
 }
+.tag {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #999999;
+  border-radius: 10px;
+  margin: 2px;
+}
+.tag:empty {
+  display: none;
+}
+.tag-count-1 {
+  font-size: 0.8em;
+}
+.tag-count-2 {
+  font-size: 1em;
+}
+.tag-count-3 {
+  font-size: 1.2em;
+}
+.tag-count-4 {
+  font-size: 1.4em;
+}
+.tag-count-5 {
+  font-size: 1.6em;
+}
+.tag-count-6 {
+  font-size: 1.8em;
+}
 .btn {
   border-radius: 0;
 }

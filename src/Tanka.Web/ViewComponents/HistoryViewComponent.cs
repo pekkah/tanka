@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using Core;
+    using Documents.Indexes;
     using Infrastructure;
     using Microsoft.AspNet.Mvc;
     using Raven.Client;
