@@ -1,5 +1,6 @@
 ﻿namespace Tanka.Web.Controllers
 {
+    using System;
     using Infrastructure;
     using Models;
     using Raven.Client;
@@ -44,8 +45,8 @@
             return View(model);
         }
 
-        [Route("{slug}", Order = 1000)]
-        public ActionResult BlogPost(string slug)
+        [Route("{year:int}/{month:int}/{day:int}/{slug}")]
+        public ActionResult BlogPost(int year, int month, int day, string slug)
         {
             using (IDocumentSession session = _documentStore.OpenSession())
             {
@@ -60,6 +61,32 @@
                 return View(new BlogPostModel
                 {
                     Post = post
+                });
+            }
+        }
+
+        [Obsolete("Will be removed in v1.2")]
+        [Route("{slug}")]
+        public ActionResult BlogPostObsolete(string slug)
+        {
+            if (slug.StartsWith("_admin"))
+            {
+                return RedirectToActionPermanent("Home", "Admin");
+            }
+
+            using (IDocumentSession session = _documentStore.OpenSession())
+            {
+                var post = session.GetPublishedBlogPost(slug, _markdownRenderer);
+
+                if (post == null)
+                    return HttpNotFound();
+
+                return RedirectToActionPermanent("BlogPost", new
+                {
+                    year= post.PublishedOn.Value.Year,
+                    month = post.PublishedOn.Value.Month,
+                    day = post.PublishedOn.Value.Day,
+                    slug
                 });
             }
         }

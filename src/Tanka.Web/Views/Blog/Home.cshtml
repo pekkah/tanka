@@ -1,3 +1,5 @@
+@model HomeModel
+
 @{
     ViewBag.PageTitle = ViewBag.Title;
 }
@@ -9,12 +11,25 @@
                 <article>
                     <hgroup>
                         <h1 class="page-header">
-                            <a href="/@post.Slug">@post.Title</a>
+                            @Html.ActionLink(post.Title, "BlogPost", 
+                           new { year=post.PublishedOn.Value.Year, month=post.PublishedOn.Value.Month, day=post.PublishedOn.Value.Day, slug=post.Slug})
                         </h1>
                         <h3 class="meta">
-                            <small> Written by @post.Author on @post.PublishedOn.ToLocalTime().ToString("d")</small>
+                            <small> Written by @post.Author on @post.PublishedOn.Value.ToString("d")</small>
                             <small>
-                                <a href="/@post.Slug#disqus_thread" data-disqus-identifier="@post.Id" class="badge"></a>
+                                @Html.ActionLink("","BlogPost", "Blog", null, null, "disqus_thread",
+                               new
+                               {
+                                   year = post.PublishedOn.Value.Year,
+                                   month = post.PublishedOn.Value.Month,
+                                   day = post.PublishedOn.Value.Day,
+                                   slug = post.Slug
+                               },
+                               new
+                               {
+                                   data_disqus_identifier = @post.Id,
+                                   @class="badge"
+                               })
                             </small>
                         </h3>
                     </hgroup>

@@ -1,3 +1,4 @@
+@model HomeModel
 @{
     ViewBag.PageTitle = ViewBag.SubTitle + " | " + ViewBag.Title;
 }
@@ -11,11 +12,24 @@
                     <div class="article">
                         <article>
                             <hroup>
-                                <h1 class="page-header"><a href="/@post.Slug">@post.Title</a>
+                                <h1 class="page-header">@Html.ActionLink(post.Title, "BlogPost", "Blog",
+                           new { year = post.PublishedOn.Value.Year, month = post.PublishedOn.Value.Month, day = post.PublishedOn.Value.Day, slug = post.Slug })
                                 </h1>
                                 <h3 class="meta">
-                                    <small> Written by @post.Author on @post.PublishedOn.ToLocalTime().ToString("d")</small>
-                                    <small><a href="/@post.Slug#disqus_thread" class="badge"></a></small>
+                                    <small> Written by @post.Author on @post.PublishedOn.Value.ToString("d")</small>
+                                    <small>@Html.ActionLink("", "BlogPost", "Blog", null, null, "disqus_thread",
+                               new
+                               {
+                                   year = post.PublishedOn.Value.Year,
+                                   month = post.PublishedOn.Value.Month,
+                                   day = post.PublishedOn.Value.Day,
+                                   slug = post.Slug
+                               },
+                               new
+                               {
+                                   data_disqus_identifier = @post.Id,
+                                   @class = "badge"
+                               })</small>
                                 </h3>
                             </hroup>
                             <div class="tags">

@@ -7,9 +7,9 @@
     using Microsoft.AspNet.Mvc;
     using Raven.Client;
 
-    [Route("admin")]
     [RequireHttps]
     [Authorize()]
+    [Route("_admin")]
     public class AdminController : Controller
     {
         private readonly Func<IDocumentSession> _sessionFactory;
@@ -19,7 +19,7 @@
             _sessionFactory = sessionFactory.OpenSession;
         }
 
-        [Route("home")]
+        [Route("index")]
         public ActionResult Home()
         {
             using (IDocumentSession session = _sessionFactory())

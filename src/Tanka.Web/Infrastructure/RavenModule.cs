@@ -2,9 +2,9 @@
 {
     using System;
     using Documents.Indexes;
+    using Microsoft.Extensions.DependencyInjection;
     using Raven.Client;
     using Raven.Client.Document;
-    using Microsoft.Framework.DependencyInjection;
     using Raven.Client.Indexes;
 
     public static class RavenModule

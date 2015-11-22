@@ -5,19 +5,21 @@
     using Microsoft.AspNet.Authentication.Cookies;
     using Microsoft.AspNet.Builder;
     using Microsoft.AspNet.Hosting;
-    using Microsoft.Framework.Configuration;
-    using Microsoft.Framework.DependencyInjection;
-    using Microsoft.Framework.Logging;
-    using Microsoft.Dnx.Runtime;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.PlatformAbstractions;
+    using Microsoft.IdentityModel.Protocols.OpenIdConnect;
     using Newtonsoft.Json.Converters;
 
     public class Startup
     {
+        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
+
         public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
         {
             // Setup configuration sources.
             var builder = new ConfigurationBuilder()
-                .SetBasePath(appEnv.ApplicationBasePath)
                 .AddJsonFile("config.json")
                 .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
 
@@ -53,6 +55,7 @@
             // You can add options for Google, Twitter and other middleware as shown below.
             // For more information see http://go.microsoft.com/fwlink/?LinkID=532715
 
+            services.AddAuthentication(sharedOptions => sharedOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
 
             // Add MVC services to the services container
             services.AddRaven(Configuration["Data:RavenDb"]);
@@ -60,12 +63,6 @@
             services.AddMvc().AddJsonOptions(json =>
             {
                 json.SerializerSettings.Converters.Add(new StringEnumConverter());
-            });
-
-            services.AddAuthentication();
-            services.Configure<SharedAuthenticationOptions>(options =>
-            {
-                options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             });
 
             services.AddSingleton<IMarkdownRenderer>(provider => new TankaMarkdownRenderer());
@@ -92,25 +89,24 @@
             }
 
             // Add the platform handler to the request pipeline.
-            app.UseIISPlatformHandler();
+            app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             // Add static files to the request pipeline.
             app.UseStaticFiles();
-
-            
+         
             app.UseCookieAuthentication(options =>
             {
-                options.AutomaticAuthentication = true;
-                options.LogoutPath = "/admin/logout";
+                options.AutomaticAuthenticate = true;
             });
 
             app.UseOpenIdConnectAuthentication(options =>
             {
-                options.AutomaticAuthentication = true;
+                options.AutomaticAuthenticate = true;
+                options.AutomaticChallenge = true;
                 options.ClientId = Configuration["Security:ClientId"];
                 options.Authority = Configuration["Security:Authority"];
-                options.RedirectUri = Configuration["Security:RedirectUri"];
-                options.DefaultToCurrentUriOnRedirect = true;
+                options.ResponseType = OpenIdConnectResponseTypes.IdToken;
+                options.GetClaimsFromUserInfoEndpoint = true;
             });
 
             // Add MVC to the request pipeline.
