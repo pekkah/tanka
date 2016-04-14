@@ -4,7 +4,7 @@ namespace Tanka.Web.Controllers
     using Infrastructure;
     using Models;
     using Raven.Client;
-    using Microsoft.AspNet.Mvc;
+    using Microsoft.AspNetCore.Mvc;
 
     [Route("tags")]
     public class TagsController : Controller

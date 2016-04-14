@@ -4,7 +4,7 @@
     using Infrastructure;
     using Models;
     using Raven.Client;
-    using Microsoft.AspNet.Mvc;
+    using Microsoft.AspNetCore.Mvc;
 
     [Route("")]
     public class BlogController : Controller
@@ -18,7 +18,7 @@
             _documentStore = documentStore;
         }
 
-        [Route("", Order=1000)]
+        [HttpGet("", Order=1000)]
         public ActionResult Home(int skip = 0, int take = 100)
         {
             var model = new HomeModel();
@@ -45,7 +45,7 @@
             return View(model);
         }
 
-        [Route("{year:int}/{month:int}/{day:int}/{slug}")]
+        [HttpGet("{year:int}/{month:int}/{day:int}/{slug}")]
         public ActionResult BlogPost(int year, int month, int day, string slug)
         {
             using (IDocumentSession session = _documentStore.OpenSession())
@@ -53,7 +53,7 @@
                 var post = session.GetPublishedBlogPost(slug, _markdownRenderer);
 
                 if (post == null)
-                    return HttpNotFound();
+                    return NotFound();
 
                 var site = session.GetSiteSettings();
                 ViewBag.Title = site.Title;
@@ -66,7 +66,7 @@
         }
 
         [Obsolete("Will be removed in v1.2")]
-        [Route("{slug}")]
+        [HttpGet("{slug}")]
         public ActionResult BlogPostObsolete(string slug)
         {
             if (slug.StartsWith("_admin"))
@@ -79,7 +79,7 @@
                 var post = session.GetPublishedBlogPost(slug, _markdownRenderer);
 
                 if (post == null)
-                    return HttpNotFound();
+                    return NotFound();
 
                 return RedirectToActionPermanent("BlogPost", new
                 {

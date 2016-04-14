@@ -3,8 +3,8 @@ namespace Tanka.Web.Api
     using System;
     using Helpers;
     using Infrastructure;
-    using Microsoft.AspNet.Mvc;
-    using Microsoft.AspNet.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Authorization;
 
     [Route("api/utils")]
 
@@ -43,7 +43,7 @@ namespace Tanka.Web.Api
             {
                 html = _markdownRenderer.Render(markdown.Markdown);
             }
-            catch (Exception x)
+            catch (Exception)
             {
                 html = "Error in markdown format";
             }

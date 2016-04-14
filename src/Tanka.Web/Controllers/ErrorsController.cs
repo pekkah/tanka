@@ -1,6 +1,6 @@
 ﻿namespace Tanka.Web.Controllers
 {
-    using Microsoft.AspNet.Mvc;
+    using Microsoft.AspNetCore.Mvc;
 
     public class ErrorsController : Controller
     {

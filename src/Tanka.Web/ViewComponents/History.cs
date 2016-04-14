@@ -2,17 +2,16 @@
 {
     using System.Threading.Tasks;
     using Core;
-    using Documents.Indexes;
     using Infrastructure;
-    using Microsoft.AspNet.Mvc;
+    using Microsoft.AspNetCore.Mvc;
     using Raven.Client;
 
-    public class HistoryViewComponent : ViewComponent
+    public class History : ViewComponent
     {
         private readonly IDocumentStore _documentStore;
         private readonly IMarkdownRenderer _markdownRenderer;
 
-        public HistoryViewComponent(IDocumentStore documentStore, IMarkdownRenderer markdownRenderer)
+        public History(IDocumentStore documentStore, IMarkdownRenderer markdownRenderer)
         {
             _documentStore = documentStore;
             _markdownRenderer = markdownRenderer;

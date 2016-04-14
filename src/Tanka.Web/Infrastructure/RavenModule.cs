@@ -28,9 +28,10 @@
 
         public static void AddRaven(this IServiceCollection services, string connectionString)
         {
-            services.AddSingleton<IDocumentStore>(provider => CreateDocumentStore(connectionString));
-            services.AddTransient<IDocumentSession>(
-                provider => provider.GetRequiredService<IDocumentStore>().OpenSession());
+            //services.AddSingleton<IDocumentStore>(provider => CreateDocumentStore(connectionString));
+            //services.AddTransient<IDocumentSession>(
+            //    provider => provider.GetRequiredService<IDocumentStore>().OpenSession());
+            services.Add(ServiceDescriptor.Singleton(CreateDocumentStore(connectionString)));
         }
     }
 }

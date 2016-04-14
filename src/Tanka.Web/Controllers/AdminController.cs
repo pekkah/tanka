@@ -3,8 +3,8 @@
     using System;
     using Documents;
     using Infrastructure;
-    using Microsoft.AspNet.Authorization;
-    using Microsoft.AspNet.Mvc;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
     using Raven.Client;
 
     [RequireHttps]

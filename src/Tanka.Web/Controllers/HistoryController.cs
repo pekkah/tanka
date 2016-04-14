@@ -3,7 +3,7 @@ namespace Tanka.Web.Controllers
     using System.Threading.Tasks;
     using Core;
     using Infrastructure;
-    using Microsoft.AspNet.Mvc;
+    using Microsoft.AspNetCore.Mvc;
     using Models;
     using Raven.Client;
 

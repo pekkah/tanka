@@ -7,8 +7,8 @@
     using Infrastructure;
     using Models;
     using Raven.Client;
-    using Microsoft.AspNet.Mvc;
-    using Microsoft.AspNet.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Authorization;
 
     [Route("api/installer")]
 
@@ -53,7 +53,7 @@
 
             if (key != model.Key || string.IsNullOrWhiteSpace(key))
             {
-                return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError);
+                return new StatusCodeResult((int)HttpStatusCode.InternalServerError);
             }
 
             using (var session = _sessionFactory())

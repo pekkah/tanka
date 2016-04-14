@@ -2,7 +2,7 @@
 {
     using System.Text;
     using Infrastructure;
-    using Microsoft.AspNet.Mvc.Rendering;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public static class Disqus
     {

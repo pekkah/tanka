@@ -97,7 +97,7 @@
                 {
                     html = markdownRenderer.Render(blogPost.Content);
                 }
-                catch (Exception x)
+                catch (Exception)
                 {
                     html = "Markdown error";
                 }

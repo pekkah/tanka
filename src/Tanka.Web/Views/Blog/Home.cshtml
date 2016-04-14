@@ -47,8 +47,8 @@
         }
     </div>
     <div class="right-side">
-        @await Component.InvokeAsync("History")
-        @await Component.InvokeAsync("TagCloud")
+        @await Component.InvokeAsync(nameof(History))
+        @await Component.InvokeAsync(nameof(TagCloud))
     </div>
 </div>
 @section footer {

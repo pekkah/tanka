@@ -12,8 +12,8 @@
     using Models;
     using Raven.Client;
     using Raven.Client.Linq;
-    using Microsoft.AspNet.Authorization;
-    using Microsoft.AspNet.Mvc;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
 
     [Route("api/blog-posts")]
     [Authorize]
@@ -125,7 +125,7 @@
 
                 if (blogPost == null)
                 {
-                    return new HttpNotFoundResult();
+                    return new NotFoundResult();
                 }
 
                 return new ObjectResult(new BlogPostDto

@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Microsoft.AspNet.Http.Authentication;
-    using Microsoft.AspNet.Mvc.Rendering;
+    using Microsoft.AspNetCore.Http.Authentication;
+    using Microsoft.AspNetCore.Mvc.Rendering;
 
     public class IndexViewModel
     {

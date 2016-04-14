@@ -1,52 +1,37 @@
 {
-  "webroot": "wwwroot",
-  "userSecretsId": "tanka-web-dev",
-  "version": "1.0.0-*",
-
-  "dependencies": {
-    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
-    "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-rc1-final",
-    "Microsoft.AspNet.Authentication.Cookies": "1.0.0-rc1-final",
-    "Microsoft.AspNet.Authentication.OpenIdConnect": "1.0.0-rc1-final",
-    "Microsoft.AspNet.Diagnostics": "1.0.0-rc1-final",
-    "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
-    "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
-    "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
-    "Microsoft.AspNet.Tooling.Razor": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
-    "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
-    "RavenDB.Client": "3.0.3690",
-    "BCrypt-Official": "0.1.109",
-    "FluentValidation": "5.6.2",
-    "CommonMark.NET": "0.9.1"
-  },
-
-  "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel",
-    "ef": "EntityFramework.Commands"
-  },
-
-  "frameworks": {
-    "dnx451": {
+    "content": [
+        "wwwroot",
+        "Views"
+    ],
+    "compilationOptions": {
+        "warningsAsErrors": true,
+        "preserveCompilationContext": true,
+        "emitEntryPoint": true
+    },
+    "dependencies": {
+        "Microsoft.Extensions.Logging.Console": "1.0.0-*",
+        "Microsoft.AspNetCore.IISPlatformHandler": "1.0.0-*",
+        "Microsoft.AspNetCore.HttpOverrides": "1.0.0-*",
+        "Microsoft.AspNetCore.Mvc": "1.0.0-*",
+        "Microsoft.AspNetCore.StaticFiles": "1.0.0-*",
+        "Microsoft.AspNetCore.Diagnostics": "1.0.0-*",
+        "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-*",
+        "System.Runtime.Serialization.Primitives": "4.1.0-*"
+    },
+    "tools": {
+        "dotnet-publish-iis": "1.0.0-*"
+    },
+    "frameworks": {
+        "net451": {
+            "dependencies": {
+                "RavenDB.Client": "3.0.30000",
+                "FluentValidation": "6.2.1",
+                "BCrypt.Net-Core": "1.0.1",
+                "CommonMark.NET": "0.9.1"
+            }
+        }
+    },
+    "scripts": {
+        "postpublish": "dotnet publish-iis --publish-folder %publish:OutputPath%"
     }
-  },
-
-  "exclude": [
-    "wwwroot",
-    "node_modules",
-    "bower_components"
-  ],
-  "publishExclude": [
-    "node_modules",
-    "bower_components",
-    "**.xproj",
-    "**.user",
-    "**.vspscc"
-  ],
-  "scripts": {
-    "prepublish": [ "npm install", "bower install", "gulp default" ]
-  }
 }

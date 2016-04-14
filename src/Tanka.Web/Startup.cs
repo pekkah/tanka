@@ -1,33 +1,32 @@
 ﻿namespace Tanka.Web
 {
+    using Controllers;
     using Infrastructure;
-    using Microsoft.AspNet.Authentication;
-    using Microsoft.AspNet.Authentication.Cookies;
-    using Microsoft.AspNet.Builder;
-    using Microsoft.AspNet.Hosting;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.PlatformAbstractions;
-    using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+    using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
+    using Newtonsoft.Json.Serialization;
 
     public class Startup
     {
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
-
         public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
         {
             // Setup configuration sources.
             var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("config.json")
-                .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile($"config.{env.EnvironmentName}.json", true);
 
             if (env.IsDevelopment())
             {
                 // This reads the configuration keys from the secret store.
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
+                //builder.AddUserSecrets();
             }
 
             builder.AddEnvironmentVariables();
@@ -40,6 +39,17 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc()
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.Formatting = Formatting.Indented;
+                    options.SerializerSettings.Converters.Add(new StringEnumConverter());
+                    options.SerializerSettings.MissingMemberHandling = MissingMemberHandling.Error;
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                })
+                .AddControllersAsServices(typeof (BlogController).Assembly);
+
             // Add Entity Framework services to the services container.
             //services.AddEntityFramework()
             //  .AddSqlServer()
@@ -55,62 +65,28 @@
             // You can add options for Google, Twitter and other middleware as shown below.
             // For more information see http://go.microsoft.com/fwlink/?LinkID=532715
 
-            services.AddAuthentication(sharedOptions => sharedOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
+            //services.AddAuthentication(
+            //  sharedOptions => sharedOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme);
 
             // Add MVC services to the services container
             services.AddRaven(Configuration["Data:RavenDb"]);
-
-            services.AddMvc().AddJsonOptions(json =>
-            {
-                json.SerializerSettings.Converters.Add(new StringEnumConverter());
-            });
-
-            services.AddSingleton<IMarkdownRenderer>(provider => new TankaMarkdownRenderer());
+            services.AddSingleton<IMarkdownRenderer, TankaMarkdownRenderer>();
         }
 
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.MinimumLevel = LogLevel.Information;
-            loggerFactory.AddConsole();
+            loggerFactory.AddConsole(LogLevel.Debug);
 
-            // Configure the HTTP request pipeline.
+            app.UseIISPlatformHandler();
+            app.UseStaticFiles();
 
-            // Add the following to the request pipeline only in development environment.
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                // Add Error handling middleware which catches all application specific errors and
-                // sends the request to the following path or controller action.
-                app.UseExceptionHandler("/error");
-            }
 
-            // Add the platform handler to the request pipeline.
-            app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
-
-            // Add static files to the request pipeline.
-            app.UseStaticFiles();
-         
-            app.UseCookieAuthentication(options =>
-            {
-                options.AutomaticAuthenticate = true;
-            });
-
-            app.UseOpenIdConnectAuthentication(options =>
-            {
-                options.AutomaticAuthenticate = true;
-                options.AutomaticChallenge = true;
-                options.ClientId = Configuration["Security:ClientId"];
-                options.Authority = Configuration["Security:Authority"];
-                options.ResponseType = OpenIdConnectResponseTypes.IdToken;
-                options.GetClaimsFromUserInfoEndpoint = true;
-            });
-
-            // Add MVC to the request pipeline.
-            app.UseMvc(routes =>
+            app.UseMvc(routes => 
             {
             });
         }

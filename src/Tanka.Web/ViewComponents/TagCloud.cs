@@ -4,14 +4,14 @@ namespace Tanka.Web.ViewComponents
     using System.Linq;
     using System.Threading.Tasks;
     using Core;
-    using Microsoft.AspNet.Mvc;
+    using Microsoft.AspNetCore.Mvc;
     using Raven.Client;
 
-    public class TagCloudViewComponent : ViewComponent
+    public class TagCloud : ViewComponent
     {
         private readonly PublishedBlogPostTags _tagCloud;
 
-        public TagCloudViewComponent(IDocumentStore documentStore)
+        public TagCloud(IDocumentStore documentStore)
         {
             _tagCloud = new PublishedBlogPostTags(documentStore);
         }

@@ -2,11 +2,11 @@
 {
     using System;
     using Infrastructure;
-    using Microsoft.AspNet.Authorization;
+    using Microsoft.AspNetCore.Authorization;
     using Models;
     using Raven.Client;
-    using Microsoft.AspNet.Mvc;
-    using Microsoft.AspNet.Mvc.Filters;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Filters;
 
     [RequireHttps]
     [Route("installer")]
